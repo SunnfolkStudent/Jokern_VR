@@ -37,13 +37,17 @@ public class SceneController : MonoBehaviour {
 		}
 	}
 
+	void LogNoSuchLevelExists(int level) {
+		Debug.LogError($"Try to load level {level}, but no such level exists. Please assign levels to the Level Scenes field on the Scene Controller.");
+	}
+
 	public void LoadLevel(int level) {
 		if (level < levelScenes.Length) {
 			UnloadScene(levelScenes[currentLevel].name);
 			LoadSceneIfNotLoaded(levelScenes[level].name);
 			currentLevel = level;
 		} else {
-			Debug.LogError($"Try to load level {level}, but no such level exists. Please assign levels to the Level Scenes field on the Scene Controller.");
+			LogNoSuchLevelExists(level);
 		}
 	}
 
@@ -53,7 +57,17 @@ public class SceneController : MonoBehaviour {
 			UnloadScene(levelScenes[currentLevel - 1].name);
 			LoadSceneIfNotLoaded(levelScenes[currentLevel].name);
 		} else {
-			Debug.LogError($"Try to load level {currentLevel}, but no such level exists. Please assign levels to the Level Scenes field on the Scene Controller.");
+			LogNoSuchLevelExists(currentLevel);
+		}
+	}
+
+	public void LoadPreviousLevel() {
+		currentLevel -= 1;
+		if (currentLevel >= 0) {
+			UnloadScene(levelScenes[currentLevel + 1].name);
+			LoadSceneIfNotLoaded(levelScenes[currentLevel].name);
+		} else {
+			LogNoSuchLevelExists(currentLevel);
 		}
 	}
 
