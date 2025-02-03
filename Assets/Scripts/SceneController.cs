@@ -16,7 +16,7 @@ public class SceneController : MonoBehaviour {
 
 	void Awake() {
 		for (int i = 0; i < loadOnStartup.Length; ++i) {
-			SceneManager.LoadScene(loadOnStartup[i].name, LoadSceneMode.Additive);
+			LoadScene(loadOnStartup[i].name);
 		}
 	}
 
@@ -40,6 +40,9 @@ public class SceneController : MonoBehaviour {
 	void LogNoSuchLevelExists(int level) {
 		Debug.LogError($"Try to load level {level}, but no such level exists. Please assign levels to the Level Scenes field on the Scene Controller.");
 	}
+
+	public void LoadScene(int buildIndex) => SceneManager.LoadScene(buildIndex, LoadSceneMode.Additive);
+	public void LoadScene(string name)    => SceneManager.LoadScene(name,       LoadSceneMode.Additive);
 
 	public void LoadLevel(int level) {
 		if (level < levelScenes.Length) {
@@ -115,14 +118,6 @@ public class SceneController : MonoBehaviour {
 
 	public int SceneNameToBuildIndex(string name) {
 		return SceneManager.GetSceneByName(name).buildIndex;
-	}
-
-	public void LoadScene(string name) {
-		SceneManager.LoadScene(name, LoadSceneMode.Additive);
-	}
-
-	public void LoadScene(int buildIndex) {
-		SceneManager.LoadScene(buildIndex, LoadSceneMode.Additive);
 	}
 
 	public void ReloadAllScenes() {
