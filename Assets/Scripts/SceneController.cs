@@ -9,6 +9,11 @@ public class SceneController : MonoBehaviour {
 	[Tooltip("These scenes will get loaded additively.")]
 	public SceneAsset[] loadOnStartup;
 
+	[Space(10)]
+	[Header("Levels")]
+	public int currentLevel;
+	public SceneAsset[] levelScenes;
+
 	void Awake() {
 		for (int i = 0; i < loadOnStartup.Length; ++i) {
 			SceneManager.LoadScene(loadOnStartup[i].name, LoadSceneMode.Additive);
@@ -20,7 +25,36 @@ public class SceneController : MonoBehaviour {
 			print("BasicScene is loaded!");
 		}
 
-		LoadSceneIfNotAlreadyLoaded("BasicScene");
+		LoadLevel(0);
+	}
+
+	// @Temp TODO: remove this
+	public bool goToNextLevel;
+	void Update() {
+		if (goToNextLevel) {
+			LoadNextLevel();
+			goToNextLevel = false;
+		}
+	}
+
+	public void LoadLevel(int level) {
+		if (level < levelScenes.Length) {
+			UnloadScene(levelScenes[currentLevel].name);
+			LoadSceneIfNotLoaded(levelScenes[level].name);
+			currentLevel = level;
+		} else {
+			Debug.LogError($"Try to load level {level}, but no such level exists. Please assign levels to the Level Scenes field on the Scene Controller.");
+		}
+	}
+
+	public void LoadNextLevel() {
+		currentLevel += 1;
+		if (currentLevel < levelScenes.Length) {
+			UnloadScene(levelScenes[currentLevel - 1].name);
+			LoadSceneIfNotLoaded(levelScenes[currentLevel].name);
+		} else {
+			Debug.LogError($"Try to load level {currentLevel}, but no such level exists. Please assign levels to the Level Scenes field on the Scene Controller.");
+		}
 	}
 
 	public bool SceneIsLoaded(int buildIndex) {
@@ -40,21 +74,30 @@ public class SceneController : MonoBehaviour {
 		return SceneIsLoaded(SceneNameToBuildIndex(name));
 	}
 
-	public void LoadSceneIfNotAlreadyLoaded(int buildIndex) {
+	public void LoadSceneIfNotLoaded(int buildIndex) {
 		if (!SceneIsLoaded(buildIndex)) {
 			LoadScene(buildIndex);
 		}
 	}
 
-	public void LoadSceneIfNotAlreadyLoaded(string name) {
+	public void LoadSceneIfNotLoaded(string name) {
 		if (!SceneIsLoaded(name)) {
 			LoadScene(name);
 		}
 	}
 
-	// NOTE: These functions may not work in Awake().
-	public void UnloadScene(int buildIndex) => SceneManager.UnloadSceneAsync(buildIndex);
-	public void UnloadScene(string name)    => SceneManager.UnloadSceneAsync(name);
+	// NOTE: UnloadScene() may not work in Awake().
+	public void UnloadScene(int buildIndex) {
+		if (SceneIsLoaded(buildIndex)) {
+			SceneManager.UnloadSceneAsync(buildIndex);
+		}
+	}
+
+	public void UnloadScene(string name) {
+		if (SceneIsLoaded(name)) {
+			SceneManager.UnloadSceneAsync(name);
+		}
+	}
 
 	public int SceneNameToBuildIndex(string name) {
 		return SceneManager.GetSceneByName(name).buildIndex;
