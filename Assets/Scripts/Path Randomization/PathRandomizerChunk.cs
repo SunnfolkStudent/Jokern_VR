@@ -1,14 +1,20 @@
 using UnityEngine;
 
 public class PathRandomizerChunk : MonoBehaviour {
-	[Tooltip("Increase this value to make this chunk randomly avoid spawning.")]
+	[Tooltip("Increase this value to make this chunk randomly avoid spawning more often.")]
 	[Range(0.0f, 1.0f)]
 	public float chanceToBeEmpty = 0.0f;
 	public PathRandomizerChunk[] doNotSpawnIfTheseAreActive;
 
+	public PathRandomizerExitBlocker[] unblockTheseExitsIfActive;
+
 	public void Deactivate() {
-		gameObject.SetActive(false);
-		isActive = false;
+		SetActiveState(false);
+	}
+
+	void SetActiveState(bool active) {
+		gameObject.SetActive(active);
+		isActive = active;
 	}
 
 	[HideInInspector] public bool isActive;
@@ -28,7 +34,14 @@ public class PathRandomizerChunk : MonoBehaviour {
 			return;
 		}
 
-		gameObject.SetActive(true);
-		isActive = true;
+		if (unblockTheseExitsIfActive != null) {
+			for (int i = 0; i < unblockTheseExitsIfActive.Length; ++i) {
+				if (unblockTheseExitsIfActive[i] != null) {
+					unblockTheseExitsIfActive[i].Deactivate();
+				}
+			}
+		}
+
+		SetActiveState(true);
 	}
 }
