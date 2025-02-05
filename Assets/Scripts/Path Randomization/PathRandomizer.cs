@@ -14,6 +14,9 @@ public class PathRandomizer : MonoBehaviour {
 	}
 
 	void Start() {
+		GetChunksContainerTransform().gameObject.SetActive(true);
+		GetExitBlockersContainerTransform().gameObject.SetActive(true);
+
 		RegenerateRandomChunks();
 	}
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class PathRandomizerExitBlocker : MonoBehaviour {
-	[HideInInspector] public bool isActive;
+	[HideInInspector] public bool isActive { get; private set; }
 
 	public void Deactivate() {
 		gameObject.SetActive(false);

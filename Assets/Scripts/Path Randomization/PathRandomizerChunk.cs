@@ -17,7 +17,7 @@ public class PathRandomizerChunk : MonoBehaviour {
 		isActive = active;
 	}
 
-	[HideInInspector] public bool isActive;
+	[HideInInspector] public bool isActive { get; private set; }
 
 	public void AttemptActivation() {
 		if (doNotSpawnIfTheseAreActive != null) {
