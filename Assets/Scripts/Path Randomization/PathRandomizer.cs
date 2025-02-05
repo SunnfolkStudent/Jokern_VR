@@ -1,4 +1,7 @@
 using UnityEngine;
+using System;
+using System.Linq;
+using Random = UnityEngine.Random;
 
 public class PathRandomizer : MonoBehaviour {
 	public bool regenerateRandomChunks;
@@ -9,33 +12,50 @@ public class PathRandomizer : MonoBehaviour {
 		}
 	}
 
-	public void RegenerateRandomChunks() {
+	public void DisableAllChunks() {
 		// First we reset everything to zero.
 		for (int i = 0; i < transform.childCount; ++i) {
-			Transform spotTransform = transform.GetChild(i);
+			Transform chunkTransform = transform.GetChild(i);
 
-			PathRandomizerSpot spot;
-			if (!spotTransform.TryGetComponent(out spot)) {
-				//Debug.LogWarning($"'{spotTransform.gameObject.name}' does not have a PathRandomizerSpot component, so we are creating one.");
-				spot = spotTransform.gameObject.AddComponent<PathRandomizerSpot>();
+			PathRandomizerChunk chunk;
+			if (!chunkTransform.TryGetComponent(out chunk)) {
+				//Debug.LogWarning($"'{chunkTransform.gameObject.name}' does not have a PathRandomizerChunk component, so we are creating one.");
+				chunk = chunkTransform.gameObject.AddComponent<PathRandomizerChunk>();
 			}
 
-			spot.DeactivateEverything();
+			chunk.Deactivate();
+		}
+	}
+
+	public void RegenerateRandomChunks() {
+		DisableAllChunks();
+
+		var randomIndexes = new int[transform.childCount];
+		// Set all the members to their index.
+		for (int i = 1; i < randomIndexes.Length; ++i) {
+			randomIndexes[i] = i;
 		}
 
-		for (int i = 0; i < transform.childCount; ++i) {
-			Transform spotTransform = transform.GetChild(i);
+		// Randomize!
+		randomIndexes = randomIndexes.OrderBy(n => Guid.NewGuid()).ToArray();
 
-			PathRandomizerSpot spot;
-			if (!spotTransform.TryGetComponent(out spot)) {
-#if UNITY_EDITOR
-				Debug.LogError($"{spotTransform.gameObject.name} should have a PathRandomizerSpot component by now. Since it doesn't, we've done an oopsie. See the code please.");
-				UnityEditor.EditorApplication.isPlaying = false;
-				spot = spotTransform.gameObject.AddComponent<PathRandomizerSpot>();
+#if false // Yeah it's random!
+		print($"randomIndexes: (Length: {randomIndexes.Length})");
+		for (int i = 0; i < randomIndexes.Length; ++i) {
+			print($"    {randomIndexes[i]}");
+		}
 #endif
+
+		for (int i = 0; i < randomIndexes.Length; ++i) {
+			Transform chunkTransform = transform.GetChild(randomIndexes[i]);
+
+			PathRandomizerChunk chunk;
+			if (!chunkTransform.TryGetComponent(out chunk)) {
+				// The chunk doesn't have a PathRandomizerChunk component, so we add one!
+				chunk = chunkTransform.gameObject.AddComponent<PathRandomizerChunk>();
 			}
 
-			spot.Randomize();
+			chunk.AttemptActivation();
 		}
 	}
 }
