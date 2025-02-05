@@ -142,9 +142,6 @@
             "m_Id": "67de0a11ca5241b78b3902b243070309"
         },
         {
-            "m_Id": "ccad9e2ed740475c911f732c1ac33f44"
-        },
-        {
             "m_Id": "016c96d2c83841e0b1532f891fd9b7d7"
         },
         {
@@ -699,7 +696,7 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "ccad9e2ed740475c911f732c1ac33f44"
+                    "m_Id": "ca8c7cdcefac4f96be48b8018325e953"
                 },
                 "m_SlotId": 0
             },
@@ -1443,8 +1440,8 @@
     "m_ObjectId": "1dc711b9adbc45219c857e83f2d003c0",
     "m_Title": "Constant Bias Scale",
     "m_Position": {
-        "x": -511.99993896484377,
-        "y": -531.9998779296875
+        "x": -511.9998779296875,
+        "y": -531.999755859375
     }
 }
 
@@ -2340,8 +2337,8 @@
     "m_ObjectId": "55f68598aa4b4d96a29a18bd372c5ea0",
     "m_Title": "Constant Bias Scale",
     "m_Position": {
-        "x": -174.0,
-        "y": 293.0
+        "x": -173.99986267089845,
+        "y": 293.0001220703125
     }
 }
 
@@ -4458,19 +4455,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
-    "m_ObjectId": "b0e75f7138b848cb940b1d1363b55b3e",
-    "m_Id": 0,
-    "m_DisplayName": "Texture2D",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Out",
-    "m_StageCapability": 3,
-    "m_BareResource": false
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1Node",
     "m_ObjectId": "b30fdb04ef104ac3af631abf2f42e7eb",
     "m_Group": {
@@ -4958,42 +4942,6 @@
     "m_Slots": [
         {
             "m_Id": "eaf402219f074b689862486e16d69717"
-        }
-    ],
-    "synonyms": [],
-    "m_Precision": 0,
-    "m_PreviewExpanded": true,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_Property": {
-        "m_Id": "e0e13a5b39a043578857c467d6e4ce6d"
-    }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
-    "m_ObjectId": "ccad9e2ed740475c911f732c1ac33f44",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "Property",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 563.0,
-            "y": 58.25006103515625,
-            "width": 0.0,
-            "height": 0.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "b0e75f7138b848cb940b1d1363b55b3e"
         }
     ],
     "synonyms": [],
