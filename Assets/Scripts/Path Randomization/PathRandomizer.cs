@@ -19,7 +19,6 @@ public class PathRandomizer : MonoBehaviour {
 
 			PathRandomizerChunk chunk;
 			if (!chunkTransform.TryGetComponent(out chunk)) {
-				//Debug.LogWarning($"'{chunkTransform.gameObject.name}' does not have a PathRandomizerChunk component, so we are creating one.");
 				chunk = chunkTransform.gameObject.AddComponent<PathRandomizerChunk>();
 			}
 
