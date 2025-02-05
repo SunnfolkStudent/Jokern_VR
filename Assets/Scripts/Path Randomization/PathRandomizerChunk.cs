@@ -6,10 +6,6 @@ public class PathRandomizerChunk : MonoBehaviour {
 	public float chanceToBeEmpty = 0.0f;
 	public PathRandomizerChunk[] doNotSpawnIfTheseAreActive;
 
-	void Awake() {
-		Deactivate();
-	}
-
 	public void Deactivate() {
 		gameObject.SetActive(false);
 		isActive = false;

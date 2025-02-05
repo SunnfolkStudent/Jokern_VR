@@ -12,6 +12,10 @@ public class PathRandomizer : MonoBehaviour {
 		}
 	}
 
+	void Start() {
+		RegenerateRandomChunks();
+	}
+
 	public void DisableAllChunks() {
 		// First we reset everything to zero.
 		for (int i = 0; i < transform.childCount; ++i) {
