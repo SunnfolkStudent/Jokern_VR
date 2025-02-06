@@ -1,4 +1,5 @@
 using UnityEngine;
+using static AugustBase.All;
 
 public class ChunkLoader : MonoBehaviour {
 	ChunkLoaderChunk[] chunks;
@@ -61,36 +62,49 @@ public class ChunkLoader : MonoBehaviour {
 		return result;
 	}
 
-	void Update() {
+	public float simulationDistance;
+
+	public Transform playerTransform;
+	void FixedUpdate() {
 #if false
-		Gizmos.color = Color.blue;
 		for (int i = 0; i < chunks.Length; ++i) {
-			var bounds = GetChunkBounds(chunks[i]);
+			if (ChunkShouldBeLoaded(chunks[i])) {
+			}
 		}
 #endif
 	}
 
-	public Vector3 playerPosition;
-	void GivePlayerPosition(Vector3 position) {
-		playerPosition = position;
+	// One could imagine this function getting more complicated in the future.
+	public bool ChunkShouldBeLoaded(ChunkLoaderChunk chunk) {
+		if (playerTransform != null) {
+			var distanceToChunk = DistanceToChunk(playerTransform.position, chunk);
+			return distanceToChunk < simulationDistance;
+		}
+
+#if UNITY_EDITOR
+		Debug.LogError($"No player transform assigned to chunk loader '{this.name}'.");
+		StopProgram();
+#endif
+
+		return false;
+	}
+
+	public float DistanceToChunk(Vector3 position, ChunkLoaderChunk chunk) {
+		Bounds bounds = GetChunkBounds(chunk);
+		Vector3 closest = bounds.ClosestPoint(position);
+		var delta = position - closest;
+		return Abs(delta).magnitude;
 	}
 
 #if UNITY_EDITOR
-	void DrawChunkBoundsGizmos() {
-		if (chunks != null) {
-			Gizmos.color = Color.blue;
-			for (int i = 0; i < chunks.Length; ++i) {
-				var bounds = GetChunkBounds(chunks[i]);
-				Gizmos.DrawWireCube(bounds.center, bounds.size);
-			}
-		}
-	}
-
-	[Tooltip("Draw a cubed outline around every chunk.")]
+	[Tooltip("Draw a cubed outline around every chunk, colored on a per-chunk basis.")]
 	[SerializeField] bool drawChunkBounds;
 
 	[Tooltip("Draw a cubed outline around every game object in every chunk, colored on a per-chunk basis. Items that do not have a chunk assigned to them do not get an outline.")]
 	[SerializeField] bool drawChunkItemBounds;
+
+	[Tooltip("Draw a blue, cubed outline around every loaded chunk.")]
+	[SerializeField] bool drawLoadedChunkBounds;
 
 	void DrawChunkGizmos() {
 		if (chunks != null) {
@@ -98,27 +112,37 @@ public class ChunkLoader : MonoBehaviour {
 			Random.InitState(69420);
 
 			for (int i = 0; i < chunks.Length; ++i) {
-				Gizmos.color = new Color(Random.value, Random.value, Random.value);
+				{ // Per-chunk coloring!
+					Gizmos.color = new Color(Random.value, Random.value, Random.value);
 
-				if (drawChunkBounds) {
-					var bounds = GetChunkBounds(chunks[i]);
-					Gizmos.DrawWireCube(bounds.center, bounds.size);
-				}
+					if (drawChunkBounds) {
+						var bounds = GetChunkBounds(chunks[i]);
+						Gizmos.DrawWireCube(bounds.center, bounds.size);
+					}
 
-				if (drawChunkItemBounds) {
-					Bounds parentItemBounds = GetGameObjectBounds(chunks[i].gameObject);
-					Gizmos.DrawWireCube(parentItemBounds.center, parentItemBounds.size);
+					if (drawChunkItemBounds) {
+						Bounds parentItemBounds = GetGameObjectBounds(chunks[i].gameObject);
+						Gizmos.DrawWireCube(parentItemBounds.center, parentItemBounds.size);
 
-					var extraToInclude = chunks[i].includeTheseInTheChunk;
-					if (extraToInclude != null) {
-						for (int j = 0; j < extraToInclude.Length; ++j) {
-							GameObject obj = extraToInclude[j];
+						var extraToInclude = chunks[i].includeTheseInTheChunk;
+						if (extraToInclude != null) {
+							for (int j = 0; j < extraToInclude.Length; ++j) {
+								GameObject obj = extraToInclude[j];
 
-							if (obj != null) {
-								Bounds objBounds = GetGameObjectBounds(obj);
-								Gizmos.DrawWireCube(objBounds.center, objBounds.size);
+								if (obj != null) {
+									Bounds objBounds = GetGameObjectBounds(obj);
+									Gizmos.DrawWireCube(objBounds.center, objBounds.size);
+								}
 							}
 						}
+					}
+				}
+
+				if (drawLoadedChunkBounds) {
+					Gizmos.color = Color.blue;
+					if (ChunkShouldBeLoaded(chunks[i])) {
+						var bounds = GetChunkBounds(chunks[i]);
+						Gizmos.DrawWireCube(bounds.center, bounds.size);
 					}
 				}
 			}
