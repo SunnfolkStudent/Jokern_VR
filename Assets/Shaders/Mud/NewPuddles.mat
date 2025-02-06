@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5601860075056269134
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -7,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FlowMap
-  m_Shader: {fileID: -6465566751694194690, guid: 93fc6d5be1f218a4d9a457816ef68892, type: 3}
+  m_Name: NewPuddles
+  m_Shader: {fileID: -6465566751694194690, guid: 182e269399fb7bd4fb05ff6f45d81500, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,15 +37,7 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _FlowMap:
-        m_Texture: {fileID: 2800000, guid: a86dcc7f1d5f29043a043ef23872a334, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Normals:
-        m_Texture: {fileID: 2800000, guid: a8efa23c6f03b7d449b0cf4aa8e6a06d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture2D:
+    - _MudTex:
         m_Texture: {fileID: 2800000, guid: fce1f8a97f0712e44942ec1f080180a2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -50,29 +55,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FlowMapTiling: 1
-    - _Metallic: 0.697
-    - _Normal_Strength: 0.01
+    - _Metallic: 0
+    - _MudEdgeA: 0.631
+    - _MudEdgeB: 0.227
+    - _NormalStregth: 4.7
+    - _PuddleNoise: 18.98
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 1
-    - _Speed: 2.39
-    - _Strength: 2.6
-    - _Tiling: 4.2
+    - _Tiling: 4.84
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _MudColor: {r: 0.16981131, g: 0.13887614, b: 0.11614452, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &5236242385931024340
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 9
