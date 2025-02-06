@@ -243,6 +243,7 @@ MonoBehaviour:
   includeTheseInTheChunk:
   - {fileID: 1285856359}
   - {fileID: 406340284}
+  isLoaded: 0
 --- !u!1 &60857364
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,6 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &304494508
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +798,7 @@ MonoBehaviour:
   - {fileID: 1580194639}
   - {fileID: 542653687}
   - {fileID: 2134097912}
+  isLoaded: 0
 --- !u!1 &322746229
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,6 +937,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {x: 0, y: 0, z: 0}
+  drawChunkBounds: 1
+  drawChunkItemBounds: 1
 --- !u!4 &351733057
 Transform:
   m_ObjectHideFlags: 0
@@ -1292,6 +1297,7 @@ MonoBehaviour:
   - {fileID: 1959321059}
   - {fileID: 1222323576}
   - {fileID: 684298289}
+  isLoaded: 0
 --- !u!1 &373014485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,6 +1422,7 @@ MonoBehaviour:
   includeTheseInTheChunk:
   - {fileID: 375999870}
   - {fileID: 898833873}
+  isLoaded: 0
 --- !u!1 &375999870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,6 +1792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &492014011
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,6 +2054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &595123879
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,6 +2249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &684298289
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,6 +2511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &852429313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,6 +2743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   includeTheseInTheChunk:
   - {fileID: 910007561}
+  isLoaded: 0
 --- !u!1 &898833873
 GameObject:
   m_ObjectHideFlags: 0
@@ -3177,6 +3189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &1055196624
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,6 +3595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &1222323576
 GameObject:
   m_ObjectHideFlags: 0
@@ -4283,6 +4297,7 @@ MonoBehaviour:
   - {fileID: 680057185}
   - {fileID: 1723769415}
   - {fileID: 295802090}
+  theseAreAlsoPartOfTheChunk: []
 --- !u!1 &1508216081
 GameObject:
   m_ObjectHideFlags: 0
@@ -4338,6 +4353,7 @@ MonoBehaviour:
   unblockTheseExitsIfActive:
   - {fileID: 2066362823}
   - {fileID: 1205186730}
+  theseAreAlsoPartOfTheChunk: []
 --- !u!1 &1580194639
 GameObject:
   m_ObjectHideFlags: 0
@@ -4599,6 +4615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &1608397592
 GameObject:
   m_ObjectHideFlags: 0
@@ -4968,6 +4985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &1710141997
 GameObject:
   m_ObjectHideFlags: 0
@@ -5121,6 +5139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &1795056957
 GameObject:
   m_ObjectHideFlags: 0
@@ -5245,6 +5264,7 @@ MonoBehaviour:
   includeTheseInTheChunk:
   - {fileID: 595123879}
   - {fileID: 1645624590}
+  isLoaded: 0
 --- !u!1 &1807765107
 GameObject:
   m_ObjectHideFlags: 0
@@ -5722,6 +5742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &2026618769
 GameObject:
   m_ObjectHideFlags: 0
@@ -5846,6 +5867,7 @@ MonoBehaviour:
   includeTheseInTheChunk:
   - {fileID: 1055196624}
   - {fileID: 1704562216}
+  isLoaded: 0
 --- !u!1 &2042195555
 GameObject:
   m_ObjectHideFlags: 0
@@ -5903,6 +5925,7 @@ MonoBehaviour:
   - {fileID: 552216420}
   - {fileID: 964416056}
   - {fileID: 838428511}
+  theseAreAlsoPartOfTheChunk: []
 --- !u!1 &2066362821
 GameObject:
   m_ObjectHideFlags: 0
@@ -5948,6 +5971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &2072020843
 GameObject:
   m_ObjectHideFlags: 0
@@ -5993,6 +6017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &2102303694
 GameObject:
   m_ObjectHideFlags: 0
@@ -6050,6 +6075,7 @@ MonoBehaviour:
   - {fileID: 680057185}
   - {fileID: 295802090}
   - {fileID: 2066362823}
+  theseAreAlsoPartOfTheChunk: []
 --- !u!1 &2129275683
 GameObject:
   m_ObjectHideFlags: 0
@@ -6277,6 +6303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be3d8aa0b66c62b7b4cbbfa7b20e26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theseAreAlsoPartOfTheBlocker: []
 --- !u!1 &2147131072
 GameObject:
   m_ObjectHideFlags: 0
@@ -6335,6 +6362,7 @@ MonoBehaviour:
   - {fileID: 2138767666}
   - {fileID: 2072020845}
   - {fileID: 1704562218}
+  theseAreAlsoPartOfTheChunk: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

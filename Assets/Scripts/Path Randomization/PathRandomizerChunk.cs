@@ -8,6 +8,8 @@ public class PathRandomizerChunk : MonoBehaviour {
 
 	public PathRandomizerExitBlocker[] unblockTheseExitsIfActive;
 
+	public GameObject[] theseAreAlsoPartOfTheChunk;
+
 	public void Deactivate() {
 		SetActiveState(false);
 	}
@@ -15,6 +17,12 @@ public class PathRandomizerChunk : MonoBehaviour {
 	void SetActiveState(bool active) {
 		gameObject.SetActive(active);
 		isActive = active;
+
+		if (theseAreAlsoPartOfTheChunk != null) {
+			for (int i = 0; i < theseAreAlsoPartOfTheChunk.Length; ++i) {
+				theseAreAlsoPartOfTheChunk[i].SetActive(active);
+			}
+		}
 	}
 
 	[HideInInspector] public bool isActive { get; private set; }

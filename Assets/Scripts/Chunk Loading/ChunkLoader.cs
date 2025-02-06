@@ -86,9 +86,50 @@ public class ChunkLoader : MonoBehaviour {
 		}
 	}
 
+	[Tooltip("Draw a cubed outline around every chunk.")]
+	[SerializeField] bool drawChunkBounds;
+
+	[Tooltip("Draw a cubed outline around every game object in every chunk, colored on a per-chunk basis. Items that do not have a chunk assigned to them do not get an outline.")]
+	[SerializeField] bool drawChunkItemBounds;
+
+	void DrawChunkGizmos() {
+		if (chunks != null) {
+			var oldState = Random.state;
+			Random.InitState(69420);
+
+			for (int i = 0; i < chunks.Length; ++i) {
+				Gizmos.color = new Color(Random.value, Random.value, Random.value);
+
+				if (drawChunkBounds) {
+					var bounds = GetChunkBounds(chunks[i]);
+					Gizmos.DrawWireCube(bounds.center, bounds.size);
+				}
+
+				if (drawChunkItemBounds) {
+					Bounds parentItemBounds = GetGameObjectBounds(chunks[i].gameObject);
+					Gizmos.DrawWireCube(parentItemBounds.center, parentItemBounds.size);
+
+					var extraToInclude = chunks[i].includeTheseInTheChunk;
+					if (extraToInclude != null) {
+						for (int j = 0; j < extraToInclude.Length; ++j) {
+							GameObject obj = extraToInclude[j];
+
+							if (obj != null) {
+								Bounds objBounds = GetGameObjectBounds(obj);
+								Gizmos.DrawWireCube(objBounds.center, objBounds.size);
+							}
+						}
+					}
+				}
+			}
+
+			Random.state = oldState;
+		}
+	}
+
 	void OnDrawGizmos() {
 		FindAllChunks();
-		DrawChunkBoundsGizmos();
+		DrawChunkGizmos();
 	}
 #endif
 }
