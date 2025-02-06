@@ -16,10 +16,10 @@ public class ChunkLoader : MonoBehaviour {
 		FindAllChunks();
 	}
 
-	Bounds GetChunkBounds(ChunkLoaderChunk chunk) {
+	Bounds GetGameObjectBounds(GameObject obj) {
 		Bounds result;
 
-		Renderer[] renderers = chunk.gameObject.GetComponentsInChildren<Renderer>();
+		Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
 		if (renderers.Length > 0) {
 			// Take the first element as the starting point!
 			result = renderers[0].bounds;
@@ -30,14 +30,32 @@ public class ChunkLoader : MonoBehaviour {
 			result = new Bounds();
 		}
 
-		MeshRenderer[] meshRenderers = gameObject.GetComponentsInChildren<MeshRenderer>();
+		/*
+		MeshRenderer[] meshRenderers = obj.GetComponentsInChildren<MeshRenderer>();
 		for (int i = 0; i < meshRenderers.Length; ++i) {
 			result.Encapsulate(meshRenderers[i].bounds);
 		}
 
-		SkinnedMeshRenderer[] skinnedMeshRenderers = gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+		SkinnedMeshRenderer[] skinnedMeshRenderers = obj.GetComponentsInChildren<SkinnedMeshRenderer>();
 		for (int i = 0; i < skinnedMeshRenderers.Length; ++i) {
 			result.Encapsulate(skinnedMeshRenderers[i].bounds);
+		}
+		*/
+
+		return result;
+	}
+
+	Bounds GetChunkBounds(ChunkLoaderChunk chunk) {
+		Bounds result = GetGameObjectBounds(chunk.gameObject);
+
+		var extraToInclude = chunk.includeTheseInTheChunk;
+		if (extraToInclude != null) {
+			for (int i = 0; i < extraToInclude.Length; ++i) {
+				var obj = extraToInclude[i];
+				if (obj != null) {
+					result.Encapsulate(GetGameObjectBounds(obj));
+				}
+			}
 		}
 
 		return result;
@@ -59,20 +77,17 @@ public class ChunkLoader : MonoBehaviour {
 
 #if UNITY_EDITOR
 	void DrawChunkBoundsGizmos() {
-		Gizmos.color = Color.blue;
-		for (int i = 0; i < chunks.Length; ++i) {
-			var bounds = GetChunkBounds(chunks[i]);
-			Gizmos.DrawWireCube(bounds.center, bounds.size);
+		if (chunks != null) {
+			Gizmos.color = Color.blue;
+			for (int i = 0; i < chunks.Length; ++i) {
+				var bounds = GetChunkBounds(chunks[i]);
+				Gizmos.DrawWireCube(bounds.center, bounds.size);
+			}
 		}
 	}
 
-	[SerializeField] private bool reloadChunks;
 	void OnDrawGizmos() {
-		if (chunks == null || reloadChunks) {
-			FindAllChunks();
-			reloadChunks = false;
-		}
-
+		FindAllChunks();
 		DrawChunkBoundsGizmos();
 	}
 #endif
