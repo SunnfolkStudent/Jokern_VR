@@ -20,17 +20,20 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: _GlitchStrength
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
     - _GlitchStrength: 0
+    - _GradientScale: 176.99
     - _NoiseAmount: 0
     - _ScanLinesStrength: 1
-    - _ScanlinesSize: 1280.24
+    - _ScanlinesSize: 1170.3
+    - _Strength: 1
     m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _TestColour: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
