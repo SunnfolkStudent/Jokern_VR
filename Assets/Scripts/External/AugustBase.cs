@@ -28,10 +28,12 @@ namespace AugustBase {
 
 		public static T GetComponentOrStop<T>(this GameObject obj) where T : Component, new() {
 			var result = obj.GetComponent<T>();
+#if UNITY_EDITOR
 			if (result == null) {
 				Debug.LogError("'" + obj.name + "' does not have a '" + (new T()).GetType().Name + "', but wants one!");
 				StopProgram();
 			}
+#endif
 
 			return result;
 		}
@@ -40,11 +42,15 @@ namespace AugustBase {
 			var foundObjects = UnityEngine.Object.FindObjectsByType<T>(FindObjectsSortMode.None);
 
 			if (foundObjects.Length > 1) {
+#if UNITY_EDITOR
 				Debug.LogError("Too many '" + foundObjects[0].GetType().Name + "'s! There is only supposed to be one, but found " + foundObjects.Length + "!");
 				StopProgram();
+#endif
 			} else if (foundObjects == null || foundObjects.Length == 0) {
+#if UNITY_EDITOR
 				Debug.LogError("Found no '" + (new T()).GetType().Name + "'! Please create one!");
 				StopProgram();
+#endif
 				return default;
 			}
 
@@ -54,15 +60,46 @@ namespace AugustBase {
 		public static GameObject FindExactlyOneGameObjectWithTagOrStop(string tag) {
 			GameObject[] found = GameObject.FindGameObjectsWithTag(tag);
 			if (found == null || found.Length == 0) {
+#if UNITY_EDITOR
 				Debug.LogError("Tried to find a game object with tag '" + tag + "', but couldn't find any.");
 				StopProgram();
+#endif
 				return default;
 			} else if (found.Length > 1) {
+#if UNITY_EDITOR
 				Debug.LogError("Expected to find exactly 1 game object with tag '" + tag + "', but found " + found.Length + ".");
 				StopProgram();
+#endif
 			}
 
 			return found[0];
+		}
+
+		// Not recursive! Only gets the first matching child of the transform, not a child of a child.
+		public static Transform GetFirstChildByName(this Transform transform, string name) {
+			for (int i = 0; i < transform.childCount; ++i) {
+				var child = transform.GetChild(i);
+
+				if (child.gameObject.name == name) {
+					return child;
+				}
+			}
+
+			return null;
+		}
+
+		// Not recursive!
+		public static Transform GetFirstChildByNameOrStop(this Transform transform, string name) {
+			var child = transform.GetFirstChildByName(name);
+
+#if UNITY_EDITOR
+			if (child == null) {
+				Debug.LogError($"No child of '{transform.gameObject.name}' is called '{name}', but we expect there to be one.");
+				StopProgram();
+			}
+#endif
+
+			return child;
 		}
 
 		//
