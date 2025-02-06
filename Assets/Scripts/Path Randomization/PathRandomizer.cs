@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 using static AugustBase.All;
 
 public class PathRandomizer : MonoBehaviour {
+	// @Temp TODO: remove this
 	public bool regenerateRandomChunks;
 	void Update() {
 		if (regenerateRandomChunks) {
@@ -20,34 +21,8 @@ public class PathRandomizer : MonoBehaviour {
 		RegenerateRandomChunks();
 	}
 
-	Transform GetChunksContainerTransform() => GetFirstChildByNameOrStop("Chunks");
-	Transform GetExitBlockersContainerTransform() => GetFirstChildByNameOrStop("Exit Blockers");
-
-	// Not recursive!
-	Transform GetFirstChildByName(string name) {
-		for (int i = 0; i < transform.childCount; ++i) {
-			var child = transform.GetChild(i);
-
-			if (child.gameObject.name == name) {
-				return child;
-			}
-		}
-
-		return null;
-	}
-
-	// Not recursive!
-	Transform GetFirstChildByNameOrStop(string name) {
-		var child = GetFirstChildByName(name);
-		if (child == null) {
-#if UNITY_EDITOR
-			Debug.LogError($"No child of '{this.name}' is called '{name}', but we expect there to be one.");
-			StopProgram();
-#endif
-		}
-
-		return child;
-	}
+	Transform GetChunksContainerTransform()       => transform.GetFirstChildByNameOrStop("Chunks");
+	Transform GetExitBlockersContainerTransform() => transform.GetFirstChildByNameOrStop("Exit Blockers");
 
 	public void DisableAllChunks() {
 		// Deactivate the chunks themselves.

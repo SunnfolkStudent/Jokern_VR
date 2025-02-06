@@ -3,13 +3,24 @@ using UnityEngine;
 public class PathRandomizerExitBlocker : MonoBehaviour {
 	[HideInInspector] public bool isActive { get; private set; }
 
+	public GameObject[] theseAreAlsoPartOfTheBlocker;
+
+	void SetActiveState(bool active) {
+		gameObject.SetActive(active);
+		isActive = active;
+
+		if (theseAreAlsoPartOfTheBlocker != null) {
+			for (int i = 0; i < theseAreAlsoPartOfTheBlocker.Length; ++i) {
+				theseAreAlsoPartOfTheBlocker[i].SetActive(active);
+			}
+		}
+	}
+
 	public void Deactivate() {
-		gameObject.SetActive(false);
-		isActive = false;
+		SetActiveState(false);
 	}
 
 	public void Activate() {
-		gameObject.SetActive(true);
-		isActive = true;
+		SetActiveState(true);
 	}
 }
