@@ -49,6 +49,7 @@ public class ChunkLoader : MonoBehaviour {
 	Bounds GetChunkBounds(ChunkLoaderChunk chunk) {
 		Bounds result = GetGameObjectBounds(chunk.gameObject);
 
+		/* @ChunkExtraToIncludeField
 		var extraToInclude = chunk.includeTheseInTheChunk;
 		if (extraToInclude != null) {
 			for (int i = 0; i < extraToInclude.Length; ++i) {
@@ -58,6 +59,7 @@ public class ChunkLoader : MonoBehaviour {
 				}
 			}
 		}
+		*/
 
 		return result;
 	}
@@ -109,12 +111,23 @@ public class ChunkLoader : MonoBehaviour {
 	[Tooltip("Draw a blue, cubed outline around every loaded chunk.")]
 	[SerializeField] bool drawLoadedChunkBounds;
 
+	void DrawGameObjectBoundsGizmos(GameObject obj) {
+		Bounds parentItemBounds = GetGameObjectBounds(obj);
+		Gizmos.DrawWireCube(parentItemBounds.center, parentItemBounds.size);
+
+		for (int i = 0; i < obj.transform.childCount; ++i) {
+			DrawGameObjectBoundsGizmos(obj.transform.GetChild(i).gameObject);
+		}
+	}
+
 	void DrawChunkGizmos() {
 		if (chunks != null) {
 			var oldState = Random.state;
 			Random.InitState(69420);
 
 			for (int i = 0; i < chunks.Length; ++i) {
+				if (chunks[i].neverDrawThisChunkGizmo) continue;
+
 				{ // Per-chunk coloring!
 					Gizmos.color = new Color(Random.value, Random.value, Random.value);
 
@@ -124,20 +137,20 @@ public class ChunkLoader : MonoBehaviour {
 					}
 
 					if (drawChunkItemBounds) {
-						Bounds parentItemBounds = GetGameObjectBounds(chunks[i].gameObject);
-						Gizmos.DrawWireCube(parentItemBounds.center, parentItemBounds.size);
+						DrawGameObjectBoundsGizmos(chunks[i].gameObject);
 
+						/* @ChunkExtraToIncludeField
 						var extraToInclude = chunks[i].includeTheseInTheChunk;
 						if (extraToInclude != null) {
 							for (int j = 0; j < extraToInclude.Length; ++j) {
 								GameObject obj = extraToInclude[j];
 
 								if (obj != null) {
-									Bounds objBounds = GetGameObjectBounds(obj);
-									Gizmos.DrawWireCube(objBounds.center, objBounds.size);
+									DrawGameObjectBoundsGizmos(obj);
 								}
 							}
 						}
+						*/
 					}
 				}
 
