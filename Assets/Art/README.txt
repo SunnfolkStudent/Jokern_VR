@@ -12,11 +12,13 @@ Camera, Light or other things not related to the model.
 3. Check if the Models position is correct to absolute Zero.
 (is model centered)
 
+4. Check if any faces are seethrough
+
 If any of these are wrong, they must be rexported from Blender correctly.
 
-4. Extract Materials & Textures
-5. Consolidate Materials & Textures
-6. Apply Materials & Textures
+5. Extract Materials & Textures
+6. Consolidate Materials & Textures
+7. Apply Materials & Textures
 
 ## Prefabs
 1. Add the 3D model to the Art_Library Scene
