@@ -1,0 +1,74 @@
+{
+  "name": "com.unity.xr.interaction.toolkit",
+  "displayName": "XR Interaction Toolkit",
+  "version": "3.1.0-pre.1",
+  "unity": "2021.3",
+  "description": "A high-level, component-based, interaction system for creating VR and AR experiences. It provides a framework that makes 3D and UI interactions available from Unity input events. The core of this system is a set of base Interactor and Interactable components, and an Interaction Manager that ties these two types of components together. It also contains components that you can use for locomotion and drawing visuals.",
+  "keywords": [
+    "XR",
+    "VR",
+    "toolkit",
+    "interaction"
+  ],
+  "category": "XR",
+  "dependencies": {
+    "com.unity.inputsystem": "1.8.1",
+    "com.unity.mathematics": "1.2.6",
+    "com.unity.ugui": "1.0.0",
+    "com.unity.xr.core-utils": "2.4.0",
+    "com.unity.modules.audio": "1.0.0",
+    "com.unity.modules.imgui": "1.0.0",
+    "com.unity.modules.physics": "1.0.0",
+    "com.unity.modules.xr": "1.0.0"
+  },
+  "samples": [
+    {
+      "displayName": "Starter Assets",
+      "description": "Assets to streamline setup of behaviors, including a default set of input actions and presets for use with XR Interaction Toolkit behaviors that use the Input System. Also contains a demo scene.\n<i>Dependencies:</i>\n • <a href=\"com.unity3d.kharma:upmpackage/com.unity.shadergraph\">Shader Graph</a>",
+      "path": "Samples~/Starter Assets"
+    },
+    {
+      "displayName": "Hands Interaction Demo",
+      "description": "Demo scene and other assets for hand-tracking integration with the XR Interaction Toolkit.\n<i>Dependencies:</i>\n • <a href=\"com.unity3d.kharma:upmpackage/com.unity.xr.hands\">XR Hands</a>\n • <a href=\"com.unity3d.kharma:upmpackage/com.unity.shadergraph\">Shader Graph</a>\n • Starter Assets sample",
+      "path": "Samples~/Hands Interaction Demo"
+    },
+    {
+      "displayName": "AR Starter Assets",
+      "description": "Assets to streamline setup when building for Mobile AR or Mixed Reality with the XR Interaction Toolkit. This includes prefabs and a demo scene to get you started.\n<i>Dependencies:</i>\n • <a href=\"com.unity3d.kharma:upmpackage/com.unity.xr.arfoundation\">AR Foundation</a>\n • Starter Assets sample",
+      "path": "Samples~/AR Starter Assets"
+    },
+    {
+      "displayName": "XR Device Simulator",
+      "description": "Assets related to the simulation of XR HMD and controllers.",
+      "path": "Samples~/XR Device Simulator"
+    },
+    {
+      "displayName": "Spatial Keyboard",
+      "description": "Virtual spatial keyboard to allow for text entry in a world space UI. This interactable keyboard can be used in your app instead of the platform's system keyboard.\n<i>Dependencies:</i>\n • <a href=\"com.unity3d.kharma:upmpackage/com.unity.textmeshpro\">TextMeshPro</a>\n • Starter Assets sample",
+      "path": "Samples~/Spatial Keyboard"
+    },
+    {
+      "displayName": "Legacy XR Input Readers",
+      "description": "This sample provides ScriptableObjects to assist with migration from the older device-based controller input to be used with the new input readers introduced with version 3.0.0.",
+      "path": "Samples~/Legacy XR Input Readers"
+    },
+    {
+      "displayName": "visionOS",
+      "description": "This sample provides a demo scene and prefabs designed to to help you get started developing on visionOS with the XR Interaction Toolkit.\n<i>Dependencies:</i>\n • <a href=\"com.unity3d.kharma:upmpackage/com.unity.xr.arfoundation\">AR Foundation</a>\n • <a href=\"com.unity3d.kharma:upmpackage/com.unity.polyspatial.visionos\">PolySpatial visionOS</a>\n • <a href=\"com.unity3d.kharma:upmpackage/com.unity.polyspatial.xr\">PolySpatial XR</a>\n • <a href=\"com.unity3d.kharma:upmpackage/com.unity.shadergraph\">Shader Graph</a>\n • Starter Assets sample",
+      "path": "Samples~/visionOS"
+    }
+  ],
+  "_upm": {
+    "changelog": "### Added\n- Added the ability to trigger a 180° degree snap turn around on the Continuous Turn Provider directly instead of having to use a partially enabled Snap Turn Provider. Added properties to enable or disable left-right turning and turn around in the `ContinuousTurnProvider` to match the `SnapTurnProvider` options.\n- Added support for anchor manipulation from controller thumbstick input to the Near-Far Interactor GameObject. The Interaction Attach Controller now has additional properties when Use Manipulation Input is enabled for allowing rotation (horizontal and vertical) and translation along the selection line.\n- Added custom Inspector window for the Interaction Attach Controller.\n- Added `GravityProvider` to handle gravity instead of being applied with the move and grab providers.\n- Added `JumpProvider` to handle simple jumping functionality. This implements the added `IGravityController` interface.\n- Added ability to control whether gravity begins to apply or stays paused when releasing with the `ClimbProvider`.\n- Added a `SimulatedDeviceLifecycleManager` component that handles all the simulated devices, and works in tandem with simulator classes such as `XRDeviceSimulator`.\n- Added a `SimulatedHandExpressionManager` component that handles the simulated hand expressions, and works in tandem with simulator classes such as `XRDeviceSimulator`.\n- Added the new `XR Interaction Simulator` which provides a simplified interface for simulating XR interaction in the editor.\n- Added public properties that wrap serialized fields in some behaviors and their corresponding Editor classes (`CurveInteractionCaster`, `XRInteractorLineVisual`, `XRRayInteractor`, and `UIInputModule`).\n\n### Changed\n- Changed the `XRI Default Input Actions` in the Starter Assets sample to include a Jump Input Action.\n- Changed the XR Origin (XR Rig) prefab in the Starter Assets sample to include the `JumpProvider` and `GravityProvider` by default.\n- Changed some APIs used by the `XRPokeInteractor` for enabling the ability to poke UGUI canvases from `internal` to `public` to allow for custom interactor implementations. (Forward port from 2.6.0)\n- Changed Snap Turn Provider turn around behavior to only trigger once per turn around action. Repeat turns while the thumbstick is pushed in a direction will thus only apply to left or right.\n- Changed the XR Origin (XR Rig) prefab in the Starter Assets sample to enable turn around on the Continuous Turn Provider so that functionality is enabled by default if Smooth Turn Enabled is true on the Controller Input Action Manager.\n- Changed the Near-Far Interactor prefab in the Starter Assets sample to enable anchor manipulation (Translate and Horizontal Rotation).\n- Changed `ContinuousMoveProvider` to implement the `IGravityController` interface.\n- Changed `ContinuousMoveProvider` to handle falling movement differently than grounded movement.\n- Changed `ClimbProvider` to implement the `IGravityController` interface.\n- Changed `ClimbProvider` to zero out gravity accumulation while climbing by implementing the added `IGravityController` interface.\n- Changed `ClimbProvider` to no longer force unconstrained movement through collisions (see `forceUnconstrained` in `XROriginMovement`).\n- Changed scripts to improve performance of processing interaction strength (tagged `XRI.ProcessInteractionStrength` in Profiler).\n- Changed some internal methods to be public or protected (`AttachPointVelocityTracker.ResetVelocityTracking`, `CurveInteractionCaster.OnDrawGizmosSelected`, and `XRBodyTransformer.OnDrawGizmosSelected`).\n- Changed `com.unity.xr.core-utils` dependency from 2.2.3 to 2.4.0.\n\n### Deprecated\n- Deprecated `useGravity` from `ContinuousMoveProvider` and the abstract `ConstrainedMoveProvider` (`GrabMoveProvider` and `TwoHandedGrabMoveProvider`). This functionality has been replaced with the Gravity Provider component and its `useGravity` property.\n- Deprecated some nested types in `XRDeviceSimulator` and replaced them with either nested or unnested types within the `UnityEngine.XR.Interaction.Toolkit.Inputs.Simula"
+  },
+  "upmCi": {
+    "footprint": "ac6a82cb49413d551b144d6d66e178c6986cb66f"
+  },
+  "documentationUrl": "https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.1/manual/index.html",
+  "repository": {
+    "url": "https://github.com/Unity-Technologies/com.unity.xr.interaction.toolkit.git",
+    "type": "git",
+    "revision": "018d52d82b1db7c523ce1ea956acd0ce84d7de57"
+  },
+  "_fingerprint": "2af887886459e50c4cf32b08e53725cb23f2cb17"
+}
