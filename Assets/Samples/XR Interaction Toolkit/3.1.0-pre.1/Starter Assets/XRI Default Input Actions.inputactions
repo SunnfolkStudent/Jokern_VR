@@ -454,7 +454,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Gyro Position",
+                    "name": "Gyro Velocity",
                     "type": "Value",
                     "id": "db1c9a34-979a-498b-b992-c6297f2d2620",
                     "expectedControlType": "Vector3",
@@ -463,7 +463,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Gyro Rotation",
+                    "name": "Gyro AngularVelocity",
                     "type": "Value",
                     "id": "2ddfe825-d1b5-400b-94e2-13c97eba23f4",
                     "expectedControlType": "Vector3",
@@ -887,7 +887,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Gyro Position",
+                    "action": "Gyro Velocity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -898,7 +898,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Gyro Rotation",
+                    "action": "Gyro AngularVelocity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1563,6 +1563,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Gyro Velocity",
+                    "type": "Value",
+                    "id": "293aa8ab-fa04-46eb-8222-7a71bd68e9a5",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Gyro AngularVelocity",
+                    "type": "Value",
+                    "id": "322cd370-2940-4c2e-9fae-d8c658b7e010",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -1970,6 +1988,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Thumbstick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "95ebaff0-fb7c-4fda-9d71-ba56b4a6ae30",
+                    "path": "<XRController>{RightHand}/{DeviceVelocity}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gyro Velocity",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eacab549-401a-4146-b6ae-cd54774a3716",
+                    "path": "<XRController>{RightHand}/{DeviceAngularVelocity}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gyro AngularVelocity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -2923,9 +2923,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heldTransform: {fileID: 0}
-  heldForce: 2
   heldRigidbody: {fileID: 0}
   holdingSomething: 0
+  throwForce: 2
+  gripButton:
+    m_Name: Grip Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d3dc03a3-4037-4813-802d-dbe0731e0a36
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   triggerAction:
     m_UseReference: 1
     m_Action:
@@ -2963,15 +2972,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   gyroVel: {x: 0, y: 0, z: 0}
-  gripButton:
-    m_Name: Grip Button
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: d3dc03a3-4037-4813-802d-dbe0731e0a36
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!4 &1041528546 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3646396693868516732, guid: b4d41cec52f974d4c89c12862ffc8c4b, type: 3}
@@ -3077,9 +3077,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heldTransform: {fileID: 0}
-  heldForce: 20
   heldRigidbody: {fileID: 0}
   holdingSomething: 0
+  throwForce: 2
+  gripButton:
+    m_Name: Grip Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 25d4bc04-8930-4134-9a40-570ca2c0828a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   triggerAction:
     m_UseReference: 1
     m_Action:
@@ -3101,9 +3110,9 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 15759602096507913, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   gyroInput:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
-      m_Name: 
+      m_Name: Gyro Input
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 941b8e5b-ab99-4b08-b74e-b7b8dc7691f6
@@ -3111,11 +3120,11 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: -3202077633732123023, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   gyroInputRot:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Gyro Input Rot
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 56d91016-c177-43cb-af00-35f58166ecb8
@@ -3125,15 +3134,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   gyroVel: {x: 0, y: 0, z: 0}
-  gripButton:
-    m_Name: Grip Button
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 25d4bc04-8930-4134-9a40-570ca2c0828a
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!1001 &1209563467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5438,7 +5438,7 @@ Transform:
   m_GameObject: {fileID: 2115166670800618361}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.36144, z: 0}
+  m_LocalPosition: {x: 0, y: 1.36144, z: 1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5760,7 +5760,7 @@ Transform:
   m_GameObject: {fileID: 5078898771795890261}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.36144, z: 0}
+  m_LocalPosition: {x: 0, y: 1.36, z: 1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
