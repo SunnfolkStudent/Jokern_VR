@@ -4,6 +4,14 @@ using UnityEngine.InputSystem;
 
 public class CustomGrab : MonoBehaviour
 {
+    private SphereCollider grabZone;
+
+    [SerializeField]
+    private float grabDistanceExtension = 0;
+    [SerializeField]
+    private float throwForce = 2f;
+    
+    [Header("Held Item Debug:")]
     [SerializeField]
     private Transform heldTransform;
     private Renderer heldRenderer;
@@ -14,30 +22,28 @@ public class CustomGrab : MonoBehaviour
     private Rigidbody heldRigidbody;
     [SerializeField]
     private bool holdingSomething = false;
-    [SerializeField]
-    private float throwForce = 2f;
     
-    [SerializeField]
+    // [SerializeField]
     private InputAction gripButton;
     
-    public InputActionProperty triggerAction;
-    public InputActionProperty gyroInput;
-    public InputActionProperty gyroInputRot;
+    [Header("Controller References:")]
+    public InputActionProperty grabInputAction;
+    public InputActionProperty gyroVelocityInput;
+    public InputActionProperty gyroAngularVelocityInput;
 
-    [SerializeField]
+    // [SerializeField]
     private Vector3 gyroVel;
-    private Vector3 gyroRotVel;
+    private Vector3 gyroAngVel;
 
 
     private void Start()
-    {
-       gripButton = triggerAction.action; 
+    { 
+        grabZone = GetComponent<SphereCollider>();
+        gripButton = grabInputAction.action; 
     }
 
     private void Update()
     {
-        gyroVel = gyroInput.action.ReadValue<Vector3>();
-        gyroRotVel = gyroInputRot.action.ReadValue<Vector3>();
         if (gripButton.WasPressedThisFrame() || Keyboard.current.kKey.wasPressedThisFrame)
         {
             Grab(true);
@@ -52,6 +58,9 @@ public class CustomGrab : MonoBehaviour
     {
         if (holdingSomething)
         {
+            //      Target & Vars       //
+            gyroVel = gyroVelocityInput.action.ReadValue<Vector3>();
+            gyroAngVel = gyroAngularVelocityInput.action.ReadValue<Vector3>();
             heldTarget = transform.position + transform.forward * heldSize.x/3 + transform.right * heldSize.z/3;
             
             //      position        //
@@ -74,7 +83,7 @@ public class CustomGrab : MonoBehaviour
     {
         if (grab)
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position + grabZone.center, grabZone.radius + grabDistanceExtension);
             foreach (var hit in hitColliders)
             {
                 if (hit.GetComponent<CustomGrabbable>())
