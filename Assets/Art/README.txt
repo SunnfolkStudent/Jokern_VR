@@ -19,13 +19,23 @@ If any of these are wrong, they must be rexported from Blender correctly.
 6. Apply Materials & Textures
 
 ## Prefabs
-Add the 3D model to the Art_Library Scene
-Set object to Static
-Set Mesh Renderer -> Lighting Static Shadow Caster to On
-Cast Shadows -> On
-Contribute Global Illumination -> On
+1. Add the 3D model to the Art_Library Scene
+2. Set object to Static
+3. Set Mesh Renderer -> Lighting Static Shadow Caster to On
+4. Cast Shadows -> On
+5. Contribute Global Illumination -> On
+
+Set X rotation to 270
+Set Y and Z rotation to 0
 
 ## Sprites
 
+
 ## Textures
 Alpha is Transperancy
+
+
+## Github
+Commit Only that which you know you have imported or changed.
+Push
+
