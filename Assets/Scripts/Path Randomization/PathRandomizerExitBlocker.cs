@@ -23,4 +23,10 @@ public class PathRandomizerExitBlocker : MonoBehaviour {
 	public void Activate() {
 		SetActiveState(true);
 	}
+
+	void Start() {
+		if (TryGetComponent<ChunkLoaderChunk>(out ChunkLoaderChunk chunk)) {
+			Debug.LogError($"Path exit blocker '{this.name}' has a chunk loader component, even though it shouldn't!");
+		}
+	}
 }

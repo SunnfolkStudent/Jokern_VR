@@ -6,59 +6,60 @@ using static AugustBase.All;
 
 public class PathRandomizer : MonoBehaviour {
 	// @Temp TODO: remove this
-	public bool regenerateRandomChunks;
+	public bool regenerateRandomModules;
 	void Update() {
-		if (regenerateRandomChunks) {
-			RegenerateRandomChunks();
-			regenerateRandomChunks = false;
+		if (regenerateRandomModules) {
+			RegenerateRandomModules();
+			regenerateRandomModules = false;
 		}
+	}
+
+	PathRandomizerModule[] modules;
+	PathRandomizerExitBlocker[] exitBlockers;
+
+	void FindAllModulesAndExitBlockers() {
+		modules = UnityEngine.Object.FindObjectsByType<PathRandomizerModule>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+#if UNITY_EDITOR
+		if (modules.Length == 0) {
+			Debug.LogError("No modules in any active scene!");
+		}
+#endif
+
+		exitBlockers = UnityEngine.Object.FindObjectsByType<PathRandomizerExitBlocker>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+#if UNITY_EDITOR
+		if (exitBlockers.Length == 0) {
+			Debug.LogError("No exit blockers in any active scene!");
+		}
+#endif
 	}
 
 	void Start() {
-		GetChunksContainerTransform().gameObject.SetActive(true);
-		GetExitBlockersContainerTransform().gameObject.SetActive(true);
-
-		RegenerateRandomChunks();
+		RegenerateRandomModules();
 	}
 
-	Transform GetChunksContainerTransform()       => transform.GetFirstChildByNameOrStop("Chunks");
-	Transform GetExitBlockersContainerTransform() => transform.GetFirstChildByNameOrStop("Exit Blockers");
-
-	public void DisableAllChunks() {
-		// Deactivate the chunks themselves.
-		var chunksContainerTransform = GetChunksContainerTransform();
-		for (int i = 0; i < chunksContainerTransform.childCount; ++i) {
-			Transform chunkTransform = chunksContainerTransform.GetChild(i);
-
-			PathRandomizerChunk chunk;
-			if (!chunkTransform.TryGetComponent(out chunk)) {
-				chunk = chunkTransform.gameObject.AddComponent<PathRandomizerChunk>();
+	public void DisableAllModules() {
+		// Deactivate the modules themselves.
+		for (int i = 0; i < modules.Length; ++i) {
+			if (modules[i] != null) {
+				modules[i].Deactivate();
 			}
-
-			chunk.Deactivate();
 		}
 
-		// Activate the exit blockers.
-		var exitBlockersContainerTransform = GetExitBlockersContainerTransform();
-		for (int i = 0; i < exitBlockersContainerTransform.childCount; ++i) {
-			Transform exitBlockerTransform = exitBlockersContainerTransform.GetChild(i);
-
-			PathRandomizerExitBlocker exitBlocker;
-			if (!exitBlockerTransform.TryGetComponent(out exitBlocker)) {
-				exitBlocker = exitBlockerTransform.gameObject.AddComponent<PathRandomizerExitBlocker>();
+		// Activate all the exit blockers.
+		for (int i = 0; i < exitBlockers.Length; ++i) {
+			if (exitBlockers[i] != null) {
+				exitBlockers[i].Activate();
 			}
-
-			exitBlocker.Activate();
 		}
 	}
 
-	public void RegenerateRandomChunks() {
+	public void RegenerateRandomModules() {
+		FindAllModulesAndExitBlockers();
+
 		// First we reset everything to zero.
-		DisableAllChunks();
+		DisableAllModules();
 
-		var chunksContainerTransform = GetChunksContainerTransform();
-
-		var randomIndexes = new int[chunksContainerTransform.childCount];
+		var randomIndexes = new int[modules.Length];
 		// Set all the members to their index.
 		for (int i = 1; i < randomIndexes.Length; ++i) {
 			randomIndexes[i] = i;
@@ -75,15 +76,8 @@ public class PathRandomizer : MonoBehaviour {
 #endif
 
 		for (int i = 0; i < randomIndexes.Length; ++i) {
-			Transform chunkTransform = chunksContainerTransform.GetChild(randomIndexes[i]);
-
-			PathRandomizerChunk chunk;
-			if (!chunkTransform.TryGetComponent(out chunk)) {
-				// The chunk doesn't have a PathRandomizerChunk component, so we add one!
-				chunk = chunkTransform.gameObject.AddComponent<PathRandomizerChunk>();
-			}
-
-			chunk.AttemptActivation();
+			var module = modules[randomIndexes[i]];
+			module.AttemptActivation();
 		}
 	}
 }
