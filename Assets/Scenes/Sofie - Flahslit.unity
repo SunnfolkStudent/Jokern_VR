@@ -904,7 +904,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightTimer: 0
   lightIntensity: 0
-  lightLifetime: 90
+  lightLifetime: 5
+  velocity: {x: 0, y: 0, z: 0}
   isLightOn: 1
 --- !u!114 &1755712280
 MonoBehaviour:
