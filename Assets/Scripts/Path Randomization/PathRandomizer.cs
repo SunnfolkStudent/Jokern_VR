@@ -6,36 +6,36 @@ using static AugustBase.All;
 
 public class PathRandomizer : MonoBehaviour {
 	// @Temp TODO: remove this
-	public bool regenerateRandomChunks;
+	public bool regenerateRandomModules;
 	void Update() {
-		if (regenerateRandomChunks) {
-			RegenerateRandomChunks();
-			regenerateRandomChunks = false;
+		if (regenerateRandomModules) {
+			RegenerateRandomModules();
+			regenerateRandomModules = false;
 		}
 	}
 
 	void Start() {
-		GetChunksContainerTransform().gameObject.SetActive(true);
+		GetModulesContainerTransform().gameObject.SetActive(true);
 		GetExitBlockersContainerTransform().gameObject.SetActive(true);
 
-		RegenerateRandomChunks();
+		RegenerateRandomModules();
 	}
 
-	Transform GetChunksContainerTransform()       => transform.GetFirstChildByNameOrStop("Chunks");
+	Transform GetModulesContainerTransform()       => transform.GetFirstChildByNameOrStop("Modules");
 	Transform GetExitBlockersContainerTransform() => transform.GetFirstChildByNameOrStop("Exit Blockers");
 
-	public void DisableAllChunks() {
-		// Deactivate the chunks themselves.
-		var chunksContainerTransform = GetChunksContainerTransform();
-		for (int i = 0; i < chunksContainerTransform.childCount; ++i) {
-			Transform chunkTransform = chunksContainerTransform.GetChild(i);
+	public void DisableAllModules() {
+		// Deactivate the modules themselves.
+		var modulesContainerTransform = GetModulesContainerTransform();
+		for (int i = 0; i < modulesContainerTransform.childCount; ++i) {
+			Transform moduleTransform = modulesContainerTransform.GetChild(i);
 
-			PathRandomizerChunk chunk;
-			if (!chunkTransform.TryGetComponent(out chunk)) {
-				chunk = chunkTransform.gameObject.AddComponent<PathRandomizerChunk>();
+			PathRandomizerModule module;
+			if (!moduleTransform.TryGetComponent(out module)) {
+				module = moduleTransform.gameObject.AddComponent<PathRandomizerModule>();
 			}
 
-			chunk.Deactivate();
+			module.Deactivate();
 		}
 
 		// Activate the exit blockers.
@@ -52,13 +52,13 @@ public class PathRandomizer : MonoBehaviour {
 		}
 	}
 
-	public void RegenerateRandomChunks() {
+	public void RegenerateRandomModules() {
 		// First we reset everything to zero.
-		DisableAllChunks();
+		DisableAllModules();
 
-		var chunksContainerTransform = GetChunksContainerTransform();
+		var modulesContainerTransform = GetModulesContainerTransform();
 
-		var randomIndexes = new int[chunksContainerTransform.childCount];
+		var randomIndexes = new int[modulesContainerTransform.childCount];
 		// Set all the members to their index.
 		for (int i = 1; i < randomIndexes.Length; ++i) {
 			randomIndexes[i] = i;
@@ -75,15 +75,15 @@ public class PathRandomizer : MonoBehaviour {
 #endif
 
 		for (int i = 0; i < randomIndexes.Length; ++i) {
-			Transform chunkTransform = chunksContainerTransform.GetChild(randomIndexes[i]);
+			Transform moduleTransform = modulesContainerTransform.GetChild(randomIndexes[i]);
 
-			PathRandomizerChunk chunk;
-			if (!chunkTransform.TryGetComponent(out chunk)) {
-				// The chunk doesn't have a PathRandomizerChunk component, so we add one!
-				chunk = chunkTransform.gameObject.AddComponent<PathRandomizerChunk>();
+			PathRandomizerModule module;
+			if (!moduleTransform.TryGetComponent(out module)) {
+				// The module doesn't have a PathRandomizerModule component, so we add one!
+				module = moduleTransform.gameObject.AddComponent<PathRandomizerModule>();
 			}
 
-			chunk.AttemptActivation();
+			module.AttemptActivation();
 		}
 	}
 }
