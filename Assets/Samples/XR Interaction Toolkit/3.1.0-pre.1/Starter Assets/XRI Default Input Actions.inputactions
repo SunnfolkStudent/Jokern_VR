@@ -452,6 +452,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Gyro Position",
+                    "type": "Value",
+                    "id": "db1c9a34-979a-498b-b992-c6297f2d2620",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Gyro Rotation",
+                    "type": "Value",
+                    "id": "2ddfe825-d1b5-400b-94e2-13c97eba23f4",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -859,6 +877,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Thumbstick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a91805f-50d3-456a-b4a3-0b232d254e92",
+                    "path": "<XRController>{LeftHand}/{DeviceVelocity}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gyro Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "43d87bb6-32c4-43eb-89f3-3e966065179d",
+                    "path": "<XRController>{LeftHand}/{DeviceAngularVelocity}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gyro Rotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
