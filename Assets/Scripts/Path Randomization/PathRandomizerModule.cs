@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class PathRandomizerChunk : MonoBehaviour {
-	[Tooltip("Increase this value to make this chunk randomly avoid spawning more often.")]
+public class PathRandomizerModule : MonoBehaviour {
+	[Tooltip("Increase this value to make this module randomly avoid spawning more often.")]
 	[Range(0.0f, 1.0f)]
 	public float chanceToBeEmpty = 0.0f;
-	public PathRandomizerChunk[] doNotSpawnIfTheseAreActive;
+	public PathRandomizerModule[] doNotSpawnIfTheseAreActive;
 
 	public PathRandomizerExitBlocker[] unblockTheseExitsIfActive;
 
-	public GameObject[] theseAreAlsoPartOfTheChunk;
+	public GameObject[] theseAreAlsoPartOfTheModule;
 
 	public void Deactivate() {
 		SetActiveState(false);
@@ -18,9 +18,9 @@ public class PathRandomizerChunk : MonoBehaviour {
 		gameObject.SetActive(active);
 		isActive = active;
 
-		if (theseAreAlsoPartOfTheChunk != null) {
-			for (int i = 0; i < theseAreAlsoPartOfTheChunk.Length; ++i) {
-				theseAreAlsoPartOfTheChunk[i].SetActive(active);
+		if (theseAreAlsoPartOfTheModule != null) {
+			for (int i = 0; i < theseAreAlsoPartOfTheModule.Length; ++i) {
+				theseAreAlsoPartOfTheModule[i].SetActive(active);
 			}
 		}
 	}
