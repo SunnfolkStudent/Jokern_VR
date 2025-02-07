@@ -14,7 +14,6 @@ public class PathRandomizer : MonoBehaviour {
 		}
 	}
 
-
 	PathRandomizerModule[] modules;
 	PathRandomizerExitBlocker[] exitBlockers;
 

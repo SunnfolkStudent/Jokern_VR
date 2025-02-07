@@ -52,4 +52,10 @@ public class PathRandomizerModule : MonoBehaviour {
 
 		SetActiveState(true);
 	}
+
+	void Start() {
+		if (TryGetComponent<ChunkLoaderChunk>(out ChunkLoaderChunk chunk)) {
+			Debug.LogError($"Randomizer path module '{this.name}' has a chunk loader component, even though it shouldn't!");
+		}
+	}
 }
