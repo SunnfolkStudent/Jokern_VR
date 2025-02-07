@@ -940,7 +940,7 @@ MonoBehaviour:
   playerTransform: {fileID: 1898577791}
   drawChunkBounds: 1
   drawChunkItemBounds: 1
-  drawLoadedChunkBounds: 1
+  drawLoadedChunkBounds: 0
 --- !u!4 &351733057
 Transform:
   m_ObjectHideFlags: 0
@@ -2991,7 +2991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd46b4ca66a623fa5aa6b2c0ba6b5b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  regenerateRandomChunks: 1
+  regenerateRandomModules: 0
 --- !u!4 &945412001
 Transform:
   m_ObjectHideFlags: 0
@@ -3418,7 +3418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1155433516}
   m_Layer: 0
-  m_Name: Chunks
+  m_Name: Modules
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4257,7 +4257,7 @@ GameObject:
   - component: {fileID: 1447515079}
   - component: {fileID: 1447515080}
   m_Layer: 0
-  m_Name: Chunk 3
+  m_Name: Module 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4299,7 +4299,7 @@ MonoBehaviour:
   - {fileID: 680057185}
   - {fileID: 1723769415}
   - {fileID: 295802090}
-  theseAreAlsoPartOfTheChunk: []
+  theseAreAlsoPartOfTheModule: []
 --- !u!1 &1508216081
 GameObject:
   m_ObjectHideFlags: 0
@@ -4311,7 +4311,7 @@ GameObject:
   - component: {fileID: 1508216082}
   - component: {fileID: 1508216083}
   m_Layer: 0
-  m_Name: Chunk 0
+  m_Name: Module 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4355,7 +4355,7 @@ MonoBehaviour:
   unblockTheseExitsIfActive:
   - {fileID: 2066362823}
   - {fileID: 1205186730}
-  theseAreAlsoPartOfTheChunk: []
+  theseAreAlsoPartOfTheModule: []
 --- !u!1 &1580194639
 GameObject:
   m_ObjectHideFlags: 0
@@ -5563,7 +5563,7 @@ Transform:
   m_GameObject: {fileID: 1898577788}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 2, z: 49}
+  m_LocalPosition: {x: 0, y: 2, z: 46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5967,7 +5967,7 @@ GameObject:
   - component: {fileID: 2042195556}
   - component: {fileID: 2042195557}
   m_Layer: 0
-  m_Name: Chunk 1
+  m_Name: Module 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6013,7 +6013,7 @@ MonoBehaviour:
   - {fileID: 552216420}
   - {fileID: 964416056}
   - {fileID: 838428511}
-  theseAreAlsoPartOfTheChunk: []
+  theseAreAlsoPartOfTheModule: []
 --- !u!1 &2066362821
 GameObject:
   m_ObjectHideFlags: 0
@@ -6117,7 +6117,7 @@ GameObject:
   - component: {fileID: 2102303695}
   - component: {fileID: 2102303696}
   m_Layer: 0
-  m_Name: Chunk 4
+  m_Name: Module 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6163,7 +6163,7 @@ MonoBehaviour:
   - {fileID: 680057185}
   - {fileID: 295802090}
   - {fileID: 2066362823}
-  theseAreAlsoPartOfTheChunk: []
+  theseAreAlsoPartOfTheModule: []
 --- !u!1 &2129275683
 GameObject:
   m_ObjectHideFlags: 0
@@ -6403,7 +6403,7 @@ GameObject:
   - component: {fileID: 2147131073}
   - component: {fileID: 2147131074}
   m_Layer: 0
-  m_Name: Chunk 2
+  m_Name: Module 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6450,7 +6450,7 @@ MonoBehaviour:
   - {fileID: 2138767666}
   - {fileID: 2072020845}
   - {fileID: 1704562218}
-  theseAreAlsoPartOfTheChunk: []
+  theseAreAlsoPartOfTheModule: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

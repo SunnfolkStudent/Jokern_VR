@@ -5,7 +5,7 @@ public class ChunkLoader : MonoBehaviour {
 	ChunkLoaderChunk[] chunks;
 
 	public void FindAllChunks() {
-		chunks = UnityEngine.Object.FindObjectsByType<ChunkLoaderChunk>(FindObjectsSortMode.None);
+		chunks = UnityEngine.Object.FindObjectsByType<ChunkLoaderChunk>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 #if UNITY_EDITOR
 		if (chunks.Length == 0) {
 			Debug.LogError("No chunks in any active scene!");
@@ -66,12 +66,15 @@ public class ChunkLoader : MonoBehaviour {
 
 	public Transform playerTransform;
 	void FixedUpdate() {
-#if false
+		FindAllChunks();
+
 		for (int i = 0; i < chunks.Length; ++i) {
 			if (ChunkShouldBeLoaded(chunks[i])) {
+				chunks[i].Load();
+			} else {
+				chunks[i].Unload();
 			}
 		}
-#endif
 	}
 
 	// One could imagine this function getting more complicated in the future.
