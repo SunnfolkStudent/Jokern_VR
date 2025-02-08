@@ -14,14 +14,21 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		input = GetComponent<XRInputActions>();
+		playerMoveDirectionWithoutPitch = new();
     }
 
 	Vector3 velocity;
 	public float moveForce = 10.0f;
 	public float friction = 0.85f;
 
+	GameObject playerMoveDirectionWithoutPitch;
+
 	void UpdateMovement(Vector2 inputDirection) {
 		float deltaTime = Time.deltaTime;
+
+		var newLocalEulerAngles = playerMoveDirection.localEulerAngles;
+		print($"New local euler angles: {newLocalEulerAngles}");
+		playerMoveDirectionWithoutPitch.transform.localEulerAngles = newLocalEulerAngles;
 
 		velocity += deltaTime * (moveForce * (
 			  (playerMoveDirection.right   * inputDirection.x)
@@ -36,7 +43,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		velocity.x *= friction;
-		velocity.z *= friction;
+		// This also includes the Y.
+		velocity *= friction;
 	}
 }
