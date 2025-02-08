@@ -277,6 +277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Device Simulator
       objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -789,7 +793,7 @@ GameObject:
   - component: {fileID: 1755712277}
   - component: {fileID: 1755712276}
   - component: {fileID: 1755712275}
-  - component: {fileID: 1755712279}
+  - component: {fileID: 1755712282}
   - component: {fileID: 1755712281}
   - component: {fileID: 1755712280}
   m_Layer: 0
@@ -890,23 +894,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 62888516}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1755712279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755712274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 150c28a3c1f28d54e98fbfd35426fecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightTimer: 0
-  lightIntensity: 0
-  lightLifetime: 90
-  leftControllerVelocity: {x: 0, y: 0, z: 0}
-  isLightOn: 1
 --- !u!114 &1755712280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -995,6 +982,55 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &1755712282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755712274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a59fb9d15887b643a7f37af83603645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightTimer: 0
+  lightIntensity: 0
+  lightLifetime: 5
+  shakeBufferTime: 0.1
+  shakeTimer: 0
+  shakeIntensity: 10
+  shakeAmount: 6
+  shakeCounter: 0
+  shakeTurnThreshold: 0
+  DotProduct: 0
+  gyroVelocityInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Gyro Velocity Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: a9dbed45-f1ec-466e-b4da-2e4fc4b829ef
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 2381968219992662641, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  gyroAngularVelocityInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Gyro Angular Velocity Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: cfd4d104-3626-4ddb-a2b7-5964dcb846a0
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 4613983532213687698, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  leftControllerVelocity: {x: 0, y: 0, z: 0}
+  leftControllerAngularVelocity: {x: 0, y: 0, z: 0}
+  isLightOn: 1
 --- !u!1 &1920493382
 GameObject:
   m_ObjectHideFlags: 0
