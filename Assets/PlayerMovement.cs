@@ -41,19 +41,24 @@ public class PlayerMovement : MonoBehaviour {
 		));
 
 		playerToMove.position += deltaTime * velocity;
+	}
 
-		// Make sure the teleporter stays up to date!
-		if (dothing) {
+	bool previousIsUsingStickMovement;
+	void Update() {
+		if (previousIsUsingStickMovement != isUsingStickMovement) {
 			playerTeleportController.ForceTeleport(playerToMove.position);
-			dothing = false;
+			playerTeleportController.enabled = !isUsingStickMovement;
+			previousIsUsingStickMovement = isUsingStickMovement;
+		}
+
+		if (isUsingStickMovement) {
+			UpdateMovement(input.moveDirection);
 		}
 	}
 
-	public bool dothing;
-
-	void Update() {
-		UpdateMovement(input.moveDirection);
-	}
+	public bool isUsingStickMovement = true;
+	public void SwitchToStickMovement() => isUsingStickMovement = true;
+	public void SwitchToTeleportation() => isUsingStickMovement = false;
 
 	void FixedUpdate() {
 		// This also includes the Y.
