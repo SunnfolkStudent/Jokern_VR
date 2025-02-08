@@ -1,10 +1,24 @@
 using System;
 using UnityEngine;
 
+public enum FootstepSoundType {
+	None,
+	Asfalt,
+	Sti,
+	Sten,
+	Vann,
+	Gjørme,
+	Høytgress,
+	Barnåler,
+	Kvister,
+	Mose,
+	Grus,
+}
+
 [Serializable]
 public class TextureToFootstepSound {
 	public Texture texture;
-	public AudioClip[] audioClips;
+	public FootstepSoundType soundType;
 }
 
 public class PlayerFootsteps : MonoBehaviour {
@@ -12,6 +26,8 @@ public class PlayerFootsteps : MonoBehaviour {
 	public LayerMask groundMask = ~0;
 
 	public TextureToFootstepSound[] textureToFootstepSounds;
+
+	public FootstepSoundType currentlyStandingOn;
 
 	void PlaySoundBasedOnMaterial(Material material) {
 		if (material == null) return;
@@ -25,11 +41,10 @@ public class PlayerFootsteps : MonoBehaviour {
 			if (item.texture.name == null) continue;
 
 			if (item.texture.name == texture.name) {
-				if (item.audioClips == null)     continue;
-				if (item.audioClips.Length == 0) continue;
+				//print($"BINGO! Playing sound for texture '{texture.name}'.");
 
-				print($"BINGO! Playing sound for texture '{texture.name}'.");
-				//PlaySound(audioSource, item.audioClips);
+				currentlyStandingOn = item.soundType;
+				//SetFMODParameter("Eg. FootstepsSoundType", item.soundType);
 			}
 		}
 	}
