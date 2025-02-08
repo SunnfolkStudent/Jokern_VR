@@ -43,8 +43,13 @@ public class PlayerMovement : MonoBehaviour {
 		playerToMove.position += deltaTime * velocity;
 
 		// Make sure the teleporter stays up to date!
-		playerTeleportController.ForceTeleport(playerToMove.position);
+		if (dothing) {
+			playerTeleportController.ForceTeleport(playerToMove.position);
+			dothing = false;
+		}
 	}
+
+	public bool dothing;
 
 	void Update() {
 		UpdateMovement(input.moveDirection);
