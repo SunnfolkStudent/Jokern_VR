@@ -17,7 +17,8 @@ public class HandPhysics : MonoBehaviour
     private void Update()
     {
        float distance = Vector3.Distance(transform.position, target.position);
-       if (distance > showNonPhysicalHandDistance)
+       // if (distance > showNonPhysicalHandDistance)
+       if(true)
        { nonPhysicalHand.enabled = true; }
        else
        { nonPhysicalHand.enabled = false; }
