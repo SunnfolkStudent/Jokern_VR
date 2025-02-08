@@ -79,8 +79,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation
         /// <summary>
         /// See <see cref="MonoBehaviour"/>.
         /// </summary>
-        protected virtual void Update()
-        {
+        protected virtual void Update() {
             if (!validRequest)
                 return;
 
@@ -134,6 +133,12 @@ namespace UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation
                     validRequest = false;
                 }
             }
+        }
+        
+        public void ForceTeleport(Vector3 position)
+        {
+            positionTransformation.targetPosition = position;
+            TryQueueTransformation(positionTransformation);
         }
     }
 }
