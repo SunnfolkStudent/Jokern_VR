@@ -32,8 +32,8 @@ public class PlayerMovement : MonoBehaviour {
 		playerMoveDirectionWithoutPitch.transform.localEulerAngles = newLocalEulerAngles;
 
 		velocity += deltaTime * (moveForce * (
-			  (playerMoveDirection.right   * inputDirection.x)
-			+ (playerMoveDirection.forward * inputDirection.y)
+			  (playerMoveDirectionWithoutPitch.right   * inputDirection.x)
+			+ (playerMoveDirectionWithoutPitch.forward * inputDirection.y)
 		));
 
 		playerToMove.position += deltaTime * velocity;
