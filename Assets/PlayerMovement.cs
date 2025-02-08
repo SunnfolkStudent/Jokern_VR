@@ -1,16 +1,22 @@
 using UnityEngine;
 
+[RequireComponent(typeof(XRInputActions))]
 public class PlayerMovement : MonoBehaviour
 {
 	public Transform playerToMove;
+
+	XRInputActions input;
+
     void Start() {
 		if (playerToMove == null) {
 			Debug.LogError("No player assigned to the 'Player To Move' field.");
 		}
+
+		input = GetComponent<XRInputActions>();
     }
 
 	public Vector3 velocity;
-	public float moveForce = 100.0f;
+	public float moveForce = 10.0f;
 	public float friction = 0.85f;
 	public Vector2 maxMoveSpeed = new Vector2(20.0f, 20.0f); // TODO
 
@@ -26,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 	}
 
 	void Update() {
-		UpdateMovement(new Vector2(0.0f, 1.0f));
+		UpdateMovement(input.moveDirection);
 	}
 
 	void FixedUpdate() {
