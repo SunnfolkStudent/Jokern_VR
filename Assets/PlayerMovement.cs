@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		input = GetComponent<XRInputActions>();
-		playerMoveDirectionWithoutPitch = new();
+		playerMoveDirectionWithoutPitch = new("Player Move Direction Holder");
     }
 
 	Vector3 velocity;
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour {
 		float deltaTime = Time.deltaTime;
 
 		var newLocalEulerAngles = playerMoveDirection.localEulerAngles;
-		print($"New local euler angles: {newLocalEulerAngles}");
+		newLocalEulerAngles.x = 0.0f;
 		playerMoveDirectionWithoutPitch.transform.localEulerAngles = newLocalEulerAngles;
 
 		velocity += deltaTime * (moveForce * (
