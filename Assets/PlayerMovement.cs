@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
 
 [RequireComponent(typeof(XRInputActions))]
 public class PlayerMovement : MonoBehaviour {
@@ -7,6 +8,8 @@ public class PlayerMovement : MonoBehaviour {
 	public Transform playerMoveDirection;
 
 	XRInputActions input;
+	TeleportationProvider playerTeleportController;
+	const string playerTeleportControllerTag = "Player Teleport Controller";
 
     void Start() {
 		if (playerToMove == null) {
@@ -15,6 +18,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		input = GetComponent<XRInputActions>();
 		playerMoveDirectionWithoutPitch = new("Player Move Direction Holder");
+		playerTeleportController = GameObject.FindWithTag(playerTeleportControllerTag).GetComponent<TeleportationProvider>();
     }
 
 	Vector3 velocity;
@@ -37,6 +41,9 @@ public class PlayerMovement : MonoBehaviour {
 		));
 
 		playerToMove.position += deltaTime * velocity;
+
+		// Make sure the teleporter stays up to date!
+		playerTeleportController.ForceTeleport(playerToMove.position);
 	}
 
 	void Update() {
