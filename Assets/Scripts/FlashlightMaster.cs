@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using Random = UnityEngine.Random;
@@ -39,7 +37,7 @@ public class FlashlightMaster : MonoBehaviour
             lightIntensity = Mathf.Floor(lightTimer);
         }
 
-        if (lightTimer > 50) return;
+        if (lightTimer > 30) return;
         if (lightTimer > 20)
         {
             light.intensity = lightIntensity; 
@@ -55,14 +53,6 @@ public class FlashlightMaster : MonoBehaviour
             light.enabled = false;
         }
         UpdateInput();
-        
-        // if Shake then
-        // {
-        //  lightTimer = lightLifetime;
-        //  light.intensity = 30;
-        //  isLightOn = true;
-        //  
-        // }
     }
 
     private void UpdateInput()
@@ -71,6 +61,17 @@ public class FlashlightMaster : MonoBehaviour
         {
             leftController.TryGetFeatureValue(CommonUsages.deviceVelocity, out leftControllerVelocity);
             Debug.Log(leftControllerVelocity);
+            if (leftControllerVelocity.magnitude > 0.1f)
+            {
+                lightTimer += 10;
+                if (lightTimer > lightLifetime)
+                {
+                    isLightOn = true;
+                    light.enabled = true;
+                    light.intensity = 30;
+                    lightTimer = lightLifetime;
+                }
+            }
         }
     }
     

@@ -904,8 +904,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightTimer: 0
   lightIntensity: 0
-  lightLifetime: 5
-  velocity: {x: 0, y: 0, z: 0}
+  lightLifetime: 90
+  leftControllerVelocity: {x: 0, y: 0, z: 0}
   isLightOn: 1
 --- !u!114 &1755712280
 MonoBehaviour:
@@ -941,7 +941,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 50
+  m_Intensity: 30
   m_Range: 8
   m_SpotAngle: 43.87038
   m_InnerSpotAngle: 11.077477
