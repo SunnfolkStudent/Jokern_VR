@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dissolve
-  m_Shader: {fileID: -6465566751694194690, guid: b378d4cf56b14f14f8f1f7b68c758ff4, type: 3}
+  m_Name: PineNeedles
+  m_Shader: {fileID: -6465566751694194690, guid: 620192fb228e7ef41bb412bc09b9894c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,16 +24,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _HologramTex:
-        m_Texture: {fileID: 2800000, guid: 4fcc64106c30f1b49a34f01c4951d4b3, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ScanLinesTex:
-        m_Texture: {fileID: 2800000, guid: 4fcc64106c30f1b49a34f01c4951d4b3, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_ce663398a0ae4c069ff954c25a15e6db_Out_0_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 4fcc64106c30f1b49a34f01c4951d4b3, type: 3}
+    - _Texture2D:
+        m_Texture: {fileID: 2800000, guid: 07c38ef876e32974eb215cfb8980546b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -50,31 +42,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClipThreshold: 0.368
-    - _CutoffHeight: 2
-    - _Dissolve: 1
-    - _DissolveSpeed: 0
-    - _EdgeWidth: 0.05
-    - _FresnelPower: 28.93
-    - _HorizontalDissolve: 0
-    - _InteriorSpread: 1.05
-    - _NoiseStrength: 1
-    - _NoiseX: 89.11
-    - _Opacity: 0.149
-    - _OutlinesThickness: 0.01
+    - _Metallic: 0
+    - _NormalStrength: 8
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ScanLinesMovement: 0.125
-    - _ScanLinesSize: 2490.39
-    - _ScanLinesStrength: 0.232
-    - _ScanlinesStrength: 0.019
+    - _Smoothness: 0
+    - _Tiling: 16.24
     m_Colors:
-    - _Color: {r: 11.984315, g: 1.9705842, b: 0, a: 0}
-    - _EdgeColor: {r: 5.3403144, g: 0.3851852, b: 0, a: 1}
-    - _InteriorColor: {r: 0.5188679, g: 0.20314167, b: 0.50896275, a: 1}
+    - _Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &5455861299715000719
+--- !u!114 &6831834229814524658
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

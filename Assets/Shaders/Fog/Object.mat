@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4091668811457449054
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 0
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -7,13 +20,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dissolve
-  m_Shader: {fileID: -6465566751694194690, guid: b378d4cf56b14f14f8f1f7b68c758ff4, type: 3}
+  m_Name: Object
+  m_Shader: {fileID: -6465566751694194690, guid: 93217ee711d5f2f488003c215b9f5b6d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -24,16 +37,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _HologramTex:
-        m_Texture: {fileID: 2800000, guid: 4fcc64106c30f1b49a34f01c4951d4b3, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ScanLinesTex:
-        m_Texture: {fileID: 2800000, guid: 4fcc64106c30f1b49a34f01c4951d4b3, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_ce663398a0ae4c069ff954c25a15e6db_Out_0_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 4fcc64106c30f1b49a34f01c4951d4b3, type: 3}
+    - Texture2D_247129A1:
+        m_Texture: {fileID: 2800000, guid: c6df472464156ec4ba970094a2621292, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -50,31 +55,26 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClipThreshold: 0.368
-    - _CutoffHeight: 2
-    - _Dissolve: 1
-    - _DissolveSpeed: 0
-    - _EdgeWidth: 0.05
-    - _FresnelPower: 28.93
-    - _HorizontalDissolve: 0
-    - _InteriorSpread: 1.05
-    - _NoiseStrength: 1
-    - _NoiseX: 89.11
-    - _Opacity: 0.149
-    - _OutlinesThickness: 0.01
+    - Vector1_4EEA1A9E: 0.1
+    - Vector1_522DD793: 4.87
+    - Vector1_5E73A52C: 122.9
+    - Vector1_6098A7A7: 20.2
+    - Vector1_6DD21BAC: 36.3
+    - Vector1_6F1EA0F8: 10
+    - Vector1_705D9E76: 44
+    - Vector1_82DE1604: 0.158
+    - Vector1_A8E3BAE4: 1
+    - Vector1_AF6ECEBD: -0.49
+    - Vector1_B0641435: 102.9
+    - _BUILTIN_QueueControl: -1
+    - _BUILTIN_QueueOffset: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ScanLinesMovement: 0.125
-    - _ScanLinesSize: 2490.39
-    - _ScanLinesStrength: 0.232
-    - _ScanlinesStrength: 0.019
     m_Colors:
-    - _Color: {r: 11.984315, g: 1.9705842, b: 0, a: 0}
-    - _EdgeColor: {r: 5.3403144, g: 0.3851852, b: 0, a: 1}
-    - _InteriorColor: {r: 0.5188679, g: 0.20314167, b: 0.50896275, a: 1}
+    - Color_69AD1AD: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &5455861299715000719
+--- !u!114 &7855698779720517844
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
