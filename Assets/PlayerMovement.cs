@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		var newLocalEulerAngles = playerMoveDirection.localEulerAngles;
 		newLocalEulerAngles.x = 0.0f;
+		newLocalEulerAngles.z = 0.0f;
 		playerMoveDirectionWithoutPitch.transform.localEulerAngles = newLocalEulerAngles;
 
 		velocity += deltaTime * (moveForce * (
