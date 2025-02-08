@@ -1,9 +1,10 @@
 using UnityEngine;
 
 [RequireComponent(typeof(XRInputActions))]
-public class PlayerMovement : MonoBehaviour
-{
+public class PlayerMovement : MonoBehaviour {
 	public Transform playerToMove;
+	[Tooltip("The direction that the player should move. Likely to be the transform of the camera.")]
+	public Transform playerMoveDirection;
 
 	XRInputActions input;
 
@@ -15,17 +16,16 @@ public class PlayerMovement : MonoBehaviour
 		input = GetComponent<XRInputActions>();
     }
 
-	public Vector3 velocity;
+	Vector3 velocity;
 	public float moveForce = 10.0f;
 	public float friction = 0.85f;
-	public Vector2 maxMoveSpeed = new Vector2(20.0f, 20.0f); // TODO
 
 	void UpdateMovement(Vector2 inputDirection) {
 		float deltaTime = Time.deltaTime;
 
 		velocity += deltaTime * (moveForce * (
-			  (playerToMove.right   * inputDirection.x)
-			+ (playerToMove.forward * inputDirection.y)
+			  (playerMoveDirection.right   * inputDirection.x)
+			+ (playerMoveDirection.forward * inputDirection.y)
 		));
 
 		playerToMove.position += deltaTime * velocity;
