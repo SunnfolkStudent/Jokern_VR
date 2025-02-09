@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
 
 public class CustomGrab : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class CustomGrab : MonoBehaviour
     public InputActionProperty grabInputAction;
     public InputActionProperty gyroVelocityInput;
     public InputActionProperty gyroAngularVelocityInput;
+    [SerializeField] private HapticImpulsePlayer Haptic;
 
     // [SerializeField]
     private Vector3 gyroVel;
@@ -89,6 +91,7 @@ public class CustomGrab : MonoBehaviour
             {
                 if (hit.GetComponent<CustomGrabbable>())
                 {
+                    Haptic.SendHapticImpulse(0.1f, 0.1f);
                     print("Grabbed something grabbable");
                     holdingSomething = true;
                     heldTransform = hit.transform;

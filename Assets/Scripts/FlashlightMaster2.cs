@@ -32,13 +32,13 @@ public class FlashlightMaster2 : MonoBehaviour
     [SerializeField]private Vector3 leftControllerAngularVelocity;
     
     [SerializeField]private bool isLightOn = true;
-    private Light light;
+    private Light lightSource;
     
     
     private void Start()
     {
         lightTimer = lightLifetime;
-        light = GetComponent<Light>();
+        lightSource = GetComponent<Light>();
         if (isLightOn == false)
         {
             isLightOn = true;
@@ -57,7 +57,7 @@ public class FlashlightMaster2 : MonoBehaviour
     {
         if (isLightOn)
         {
-            light.enabled = true;
+            lightSource.enabled = true;
             lightTimer -= Time.deltaTime;
             lightIntensity = Mathf.Floor(lightTimer);
         }
@@ -65,17 +65,17 @@ public class FlashlightMaster2 : MonoBehaviour
         if (lightTimer > 30) return;
         if (lightTimer > 20)
         {
-            light.intensity = lightIntensity; 
+            lightSource.intensity = lightIntensity; 
         }
         else if (lightTimer <= 1 && isLightOn)
         {
-            light.intensity = Random.Range(0f, 7.5f);
+            lightSource.intensity = Random.Range(0f, 7.5f);
         }
 
         if (lightTimer <= 0 && isLightOn)
         {
             isLightOn = false;
-            light.enabled = false;
+            lightSource.enabled = false;
         }
         UpdateInput();
     }
@@ -101,8 +101,8 @@ public class FlashlightMaster2 : MonoBehaviour
             // }
             
             // () => Vector3.Dot(previousShakeVelocity, RoundVec3(leftControllerVelocity, shakeTurnThreshold)) < -1
-            print("DotProduct: " + Vector3.Dot(previousShakeVelocity, RoundVec3(leftControllerVelocity, shakeTurnThreshold)));
-            DotProduct = Vector3.Dot(previousShakeVelocity, RoundVec3(shakeVelocity, shakeTurnThreshold));
+            // print("DotProduct: " + Vector3.Dot(previousShakeVelocity, RoundVec3(leftControllerVelocity, shakeTurnThreshold)));
+            // DotProduct = Vector3.Dot(previousShakeVelocity, RoundVec3(shakeVelocity, shakeTurnThreshold));
             shakeVelocity = leftControllerAngularVelocity;
             shakeTimer -= Time.deltaTime;
             if (shakeTimer < 0) { shakeCounter = 0; }
@@ -122,8 +122,8 @@ public class FlashlightMaster2 : MonoBehaviour
         if (lightTimer > lightLifetime)
         {
             isLightOn = true;
-            light.enabled = true;
-            light.intensity = 30;
+            lightSource.enabled = true;
+            lightSource.intensity = 30;
             lightTimer = lightLifetime;
         }
     }

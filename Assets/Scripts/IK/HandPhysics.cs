@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
 
 public class HandPhysics : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class HandPhysics : MonoBehaviour
     public Renderer nonPhysicalHand;
     public float showNonPhysicalHandDistance = 0.05f;
 
+    [SerializeField] private HapticImpulsePlayer Haptic;
+    [SerializeField] private float HapticAmplitude = 1;
+    [SerializeField] private float HapticDuration = 0.1f;
+    [SerializeField] private float HapticFrequency = 0;
+    [SerializeField] private float HapticBooster = 0;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -43,4 +49,22 @@ public class HandPhysics : MonoBehaviour
        
        rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
     }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        // foreach (ContactPoint contact in collision.contacts)
+        // {
+        //     Debug.DrawRay(contact.point, contact.normal, Color.white);
+        // }
+
+        // Haptic.SendHapticImpulse(collision.relativeVelocity.magnitude, 1f);
+        // Haptic.SendHapticImpulse(1, 1f);
+        // Haptic.SendHapticImpulse(HapticAmplitude, HapticDuration, HapticFrequency);
+        float intensity = Mathf.Clamp(collision.relativeVelocity.magnitude * HapticBooster, 0, 1);
+        Debug.Log("Intensity: " + intensity);
+        Haptic.SendHapticImpulse(intensity, HapticDuration, HapticFrequency);
+        // if (collision.relativeVelocity.magnitude > 2)
+        // {
+        // }
+    } 
 }
