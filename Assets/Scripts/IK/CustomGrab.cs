@@ -17,6 +17,7 @@ public class CustomGrab : MonoBehaviour
     private Renderer heldRenderer;
     private Vector3 heldTarget;
     private Vector3 heldSize;
+    private int heldLayer;
     
     [SerializeField]
     private Rigidbody heldRigidbody;
@@ -61,7 +62,7 @@ public class CustomGrab : MonoBehaviour
             //      Target & Vars       //
             gyroVel = gyroVelocityInput.action.ReadValue<Vector3>();
             gyroAngVel = gyroAngularVelocityInput.action.ReadValue<Vector3>();
-            heldTarget = transform.position + transform.forward * heldSize.x/3 + transform.right * heldSize.z/3;
+            heldTarget = transform.position + transform.forward * heldSize.x/3 + transform.right * -heldSize.z/3;
             
             //      position        //
             heldRigidbody.linearVelocity = (heldTarget - heldTransform.position) / Time.fixedDeltaTime;
@@ -94,6 +95,10 @@ public class CustomGrab : MonoBehaviour
                     heldRigidbody = hit.GetComponent<Rigidbody>();
                     heldRenderer = hit.GetComponent<Renderer>();
                     heldSize = heldRenderer.bounds.size; // World space size
+                    
+                    heldLayer = heldTransform.gameObject.layer;
+                    int handLayer = LayerMask.NameToLayer("Right Hand Physics");
+                    heldTransform.gameObject.layer = handLayer;
                 }
             }
         }
@@ -102,6 +107,7 @@ public class CustomGrab : MonoBehaviour
             if (holdingSomething)
             {
                 heldRigidbody.linearVelocity = gyroVel * throwForce;
+                heldTransform.gameObject.layer = heldLayer;
             }
             holdingSomething = false;
         }
