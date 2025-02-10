@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
 
-public class CustomGrab : MonoBehaviour
+public class CustomGrabBackup : MonoBehaviour
 {
     private SphereCollider grabZone;
 
@@ -96,8 +96,7 @@ public class CustomGrab : MonoBehaviour
                     holdingSomething = true;
                     heldTransform = hit.transform;
                     heldRigidbody = hit.GetComponent<Rigidbody>();
-                    heldRenderer = hit.GetComponentInChildren<Renderer>();
-                    // heldRenderer = hit.GetComponent<Renderer>();
+                    heldRenderer = hit.GetComponent<Renderer>();
                     heldSize = heldRenderer.bounds.size; // World space size
                     
                     heldLayer = heldTransform.gameObject.layer;
