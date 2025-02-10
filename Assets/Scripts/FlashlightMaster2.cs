@@ -48,8 +48,6 @@ public class FlashlightMaster2 : MonoBehaviour
         {
             () => shakeVelocity.magnitude > shakeIntensity,
             () => Vector3.Dot(previousShakeVelocity, RoundVec3(shakeVelocity, shakeTurnThreshold)) < -1
-            // () => Mathf.Approximately(leftControllerVelocity.magnitude, 0),
-            // () => leftControllerVelocity.magnitude < 0.1f,
         };
     }
 
@@ -84,26 +82,12 @@ public class FlashlightMaster2 : MonoBehaviour
     {
         if (isLightOn == false)
         {
-            leftControllerVelocity = gyroVelocityInput.action.ReadValue<Vector3>();
+            // Variables needed for Shake Logic
             leftControllerAngularVelocity = gyroAngularVelocityInput.action.ReadValue<Vector3>();
-            // Debug.Log(leftControllerVelocity);
-            // if (shakeCounter < shakeAmount)
-            // {
-            //     if (shakeTimer > 0 && shake)
-            //     {
-            //         
-            //     }
-            //     else
-            //     {
-            //         shakeCounter = 0;
-            //         shakeTimer = shakeBufferTime;
-            //     }
-            // }
-            
-            // () => Vector3.Dot(previousShakeVelocity, RoundVec3(leftControllerVelocity, shakeTurnThreshold)) < -1
-            // print("DotProduct: " + Vector3.Dot(previousShakeVelocity, RoundVec3(leftControllerVelocity, shakeTurnThreshold)));
-            // DotProduct = Vector3.Dot(previousShakeVelocity, RoundVec3(shakeVelocity, shakeTurnThreshold));
             shakeVelocity = leftControllerAngularVelocity;
+            
+            // Shake Logic
+            // tl;dr checks for conditions of a shake within a buffer interval
             shakeTimer -= Time.deltaTime;
             if (shakeTimer < 0) { shakeCounter = 0; }
             if (shakeConditionals[shakeCounter % 2]())
