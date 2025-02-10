@@ -25,7 +25,8 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -39,6 +40,14 @@ Material:
     m_TexEnvs:
     - Texture2D_247129A1:
         m_Texture: {fileID: 2800000, guid: c6df472464156ec4ba970094a2621292, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise3D:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -66,12 +75,38 @@ Material:
     - Vector1_A8E3BAE4: 1
     - Vector1_AF6ECEBD: -0.49
     - Vector1_B0641435: 102.9
+    - _AlphaClip: 1
+    - _AlphaToMask: 0
     - _BUILTIN_QueueControl: -1
     - _BUILTIN_QueueOffset: 0
+    - _Blend: 0
+    - _BoundsFade: 1
+    - _BoundsFadeRange: 1
+    - _CastShadows: 1
+    - _Cull: 1
+    - _DstBlend: 10
+    - _LoopStop: 0
+    - _Multiplier: 0
+    - _Noise2DPower: 0
+    - _Noise2DScale: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Randomness: 5
+    - _Samples: 3
+    - _ShadowAdd: 0
+    - _ShadowMulti: 0
+    - _Size: 1
+    - _SrcBlend: 5
+    - _Surface: 1
+    - _Threshold: 0
+    - _YtoSizeRation: 1
+    - _ZTest: 8
+    - _ZWrite: 0
+    - _ZWriteControl: 0
     m_Colors:
     - Color_69AD1AD: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _Shadow_Tint: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &7855698779720517844
