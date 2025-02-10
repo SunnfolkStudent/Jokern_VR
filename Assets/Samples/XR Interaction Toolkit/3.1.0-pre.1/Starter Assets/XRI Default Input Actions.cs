@@ -435,7 +435,7 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""name"": ""Is Tracked"",
                     ""type"": ""Button"",
                     ""id"": ""82eb6741-beef-48d3-83ab-a957dc1caa1e"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -535,6 +535,24 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""type"": ""Value"",
                     ""id"": ""c01850c4-700b-4ae6-a187-a894afef5bbd"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Gyro Velocity"",
+                    ""type"": ""Value"",
+                    ""id"": ""db1c9a34-979a-498b-b992-c6297f2d2620"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Gyro AngularVelocity"",
+                    ""type"": ""Value"",
+                    ""id"": ""2ddfe825-d1b5-400b-94e2-13c97eba23f4"",
+                    ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -947,6 +965,28 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""action"": ""Thumbstick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a91805f-50d3-456a-b4a3-0b232d254e92"",
+                    ""path"": ""<XRController>{LeftHand}/{DeviceVelocity}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gyro Velocity"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""43d87bb6-32c4-43eb-89f3-3e966065179d"",
+                    ""path"": ""<XRController>{LeftHand}/{DeviceAngularVelocity}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gyro AngularVelocity"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -976,7 +1016,7 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""name"": ""Activate"",
                     ""type"": ""Button"",
                     ""id"": ""0c0991c5-d329-4afc-8892-1076b440477c"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -1048,7 +1088,7 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""name"": ""Scale Toggle"",
                     ""type"": ""Button"",
                     ""id"": ""80ed7d74-56de-473c-bf76-da3bdd16b562"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -1405,7 +1445,7 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""name"": ""Grab Move"",
                     ""type"": ""Button"",
                     ""id"": ""c5a6d766-d487-42ae-b293-da4749469e18"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -1606,6 +1646,24 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""type"": ""Value"",
                     ""id"": ""b8c0ccd3-e1b6-4913-96b3-e0864c9ac6bd"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Gyro Velocity"",
+                    ""type"": ""Value"",
+                    ""id"": ""293aa8ab-fa04-46eb-8222-7a71bd68e9a5"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Gyro AngularVelocity"",
+                    ""type"": ""Value"",
+                    ""id"": ""322cd370-2940-4c2e-9fae-d8c658b7e010"",
+                    ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -2016,6 +2074,28 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Thumbstick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95ebaff0-fb7c-4fda-9d71-ba56b4a6ae30"",
+                    ""path"": ""<XRController>{RightHand}/{DeviceVelocity}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gyro Velocity"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eacab549-401a-4146-b6ae-cd54774a3716"",
+                    ""path"": ""<XRController>{RightHand}/{DeviceAngularVelocity}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gyro AngularVelocity"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -3429,6 +3509,8 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         m_XRILeft_GripPosition = m_XRILeft.FindAction("Grip Position", throwIfNotFound: true);
         m_XRILeft_GripRotation = m_XRILeft.FindAction("Grip Rotation", throwIfNotFound: true);
         m_XRILeft_Thumbstick = m_XRILeft.FindAction("Thumbstick", throwIfNotFound: true);
+        m_XRILeft_GyroVelocity = m_XRILeft.FindAction("Gyro Velocity", throwIfNotFound: true);
+        m_XRILeft_GyroAngularVelocity = m_XRILeft.FindAction("Gyro AngularVelocity", throwIfNotFound: true);
         // XRI Left Interaction
         m_XRILeftInteraction = asset.FindActionMap("XRI Left Interaction", throwIfNotFound: true);
         m_XRILeftInteraction_Select = m_XRILeftInteraction.FindAction("Select", throwIfNotFound: true);
@@ -3467,6 +3549,8 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         m_XRIRight_GripPosition = m_XRIRight.FindAction("Grip Position", throwIfNotFound: true);
         m_XRIRight_GripRotation = m_XRIRight.FindAction("Grip Rotation", throwIfNotFound: true);
         m_XRIRight_Thumbstick = m_XRIRight.FindAction("Thumbstick", throwIfNotFound: true);
+        m_XRIRight_GyroVelocity = m_XRIRight.FindAction("Gyro Velocity", throwIfNotFound: true);
+        m_XRIRight_GyroAngularVelocity = m_XRIRight.FindAction("Gyro AngularVelocity", throwIfNotFound: true);
         // XRI Right Interaction
         m_XRIRightInteraction = asset.FindActionMap("XRI Right Interaction", throwIfNotFound: true);
         m_XRIRightInteraction_Select = m_XRIRightInteraction.FindAction("Select", throwIfNotFound: true);
@@ -3786,6 +3870,8 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
     private readonly InputAction m_XRILeft_GripPosition;
     private readonly InputAction m_XRILeft_GripRotation;
     private readonly InputAction m_XRILeft_Thumbstick;
+    private readonly InputAction m_XRILeft_GyroVelocity;
+    private readonly InputAction m_XRILeft_GyroAngularVelocity;
     /// <summary>
     /// Provides access to input actions defined in input action map "XRI Left".
     /// </summary>
@@ -3854,6 +3940,14 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         /// </summary>
         public InputAction @Thumbstick => m_Wrapper.m_XRILeft_Thumbstick;
         /// <summary>
+        /// Provides access to the underlying input action "XRILeft/GyroVelocity".
+        /// </summary>
+        public InputAction @GyroVelocity => m_Wrapper.m_XRILeft_GyroVelocity;
+        /// <summary>
+        /// Provides access to the underlying input action "XRILeft/GyroAngularVelocity".
+        /// </summary>
+        public InputAction @GyroAngularVelocity => m_Wrapper.m_XRILeft_GyroAngularVelocity;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_XRILeft; }
@@ -3921,6 +4015,12 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
             @Thumbstick.started += instance.OnThumbstick;
             @Thumbstick.performed += instance.OnThumbstick;
             @Thumbstick.canceled += instance.OnThumbstick;
+            @GyroVelocity.started += instance.OnGyroVelocity;
+            @GyroVelocity.performed += instance.OnGyroVelocity;
+            @GyroVelocity.canceled += instance.OnGyroVelocity;
+            @GyroAngularVelocity.started += instance.OnGyroAngularVelocity;
+            @GyroAngularVelocity.performed += instance.OnGyroAngularVelocity;
+            @GyroAngularVelocity.canceled += instance.OnGyroAngularVelocity;
         }
 
         /// <summary>
@@ -3974,6 +4074,12 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
             @Thumbstick.started -= instance.OnThumbstick;
             @Thumbstick.performed -= instance.OnThumbstick;
             @Thumbstick.canceled -= instance.OnThumbstick;
+            @GyroVelocity.started -= instance.OnGyroVelocity;
+            @GyroVelocity.performed -= instance.OnGyroVelocity;
+            @GyroVelocity.canceled -= instance.OnGyroVelocity;
+            @GyroAngularVelocity.started -= instance.OnGyroAngularVelocity;
+            @GyroAngularVelocity.performed -= instance.OnGyroAngularVelocity;
+            @GyroAngularVelocity.canceled -= instance.OnGyroAngularVelocity;
         }
 
         /// <summary>
@@ -4393,6 +4499,8 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
     private readonly InputAction m_XRIRight_GripPosition;
     private readonly InputAction m_XRIRight_GripRotation;
     private readonly InputAction m_XRIRight_Thumbstick;
+    private readonly InputAction m_XRIRight_GyroVelocity;
+    private readonly InputAction m_XRIRight_GyroAngularVelocity;
     /// <summary>
     /// Provides access to input actions defined in input action map "XRI Right".
     /// </summary>
@@ -4461,6 +4569,14 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         /// </summary>
         public InputAction @Thumbstick => m_Wrapper.m_XRIRight_Thumbstick;
         /// <summary>
+        /// Provides access to the underlying input action "XRIRight/GyroVelocity".
+        /// </summary>
+        public InputAction @GyroVelocity => m_Wrapper.m_XRIRight_GyroVelocity;
+        /// <summary>
+        /// Provides access to the underlying input action "XRIRight/GyroAngularVelocity".
+        /// </summary>
+        public InputAction @GyroAngularVelocity => m_Wrapper.m_XRIRight_GyroAngularVelocity;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_XRIRight; }
@@ -4528,6 +4644,12 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
             @Thumbstick.started += instance.OnThumbstick;
             @Thumbstick.performed += instance.OnThumbstick;
             @Thumbstick.canceled += instance.OnThumbstick;
+            @GyroVelocity.started += instance.OnGyroVelocity;
+            @GyroVelocity.performed += instance.OnGyroVelocity;
+            @GyroVelocity.canceled += instance.OnGyroVelocity;
+            @GyroAngularVelocity.started += instance.OnGyroAngularVelocity;
+            @GyroAngularVelocity.performed += instance.OnGyroAngularVelocity;
+            @GyroAngularVelocity.canceled += instance.OnGyroAngularVelocity;
         }
 
         /// <summary>
@@ -4581,6 +4703,12 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
             @Thumbstick.started -= instance.OnThumbstick;
             @Thumbstick.performed -= instance.OnThumbstick;
             @Thumbstick.canceled -= instance.OnThumbstick;
+            @GyroVelocity.started -= instance.OnGyroVelocity;
+            @GyroVelocity.performed -= instance.OnGyroVelocity;
+            @GyroVelocity.canceled -= instance.OnGyroVelocity;
+            @GyroAngularVelocity.started -= instance.OnGyroAngularVelocity;
+            @GyroAngularVelocity.performed -= instance.OnGyroAngularVelocity;
+            @GyroAngularVelocity.canceled -= instance.OnGyroAngularVelocity;
         }
 
         /// <summary>
@@ -5519,6 +5647,20 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnThumbstick(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Gyro Velocity" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGyroVelocity(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Gyro AngularVelocity" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGyroAngularVelocity(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "XRI Left Interaction" which allows adding and removing callbacks.
@@ -5767,6 +5909,20 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnThumbstick(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Gyro Velocity" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGyroVelocity(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Gyro AngularVelocity" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGyroAngularVelocity(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "XRI Right Interaction" which allows adding and removing callbacks.
