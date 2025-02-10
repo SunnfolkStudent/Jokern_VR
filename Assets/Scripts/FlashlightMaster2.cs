@@ -1,16 +1,17 @@
 using System;
 using UnityEngine;
-using UnityEngine.XR;
-using UnityEngine.XR.Interaction.Toolkit;
 using Random = UnityEngine.Random;
 using UnityEngine.InputSystem;
 
 public class FlashlightMaster2 : MonoBehaviour
 {
-    //Sets the counter, intensity of light, and max lifetime
+    //      Flashlight Variables        //
+    // Sets the counter, intensity of light, and max lifetime
     [SerializeField]private float lightTimer;
     [SerializeField]private float lightIntensity;
     [SerializeField]private float lightLifetime = 90;
+    [SerializeField]private bool isLightOn = true;
+    private Light lightSource;
     
     //      Flashlight Shake        //
     [Header("Shake Refresh Flashlight")]
@@ -19,20 +20,17 @@ public class FlashlightMaster2 : MonoBehaviour
     [SerializeField] private float shakeIntensity = 0.3f;
     [SerializeField] private int shakeAmount = 6;
     [SerializeField] private int shakeCounter = 0;
-    [SerializeField] private int shakeTurnThreshold = 0;
+    [SerializeField] private int shakeTurnSensetivity = 0;
     private Vector3 shakeVelocity;
     private Func<bool>[] shakeConditionals;
     private Vector3 previousShakeVelocity;
 
-    [SerializeField] private float DotProduct;
-
+    //      Clunky way to read gyro values      //
     public InputActionProperty gyroVelocityInput;
     public InputActionProperty gyroAngularVelocityInput;
     [SerializeField]private Vector3 leftControllerVelocity;
     [SerializeField]private Vector3 leftControllerAngularVelocity;
     
-    [SerializeField]private bool isLightOn = true;
-    private Light lightSource;
     
     
     private void Start()
@@ -47,7 +45,7 @@ public class FlashlightMaster2 : MonoBehaviour
         shakeConditionals = new Func<bool>[]
         {
             () => shakeVelocity.magnitude > shakeIntensity,
-            () => Vector3.Dot(previousShakeVelocity, RoundVec3(shakeVelocity, shakeTurnThreshold)) < -1
+            () => Vector3.Dot(previousShakeVelocity, RoundVec3(shakeVelocity, shakeTurnSensetivity)) < -1
         };
     }
 
@@ -60,8 +58,8 @@ public class FlashlightMaster2 : MonoBehaviour
             lightIntensity = Mathf.Floor(lightTimer);
         }
 
-        if (lightTimer > 30) return;
-        if (lightTimer > 20)
+        // if (lightTimer > 30) return;
+        if (lightTimer < 30 && lightTimer > 20)
         {
             lightSource.intensity = lightIntensity; 
         }
@@ -69,13 +67,12 @@ public class FlashlightMaster2 : MonoBehaviour
         {
             lightSource.intensity = Random.Range(0f, 7.5f);
         }
-
-        if (lightTimer <= 0 && isLightOn)
+        else if (lightTimer <= 0 && isLightOn)
         {
             isLightOn = false;
             lightSource.enabled = false;
+            UpdateInput();
         }
-        UpdateInput();
     }
 
     private void UpdateInput()
@@ -88,12 +85,14 @@ public class FlashlightMaster2 : MonoBehaviour
             
             // Shake Logic
             // tl;dr checks for conditions of a shake within a buffer interval
+            // if you have done enough "shakes" it Resets the flashlight and needed variables
+            // 1 shake is 2 numbers on the shakeCounter due to 1 shake having 2 conditions to fulfill
             shakeTimer -= Time.deltaTime;
             if (shakeTimer < 0) { shakeCounter = 0; }
             if (shakeConditionals[shakeCounter % 2]())
             {
                 shakeTimer = shakeBufferTime;
-                previousShakeVelocity = RoundVec3(shakeVelocity, shakeTurnThreshold);
+                previousShakeVelocity = RoundVec3(shakeVelocity, shakeTurnSensetivity);
                 shakeCounter += 1;
             }
             if (shakeCounter > shakeAmount * 2) { RefreshFlashLight(); shakeCounter = 0; }
@@ -121,10 +120,4 @@ public class FlashlightMaster2 : MonoBehaviour
         return results;
         // return Mathf.Round(value * mult) / mult;
     }
-    
 }
-#region TODO
-//TODO: Check for motion input (shaking), which refills the lifetime
-//TODO: When lifetime is at 90 (100%), re-enable light and continue battery loop
-
-#endregion
