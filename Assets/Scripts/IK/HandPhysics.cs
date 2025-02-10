@@ -49,7 +49,8 @@ public class HandPhysics : MonoBehaviour
        
        Vector3 rotationDifferenceInDegree = angleInDegree * rotationAxis;
        
-       rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime) * 5;
+       /*// rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime) * 5;*/
+       rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
        // rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad);
     }
     
