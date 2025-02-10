@@ -1,0 +1,441 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7699682058842596691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Stage
+  m_EditorClassIdentifier: 
+  Name: Stage
+  StudioPath: parameter:/Stage
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 3788504744
+    data2: 1243556968
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Title Screen
+  - Main Stages
+  - Credits
+  Exists: 1
+--- !u!114 &-7650840414096937084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/FootstepDirection
+  m_EditorClassIdentifier: 
+  Name: FootstepDirection
+  StudioPath: parameter:/FootstepDirection
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1467328756
+    data2: 2643320509
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Left
+  - Right
+  Exists: 1
+--- !u!114 &-7121336263998062549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_walking/FootstepDirection
+  m_EditorClassIdentifier: 
+  Name: FootstepDirection
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1467328756
+    data2: 2643320509
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Left
+  - Right
+  Exists: 1
+--- !u!114 &-6266718322132415946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/amb_test 2
+  m_EditorClassIdentifier: 
+  Path: event:/amb_test 2
+  Guid:
+    Data1: -459188192
+    Data2: 1215404223
+    Data3: 1081189533
+    Data4: 641199993
+  Banks:
+  - {fileID: -2049371025200179969}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 91428
+--- !u!114 &-3107498853711723198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps
+  m_EditorClassIdentifier: 
+  Name: Footsteps
+  StudioPath: parameter:/Footsteps
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 75550407
+    data2: 1549777945
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - None
+  - Asfalt
+  - Sti
+  - Stein
+  - Vann
+  - "Gj\xF8rme"
+  - "H\xF8ytGress"
+  - "Barn\xE5l"
+  - Kvister
+  - Mose
+  - Grus
+  Exists: 1
+--- !u!114 &-2049371025200179969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/AMB.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Build/Desktop/AMB.bank
+  Name: AMB
+  StudioPath: bank:/AMB
+  lastModified: 638747833293029920
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-960260723272910650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/VO.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Build/Desktop/VO.bank
+  Name: VO
+  StudioPath: bank:/VO
+  lastModified: 638747822608075606
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-916452018957881391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638747838090735622
+  FileSizes:
+  - Name: 
+    Value: 1234
+  Exists: 1
+--- !u!114 &-234750224669398664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/sfx_walking
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/sfx_walking
+  Guid:
+    Data1: -757782008
+    Data2: 1091843191
+    Data3: -152103023
+    Data4: -1272863636
+  Banks:
+  - {fileID: 7920576900659332101}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -7121336263998062549}
+  - {fileID: 8037359481360193811}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 420
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -916452018957881391}
+  - {fileID: -2049371025200179969}
+  - {fileID: 3154646225618483798}
+  - {fileID: 7920576900659332101}
+  - {fileID: -960260723272910650}
+  EditorEvents:
+  - {fileID: -6266718322132415946}
+  - {fileID: 2714067656111058009}
+  - {fileID: -234750224669398664}
+  EditorParameters:
+  - {fileID: 5929427880367589843}
+  - {fileID: 1145425650851852058}
+  - {fileID: 6108314997604954372}
+  - {fileID: -7699682058842596691}
+  - {fileID: -3107498853711723198}
+  - {fileID: -7650840414096937084}
+  MasterBanks:
+  - {fileID: 3154646225618483798}
+  StringsBanks:
+  - {fileID: -916452018957881391}
+  cacheTime: 638747838091113122
+  cacheVersion: 131622
+--- !u!114 &1145425650851852058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Reverb
+  m_EditorClassIdentifier: 
+  Name: Reverb
+  StudioPath: parameter:/Reverb
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 1600690388
+    data2: 1394770460
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &2714067656111058009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/amb_test
+  m_EditorClassIdentifier: 
+  Path: event:/amb_test
+  Guid:
+    Data1: -1742075925
+    Data2: 1151922896
+    Data3: 1942790539
+    Data4: -1718564969
+  Banks:
+  - {fileID: -2049371025200179969}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 102857
+--- !u!114 &3154646225618483798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638747838090720453
+  FileSizes: []
+  Exists: 1
+--- !u!114 &5929427880367589843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level
+  m_EditorClassIdentifier: 
+  Name: Level
+  StudioPath: parameter:/Level
+  Min: 0
+  Max: 5
+  Default: 0
+  ID:
+    data1: 3836277982
+    data2: 3819142794
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Intro
+  - Joker Forest
+  - Dark Joker
+  - Circus Forest
+  - Circus
+  - Final Path
+  Exists: 1
+--- !u!114 &6108314997604954372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Walking
+  m_EditorClassIdentifier: 
+  Name: Walking
+  StudioPath: parameter:/Walking
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1272354751
+    data2: 2131113589
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Yes
+  - No
+  Exists: 1
+--- !u!114 &7920576900659332101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Build/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 638747838091113122
+  FileSizes: []
+  Exists: 1
+--- !u!114 &8037359481360193811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_walking/Footsteps
+  m_EditorClassIdentifier: 
+  Name: Footsteps
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 75550407
+    data2: 1549777945
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - None
+  - Asfalt
+  - Sti
+  - Stein
+  - Vann
+  - "Gj\xF8rme"
+  - "H\xF8ytGress"
+  - "Barn\xE5l"
+  - Kvister
+  - Mose
+  - Grus
+  Exists: 1
