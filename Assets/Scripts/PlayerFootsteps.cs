@@ -8,7 +8,7 @@ public enum FootstepSoundType {
 	Sten,
 	Vann,
 	Gjørme,
-	Høytgress,
+	HøytGress,
 	Barnåler,
 	Kvister,
 	Mose,
@@ -29,7 +29,7 @@ public class PlayerFootsteps : MonoBehaviour {
 
 	public FootstepSoundType currentlyStandingOn;
 
-	void PlaySoundBasedOnMaterial(Material material) {
+	void SetFootstepSoundBasedOnMaterial(Material material) {
 		if (material == null) return;
 
 		var texture = material.mainTexture;
@@ -50,6 +50,8 @@ public class PlayerFootsteps : MonoBehaviour {
 	}
 
 	void Update() {
+		currentlyStandingOn = FootstepSoundType.None;
+
 		RaycastHit hit;
 		if (Physics.Raycast(transform.position + relativeRaycastFrom, Vector3.down, out hit, groundMask)) {
 			if (hit.transform != null) {
@@ -57,7 +59,7 @@ public class PlayerFootsteps : MonoBehaviour {
 				if (obj.TryGetComponent<Renderer>(out Renderer renderer)) {
 					// .sharedMaterial is shared; changing it will change it for the object as well.
 					// .material is not shared and makes a copy.
-					PlaySoundBasedOnMaterial(renderer.sharedMaterial);
+					SetFootstepSoundBasedOnMaterial(renderer.sharedMaterial);
 				}
 			}
 		}
