@@ -20,6 +20,9 @@ If any of these are wrong, they must be rexported from Blender correctly.
 6. Consolidate Materials & Textures
 7. Apply Materials & Textures
 
+Textures - Turn on Alpha Is Transparency 
+Materials - Turn on Alpha Clipping
+
 ## Prefabs
 1. Add the 3D model to the Art_Library Scene
 2. Set object to Static
