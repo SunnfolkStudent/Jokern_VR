@@ -392,7 +392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1619200640}
-  - component: {fileID: 1619200641}
+  - component: {fileID: 1619200642}
   m_Layer: 0
   m_Name: Dings
   m_TagString: Untagged
@@ -415,7 +415,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1619200641
+--- !u!114 &1619200642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -424,10 +424,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1619200639}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26e4727b37152034ab149d5f89ab8f55, type: 3}
+  m_Script: {fileID: 11500000, guid: e81bf4d6585f13e17a57630cb2ce510e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ambiance>k__BackingField:
+  playThing: 0
+  foot: 0
+  footstepSoundEvent:
     Guid:
       Data1: -757782008
       Data2: 1091843191
