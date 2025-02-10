@@ -49,14 +49,14 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2
-    minMaxState: 0
-    scalar: 0
+    minMaxState: 3
+    scalar: 5
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -979,8 +979,8 @@ ParticleSystem:
       time: 0
       countCurve:
         serializedVersion: 2
-        minMaxState: 3
-        scalar: 2
+        minMaxState: 0
+        scalar: 1
         minScalar: 1
         maxCurve:
           serializedVersion: 2
@@ -1032,7 +1032,7 @@ ParticleSystem:
           m_RotationOrder: 4
       cycleCount: 1
       repeatInterval: 0.01
-      probability: 1
+      probability: 0.5
   SizeModule:
     enabled: 1
     curve:

@@ -688,7 +688,7 @@ VisualEffect:
       - m_Value: {fileID: 506893626503705964, guid: 4fe2a9c26f4cfdb46ad8e588d2f00941, type: 3}
         m_Name: TreeMesh
         m_Overridden: 1
-      - m_Value: {fileID: 11700000, guid: 9a06223b0733e414989560921b5c27d1, type: 2}
+      - m_Value: {fileID: 11700000, guid: 70213d82ed844424d8a348f8e779eabd, type: 2}
         m_Name: SDF
         m_Overridden: 1
     m_Bool:
@@ -702,7 +702,7 @@ Transform:
   m_GameObject: {fileID: 1254595735}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -2.330968, y: 2.8741252, z: -3.1}
+  m_LocalPosition: {x: -2.330968, y: 2.874, z: -1.613}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -940,8 +940,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879302919}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.010469113, y: -0.3559804, z: -0.005364395, w: 0.93441945}
-  m_LocalPosition: {x: 6.2266893, y: 1.0482223, z: -5.134287}
+  m_LocalRotation: {x: -0.013158114, y: 0.7554907, z: 0.012006773, w: 0.6549171}
+  m_LocalPosition: {x: -6.4509115, y: 2.3249316, z: -1.44218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4356,6 +4356,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4364219000604983301, guid: 30fef1a8dabd7ce4b89562828aeb12f8, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364219000604983301, guid: 30fef1a8dabd7ce4b89562828aeb12f8, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364219000604983301, guid: 30fef1a8dabd7ce4b89562828aeb12f8, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163101460338212738, guid: 30fef1a8dabd7ce4b89562828aeb12f8, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163101460338212738, guid: 30fef1a8dabd7ce4b89562828aeb12f8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 143b4318759076c449cee5de6993bbe3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
