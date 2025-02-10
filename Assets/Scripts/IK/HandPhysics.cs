@@ -5,6 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
 public class HandPhysics : MonoBehaviour
 {
     public Transform target;
+    [SerializeField] private Vector3 targetPos;
     private Rigidbody rb;
 
     public Renderer nonPhysicalHand;
@@ -33,6 +34,7 @@ public class HandPhysics : MonoBehaviour
     private void FixedUpdate()
     {
        //position
+       // targetPos = target.position;
        rb.linearVelocity = (target.position - transform.position) / Time.fixedDeltaTime;
        
        //rotation
