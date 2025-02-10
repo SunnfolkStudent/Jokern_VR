@@ -22,8 +22,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Bark
   m_Shader: {fileID: -6465566751694194690, guid: 1429c88e6f9e5d8468efd8ec10eec30a, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
+  m_Parent: {fileID: -876546973899608171, guid: 1429c88e6f9e5d8468efd8ec10eec30a, type: 3}
+  m_ModifiedSerializedProperties: 2
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -36,41 +36,11 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _NormalFromTexture_75d6d9a5680345a4953ae3733c0b9989_Texture_0_Texture2D:
-        m_Texture: {fileID: 2800000, guid: cd07e3516b6b9ef48a22c01c951a8113, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_a44e3a428021443d9e897d1e2ca8ddf3_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: cd07e3516b6b9ef48a22c01c951a8113, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_f245bcbf821d47ffb8e3fb6d2328fbac_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 82408e16b51296841a9d8679c7089994, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _HasEyes: 1
-    - _NormalStrength: 8
     - _QueueControl: 0
-    - _QueueOffset: 0
-    - _SwayingSpeed: 0.28
     - _Tiling: 7.55
-    - _WindDensity: 2.76
-    - _WindStrength: 0.19
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
