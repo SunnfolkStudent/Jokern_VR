@@ -33,11 +33,11 @@ public class HandPhysics : MonoBehaviour
 
     private void FixedUpdate()
     {
-       //position
+       // position
        // targetPos = target.position;
        rb.linearVelocity = (target.position - transform.position) / Time.fixedDeltaTime;
        
-       //rotation
+       // rotation
        Quaternion rotationDifference = target.rotation * Quaternion.Inverse(transform.rotation);
        rotationDifference.ToAngleAxis(out float angleInDegree, out Vector3 rotationAxis);
        
@@ -49,7 +49,8 @@ public class HandPhysics : MonoBehaviour
        
        Vector3 rotationDifferenceInDegree = angleInDegree * rotationAxis;
        
-       rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
+       rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime) * 5;
+       // rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad);
     }
     
     private void OnCollisionEnter(Collision collision)
