@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-	public bool isUsingStickMovement = true;
+	public static bool isUsingStickMovement = true;
 	public void SwitchToStickMovement() => isUsingStickMovement = true;
 	public void SwitchToTeleportation() => isUsingStickMovement = false;
 
