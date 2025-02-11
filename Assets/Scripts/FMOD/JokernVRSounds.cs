@@ -4,8 +4,19 @@ using FMODUnity;
 using FMOD.Studio;
 
 public class JokernVRSounds : MonoBehaviour {
+	[HideInInspector] public static JokernVRSounds instance;
+
 	[Tooltip("If there are multiple sound events matching the same sound the first one in the list will always get picked.")]
 	public SoundToSoundEvent[] soundToSoundEvent; // = new SoundToSoundEvent[Enum.GetNames(typeof(JokernVRSound)).Length];
+
+	void Awake() {
+		if (instance != null) {
+			Debug.LogError($"There should only be one '{nameof(JokernVRSounds)}'!");
+			Destroy(this);
+		}
+
+		instance = this;
+	}
 
 	public EventReference GetSoundEvent(JokernVRSound sound) {
 		if (soundToSoundEvent == null) return default;

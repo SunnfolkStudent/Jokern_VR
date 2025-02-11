@@ -46,8 +46,6 @@ public class PlayerFootsteps : MonoBehaviour {
 		}
 	}
 
-	FMODController theFMODController;
-
 	public float footStepInterval = 0.65f;
 	float lastFootstepWasAt;
 	bool  footstepIsOnRightFoot;
@@ -57,22 +55,7 @@ public class PlayerFootsteps : MonoBehaviour {
 			lastFootstepWasAt = Time.time;
 			footstepIsOnRightFoot = !footstepIsOnRightFoot;
 
-			theFMODController.PlayFootstepSound(currentlyStandingOn, footstepIsOnRightFoot);
-		}
-	}
-
-	void Start() {
-		if (theFMODController == null) {
-
-			var found = UnityEngine.Object.FindObjectsByType<FMODController>(FindObjectsSortMode.None);
-
-			if (found.Length > 1) {
-				Debug.LogError($"Too many '{nameof(FMODController)}'s! There is only supposed to be one, but found {found.Length}!");
-			} else if (found.Length == 0) {
-				Debug.LogError($"Found no '{nameof(FMODController)}'! Please create one!");
-			}
-
-			theFMODController = found[0];
+			FMODController.PlayFootstepSound(currentlyStandingOn, footstepIsOnRightFoot);
 		}
 	}
 
