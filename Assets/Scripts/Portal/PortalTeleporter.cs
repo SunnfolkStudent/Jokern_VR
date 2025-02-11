@@ -22,9 +22,12 @@ public class PortalTeleporter : MonoBehaviour
     {
         Vector3 portalToPlayer = player.position - transform.position;
         float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
+        
+        Debug.Log( $"{dotProduct} is the Dotproduct");
 
         if (dotProduct < 0f)
         {
+            Debug.Log("Teleport code part 2");
             float rotationDiff = -Quaternion.Angle(transform.rotation, reciever.rotation);
             rotationDiff += 180;
             player.Rotate(Vector3.up, rotationDiff);
