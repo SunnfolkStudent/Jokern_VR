@@ -46,16 +46,20 @@ public class PlayerFootsteps : MonoBehaviour {
 		}
 	}
 
-	public float footStepInterval = 0.4f;
+	FMODController theFMODController;
+
+	public float footStepInterval = 0.65f;
 	float lastFootstepWasAt;
+	bool  footstepIsOnRightFoot;
 
 	void PlayFootsteps() {
 		if (lastFootstepWasAt + footStepInterval < Time.time) {
 			lastFootstepWasAt = Time.time;
-			theFMODController.PlayFootstepSound(currentlyStandingOn);
+			footstepIsOnRightFoot = !footstepIsOnRightFoot;
+
+			theFMODController.PlayFootstepSound(currentlyStandingOn, footstepIsOnRightFoot);
 		}
 	}
-	public FMODController theFMODController;
 
 	void Start() {
 		if (theFMODController == null) {
