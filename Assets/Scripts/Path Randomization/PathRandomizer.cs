@@ -14,8 +14,8 @@ public class PathRandomizer : MonoBehaviour {
 		}
 	}
 
-	PathRandomizerModule[] modules;
-	PathRandomizerExitBlocker[] exitBlockers;
+	[HideInInspector] public PathRandomizerModule[] modules;
+	[HideInInspector] public PathRandomizerExitBlocker[] exitBlockers;
 
 	void FindAllModulesAndExitBlockers() {
 		modules = UnityEngine.Object.FindObjectsByType<PathRandomizerModule>(FindObjectsInactive.Include, FindObjectsSortMode.None);

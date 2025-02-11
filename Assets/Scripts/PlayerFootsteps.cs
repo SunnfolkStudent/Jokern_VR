@@ -49,6 +49,17 @@ public class PlayerFootsteps : MonoBehaviour {
 		}
 	}
 
+	public float footStepInterval = 0.4f;
+	float lastFootstepWasAt;
+
+	void PlayFootsteps() {
+		if (lastFootstepWasAt + footStepInterval < Time.time) {
+			lastFootstepWasAt = Time.time;
+
+			// TODO
+		}
+	}
+
 	void Update() {
 		currentlyStandingOn = FootstepSoundType.None;
 
@@ -62,6 +73,10 @@ public class PlayerFootsteps : MonoBehaviour {
 					SetFootstepSoundBasedOnMaterial(renderer.sharedMaterial);
 				}
 			}
+		}
+
+		if (currentlyStandingOn != FootstepSoundType.None) {
+			PlayFootsteps();
 		}
 	}
 }
