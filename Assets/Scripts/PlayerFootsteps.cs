@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum FootstepSoundType {
+public enum FootstepSound {
 	None,
 	Asfalt,
 	Sti,
@@ -18,7 +18,7 @@ public enum FootstepSoundType {
 [Serializable]
 public class TextureToFootstepSound {
 	public Texture texture;
-	public FootstepSoundType soundType;
+	public FootstepSound soundType;
 }
 
 public class PlayerFootsteps : MonoBehaviour {
@@ -27,7 +27,7 @@ public class PlayerFootsteps : MonoBehaviour {
 
 	public TextureToFootstepSound[] textureToFootstepSounds;
 
-	public FootstepSoundType currentlyStandingOn;
+	public FootstepSound currentlyStandingOn;
 
 	void SetFootstepSoundBasedOnMaterial(Material material) {
 		if (material == null) return;
@@ -77,7 +77,7 @@ public class PlayerFootsteps : MonoBehaviour {
 	}
 
 	void Update() {
-		currentlyStandingOn = FootstepSoundType.None;
+		currentlyStandingOn = FootstepSound.None;
 
 		RaycastHit hit;
 		if (Physics.Raycast(transform.position + relativeRaycastFrom, Vector3.down, out hit, groundMask)) {
@@ -91,7 +91,7 @@ public class PlayerFootsteps : MonoBehaviour {
 			}
 		}
 
-		if (currentlyStandingOn != FootstepSoundType.None) {
+		if (currentlyStandingOn != FootstepSound.None) {
 			PlayFootsteps();
 		}
 	}

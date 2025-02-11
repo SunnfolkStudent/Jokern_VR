@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
@@ -20,33 +21,69 @@ public class FMODController : MonoBehaviour {
 		// We may want to set this in Update()
 		//footstepSoundInstance.set3DAttributes(RuntimeUtils.To3DAttributes(cameraTransform.position));
 		//footstepSoundInstance.start();
+
+		var found = UnityEngine.Object.FindObjectsByType<JokernVRSounds>(FindObjectsSortMode.None);
+		if (found.Length == 0) {
+			Debug.LogError($"No '{nameof(JokernVRSounds)}' found, but we expect there to be one!");
+		} else {
+			if (found.Length > 1) {
+				Debug.LogError($"Too many '{nameof(JokernVRSounds)}'!");
+			}
+
+			jokernVRSounds = found[0];
+		}
 	}
 
+	JokernVRSounds jokernVRSounds;
+
+#if UNITY_EDITOR
 	// @Temp
-	public bool playThing;
-	public FootstepSoundType soundType;
+	[Space(10)]
+	public bool tempPlayFootstepSound;
+	public FootstepSound tempSoundType;
 	bool foot;
+
+	public bool tempPlaySoundFromPosition;
+	public JokernVRSound tempFromPosition_Sound;
+	public Transform     tempFromPosition_Position;
+#endif
+
 	void Update() {
-		if (playThing) {
-			playThing = false;
+#if UNITY_EDITOR
+		if (tempPlayFootstepSound) {
+			tempPlayFootstepSound = false;
 			foot = !foot;
-			PlayFootstepSound(soundType, foot);
+			PlayFootstepSound(tempSoundType, foot);
 		}
+
+		if (tempPlaySoundFromPosition) {
+			tempPlaySoundFromPosition = false;
+			PlaySoundFrom(tempFromPosition_Sound, tempFromPosition_Position.gameObject);
+		}
+#endif
 	}
 
-	public EventReference footstepSoundEvent;
-	public void PlayFootstepSound(FootstepSoundType sound, bool footstepIsOnRightFoot) {
-		if (sound == FootstepSoundType.None) return;
+	public void PlaySound(JokernVRSound sound) {
+		if (sound == JokernVRSound.None) return;
 
-		/*
-		if (!footstepSoundEvent.isOneShot) {
-			Debug.LogError("Footstep sound should be oneshot! We cant play multiple loopings, or both FMOD and Unity will die!");
-			return;
-		}
-		*/
+		var soundEvent = jokernVRSounds.GetSoundEvent(sound);
+		RuntimeManager.PlayOneShot(soundEvent);
+	}
+
+	public void PlaySoundFrom(JokernVRSound sound, GameObject obj) {
+		if (sound == JokernVRSound.None) return;
+
+		var soundEvent = jokernVRSounds.GetSoundEvent(sound);
+		RuntimeManager.PlayOneShotAttached(soundEvent, obj);
+	}
+
+	public void PlayFootstepSound(FootstepSound sound, bool footstepIsOnRightFoot) {
+		if (sound == FootstepSound.None) return;
 
 		RuntimeManager.StudioSystem.setParameterByName("FootstepDirection", footstepIsOnRightFoot ? 1.0f : 0.0f);
 		RuntimeManager.StudioSystem.setParameterByName("Footsteps", (float)sound);
+
+		var footstepSoundEvent = jokernVRSounds.GetSoundEvent(JokernVRSound.SFX_Walking);
 		RuntimeManager.PlayOneShot(footstepSoundEvent);
 	}
 }
