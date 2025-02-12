@@ -49,8 +49,8 @@ public class SceneController : MonoBehaviour {
 		Debug.LogError($"Try to load level {level}, but no such level exists. Please assign levels to the Levels field on the Scene Controller.");
 	}
 
-	public void LoadScene(int buildIndex) => SceneManager.LoadScene(buildIndex, LoadSceneMode.Additive);
-	public void LoadScene(string name)    => SceneManager.LoadScene(name,       LoadSceneMode.Additive);
+	public void LoadScene(int buildIndex) => SceneManager.LoadSceneAsync(buildIndex, LoadSceneMode.Additive);
+	public void LoadScene(string name)    => SceneManager.LoadSceneAsync(name,       LoadSceneMode.Additive);
 
 	void UnloadLevelScenes(int level) {
 		if (level < 0 || levels.Length <= level) {
