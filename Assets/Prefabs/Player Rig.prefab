@@ -398,6 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 37622711061892240}
   targetPos: {x: 0, y: 0, z: 0}
+  rotationMultipler: 0
   nonPhysicalHand: {fileID: 3897481226473416049}
   showNonPhysicalHandDistance: 0.05
   Haptic: {fileID: 1353043261887714118}
@@ -851,6 +852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 6661093416632469961}
   targetPos: {x: 0, y: 0, z: 0}
+  rotationMultipler: 0
   nonPhysicalHand: {fileID: 8327778336430906465}
   showNonPhysicalHandDistance: 0.05
   Haptic: {fileID: 4537105818730993445}
@@ -2425,8 +2427,6 @@ GameObject:
   - component: {fileID: 4226377630550828912}
   - component: {fileID: 2255212811235367996}
   - component: {fileID: 6327832103515550482}
-  - component: {fileID: 6413961417615804795}
-  - component: {fileID: 7215853401674213567}
   - component: {fileID: 4386332048182095601}
   - component: {fileID: 8493183863810928962}
   m_Layer: 0
@@ -2505,34 +2505,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &6413961417615804795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6615115498069881317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95dd81be82ff93f969bf356001d3070b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7215853401674213567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6615115498069881317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df19c55df924a5f43b9f1705198a8f98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerToMove: {fileID: 4226377630550828912}
-  playerMoveDirection: {fileID: 9160488171747788927}
-  moveForce: 10
-  friction: 0.85
 --- !u!114 &4386332048182095601
 MonoBehaviour:
   m_ObjectHideFlags: 0
