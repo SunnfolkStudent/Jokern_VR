@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dissolve
+  m_Shader: {fileID: -6465566751694194690, guid: b378d4cf56b14f14f8f1f7b68c758ff4, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _HologramTex:
+        m_Texture: {fileID: 2800000, guid: 4fcc64106c30f1b49a34f01c4951d4b3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ScanLinesTex:
+        m_Texture: {fileID: 2800000, guid: 4fcc64106c30f1b49a34f01c4951d4b3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_ce663398a0ae4c069ff954c25a15e6db_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 4fcc64106c30f1b49a34f01c4951d4b3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaClipThreshold: 0.368
+    - _CutoffHeight: 4.97
+    - _Dissolve: 1
+    - _DissolveSpeed: 0
+    - _EdgeMovementX: 1
+    - _EdgeMovementY: 1
+    - _EdgeSpeed: 0.041
+    - _EdgeSpeedX: 0.213
+    - _EdgeSpeedY: 0.361
+    - _EdgeWidth: 0.05
+    - _FresnelPower: 28.93
+    - _HorizontalDissolve: 0
+    - _InteriorSpread: 1.05
+    - _NoiseStrength: 0.68
+    - _NoiseX: 392.3
+    - _Opacity: 0.149
+    - _OutlinesThickness: 0.01
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _ScanLinesMovement: 1
+    - _ScanLinesSize: 2490.39
+    - _ScanLinesStrength: 0.232
+    - _ScanlinesStrength: 0.019
+    m_Colors:
+    - _Color: {r: 11.984315, g: 1.9705842, b: 0, a: 0}
+    - _EdgeColor: {r: 5.3403144, g: 0.3851852, b: 0, a: 1}
+    - _InteriorColor: {r: 0.5188679, g: 0.20314167, b: 0.50896275, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!114 &5455861299715000719
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9
