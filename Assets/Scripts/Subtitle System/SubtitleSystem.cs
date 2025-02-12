@@ -76,7 +76,7 @@ public class SubtitleSystem : MonoBehaviour {
 		if (0 <= subtitleIndex && subtitleIndex < voiceLines.Length) {
 			text = voiceLines[subtitleIndex].text;
 
-			//FMODController.PlayVoiceLine(voiceLines[subtitleIndex].voiceLine);
+			FMODController.PlayVoiceLine(voiceLines[subtitleIndex].soundPath);
 		} else {
 #if UNITY_EDITOR
 			text = $"(No subtitle has index {subtitleIndex})";

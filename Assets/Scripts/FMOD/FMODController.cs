@@ -56,4 +56,8 @@ public class FMODController : MonoBehaviour {
 		var footstepSoundEvent = JokernVRSounds.instance.GetSoundEvent(JokernVRSound.SFX_Walking);
 		RuntimeManager.PlayOneShot(footstepSoundEvent);
 	}
+
+	public static void PlayVoiceLine(string path) {
+		RuntimeManager.PlayOneShot(path);
+	}
 }
