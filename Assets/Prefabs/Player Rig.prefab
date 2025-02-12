@@ -2427,6 +2427,8 @@ GameObject:
   - component: {fileID: 6327832103515550482}
   - component: {fileID: 6413961417615804795}
   - component: {fileID: 7215853401674213567}
+  - component: {fileID: 4386332048182095601}
+  - component: {fileID: 8493183863810928962}
   m_Layer: 0
   m_Name: Player Rig
   m_TagString: Player
@@ -2531,7 +2533,34 @@ MonoBehaviour:
   playerMoveDirection: {fileID: 9160488171747788927}
   moveForce: 10
   friction: 0.85
-  isUsingStickMovement: 1
+--- !u!114 &4386332048182095601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6615115498069881317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95dd81be82ff93f969bf356001d3070b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8493183863810928962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6615115498069881317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df19c55df924a5f43b9f1705198a8f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerToMove: {fileID: 4226377630550828912}
+  playerMoveDirection: {fileID: 9160488171747788927}
+  moveForce: 10
+  friction: 0.85
 --- !u!1 &6813041470149397787
 GameObject:
   m_ObjectHideFlags: 0
