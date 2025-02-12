@@ -51,6 +51,10 @@ public class FlashlightMaster2 : MonoBehaviour
 
     private void Update()
     {
+        // Variables needed for Shake Logic
+        leftControllerAngularVelocity = gyroAngularVelocityInput.action.ReadValue<Vector3>();
+        shakeVelocity = leftControllerAngularVelocity;
+        
         if (isLightOn)
         {
             lightSource.enabled = true;
@@ -67,21 +71,18 @@ public class FlashlightMaster2 : MonoBehaviour
         {
             lightSource.intensity = Random.Range(0f, 7.5f);
         }
-        else if (lightTimer <= 0 && isLightOn)
+        if (lightTimer <= 0 && isLightOn)
         {
             isLightOn = false;
             lightSource.enabled = false;
-            UpdateInput();
         }
+        UpdateInput();
     }
 
     private void UpdateInput()
     {
         if (isLightOn == false)
         {
-            // Variables needed for Shake Logic
-            leftControllerAngularVelocity = gyroAngularVelocityInput.action.ReadValue<Vector3>();
-            shakeVelocity = leftControllerAngularVelocity;
             
             // Shake Logic
             // tl;dr checks for conditions of a shake within a buffer interval

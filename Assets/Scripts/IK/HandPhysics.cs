@@ -6,6 +6,7 @@ public class HandPhysics : MonoBehaviour
 {
     public Transform target;
     [SerializeField] private Vector3 targetPos;
+    [SerializeField] private float rotationMultipler;
     private Rigidbody rb;
 
     public Renderer nonPhysicalHand;
@@ -19,6 +20,7 @@ public class HandPhysics : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.maxAngularVelocity = Mathf.Infinity;
     }
 
     private void Update()
@@ -33,27 +35,23 @@ public class HandPhysics : MonoBehaviour
 
     private void FixedUpdate()
     {
-       // position
-       // targetPos = target.position;
-       rb.linearVelocity = (target.position - transform.position) / Time.fixedDeltaTime;
+        // position
+        // targetPos = target.position;
+        rb.linearVelocity = (target.position - transform.position) / Time.fixedDeltaTime;
        
-       // rotation
-       Quaternion rotationDifference = target.rotation * Quaternion.Inverse(transform.rotation);
-       rotationDifference.ToAngleAxis(out float angleInDegree, out Vector3 rotationAxis);
+        // rotation
+        Quaternion rotationDifference = target.rotation * Quaternion.Inverse(transform.rotation);
+        rotationDifference.ToAngleAxis(out float angleInDegree, out Vector3 rotationAxis);
+        // Ensure the shortest rotation path (ChatGPT)
+        if (angleInDegree > 180f)
+        {
+            angleInDegree -= 360f; // Flip to the shorter negative rotation
+        }
+        Vector3 rotationDifferenceInDegree = angleInDegree * rotationAxis;
+        rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
        
-       // Ensure the shortest rotation path (ChatGPT)
-       if (angleInDegree > 180f)
-       {
-           angleInDegree -= 360f; // Flip to the shorter negative rotation
-       }
-       
-       Vector3 rotationDifferenceInDegree = angleInDegree * rotationAxis;
-       
-       /*// rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime) * 5;*/
-       rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
-       // rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad);
     }
-    
+
     private void OnCollisionEnter(Collision collision)
     {
         // foreach (ContactPoint contact in collision.contacts)
@@ -65,7 +63,7 @@ public class HandPhysics : MonoBehaviour
         // Haptic.SendHapticImpulse(1, 1f);
         // Haptic.SendHapticImpulse(HapticAmplitude, HapticDuration, HapticFrequency);
         float intensity = Mathf.Clamp(collision.relativeVelocity.magnitude * HapticBooster, 0, 1);
-        Debug.Log("Intensity: " + intensity);
+        // Debug.Log("Intensity: " + intensity);
         Haptic.SendHapticImpulse(intensity, HapticDuration, HapticFrequency);
         // if (collision.relativeVelocity.magnitude > 2)
         // {
