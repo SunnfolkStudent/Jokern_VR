@@ -3227,13 +3227,13 @@ MonoBehaviour:
   lightTimer: 0
   lightIntensity: 0
   lightLifetime: 90
+  isLightOn: 1
   shakeBufferTime: 0.1
   shakeTimer: 0
   shakeIntensity: 10
   shakeAmount: 6
   shakeCounter: 0
-  shakeTurnThreshold: 0
-  DotProduct: 0
+  shakeTurnSensetivity: 0
   gyroVelocityInput:
     m_UseReference: 1
     m_Action:
@@ -3260,7 +3260,6 @@ MonoBehaviour:
     m_Reference: {fileID: 4613983532213687698, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   leftControllerVelocity: {x: 0, y: 0, z: 0}
   leftControllerAngularVelocity: {x: 0, y: 0, z: 0}
-  isLightOn: 1
 --- !u!108 &6073832206806457372
 Light:
   m_ObjectHideFlags: 0
