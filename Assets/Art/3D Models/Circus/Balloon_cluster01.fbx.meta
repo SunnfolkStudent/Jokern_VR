@@ -7,38 +7,43 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Balloon_green01
-    second: {fileID: 2100000, guid: 3f501b3ee950c7c44afbc44f53e7ef7e, type: 2}
+      name: Balloon_texture_green01
+    second: {fileID: 2100000, guid: 79d8d848b121149468291dd13c4daaa6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Balloon_red01
-    second: {fileID: 2100000, guid: 89e84aefaad92684abe501afcdb5e278, type: 2}
+      name: Balloon_texture_red01
+    second: {fileID: 2100000, guid: f7b1cdddda8f425499da47b36131856a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Balloon_yellow01
-    second: {fileID: 2100000, guid: df7e42d4241d39e4588433e88a2ff625, type: 2}
+      name: Balloon_texture_yellow01
+    second: {fileID: 2100000, guid: dc9dba849d19cb94c9ada07a8eed0033, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Thread_white01
     second: {fileID: 2100000, guid: 118a775cfd9e97c4b9f18cdacd825262, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Balloon_texture_green01
-    second: {fileID: 2800000, guid: c9c226c6e7407514181e3b7ce1afed17, type: 3}
+      name: TreeBarkTexture01
+    second: {fileID: 2100000, guid: 8214a23a3318e2f40a72c468dc44cb08, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TreeTexture01
+    second: {fileID: 2100000, guid: fcfa067169ad9354c873fbef271fb25e, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Balloon_texture_red01
-    second: {fileID: 2800000, guid: 37e5c8c17b43bdb44a54028ddef4fb02, type: 3}
+      name: Pine_Bark04
+    second: {fileID: 2800000, guid: 215e1f8348b59ff489f7940967acdd39, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: balloon texture yellow
-    second: {fileID: 2800000, guid: f5629ca6f6110f54c9bbce4aed173110, type: 3}
+      name: Pine_Branch04
+    second: {fileID: 2800000, guid: 898a04bc58ef69344a8949011370798c, type: 3}
   materials:
     materialImportMode: 2
     materialName: 2
