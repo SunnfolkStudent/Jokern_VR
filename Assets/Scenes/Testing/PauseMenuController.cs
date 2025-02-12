@@ -6,7 +6,8 @@ public class PauseMenuController : MonoBehaviour
 {
     public GameObject pauseMenu;
     public InputActionReference openMenuAction;
-
+    public Transform cameraTransform;
+    
     private void Awake()
     {
         openMenuAction.action.Enable();
@@ -22,6 +23,9 @@ public class PauseMenuController : MonoBehaviour
 
     private void ToggleMenu(InputAction.CallbackContext context)
     {
+        // TODO: For polish the menu can be made to open a bit lower
+        pauseMenu.transform.position = cameraTransform.position;
+        pauseMenu.transform.position += cameraTransform.forward * 2f;
         pauseMenu.SetActive(!pauseMenu.activeSelf);
     }
 
