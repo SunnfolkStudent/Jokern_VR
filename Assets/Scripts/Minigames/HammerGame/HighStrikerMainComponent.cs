@@ -11,6 +11,7 @@ public class HighStrikerMainComponent : MonoBehaviour
     public Vector3 groundBoxSize = new Vector3(1f,0.6f,1f);
     public LayerMask whatIsGround;
     public bool bellIsHit = false;
+    public GameObject obstacle;
 
     private void Start() //at this point i hope this makes sense GetComponent gets the component
     {
@@ -22,7 +23,11 @@ public class HighStrikerMainComponent : MonoBehaviour
     private void Update()
     {
         grounded = Physics.CheckSphere(groundCheck.position, 0.2f, whatIsGround); //checks if the weight thingy is on the ground
-        
+
+        if (bellIsHit == true)
+        {
+            obstacle.SetActive(false);
+        }
         if (grounded == false) return; //stops the rest of update from running if weight is not grounded
         
         
@@ -41,7 +46,5 @@ public class HighStrikerMainComponent : MonoBehaviour
             Debug.Log("letsa gooo you won bing bing bing");
             bellIsHit = true;
         }
-
-        
     }
 }
