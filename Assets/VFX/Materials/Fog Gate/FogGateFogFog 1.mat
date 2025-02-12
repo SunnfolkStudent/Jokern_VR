@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fog On Object
+  m_Name: FogGateFogFog 1
   m_Shader: {fileID: -6465566751694194690, guid: 93217ee711d5f2f488003c215b9f5b6d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -65,11 +65,11 @@ Material:
     m_Ints: []
     m_Floats:
     - Vector1_4EEA1A9E: 0.1
-    - Vector1_522DD793: 5.41
+    - Vector1_522DD793: 1
     - Vector1_5E73A52C: 122.9
     - Vector1_6098A7A7: 20.2
     - Vector1_6DD21BAC: 44
-    - Vector1_6F1EA0F8: 10
+    - Vector1_6F1EA0F8: 1
     - Vector1_705D9E76: 44
     - Vector1_82DE1604: 0.158
     - Vector1_A8E3BAE4: 1
@@ -85,6 +85,7 @@ Material:
     - _CastShadows: 1
     - _Cull: 1
     - _DstBlend: 10
+    - _FogGate: 1
     - _LoopStop: 0
     - _Multiplier: 0
     - _Noise2DPower: 0
@@ -99,12 +100,14 @@ Material:
     - _SrcBlend: 5
     - _Surface: 1
     - _Threshold: 0
+    - _Vertical: 0
     - _YtoSizeRation: 1
     - _ZTest: 8
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
     - Color_69AD1AD: {r: 0.6487184, g: 0.6671567, b: 0.6981132, a: 0}
+    - ObjectPosition: {r: 0, g: 0, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Shadow_Tint: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

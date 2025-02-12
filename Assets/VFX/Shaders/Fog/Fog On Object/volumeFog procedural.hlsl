@@ -134,7 +134,7 @@ void volumeFog_float(
     ) { 
     Fog = 0;
 
-    if ((Position.y < StartingHeight - OverallHeight && View.y >= 0) || (Position.y > StartingHeight && View.y <= 0)) {
+        if ((Position.y < StartingHeight - OverallHeight && View.y >= 0) || (Position.y > StartingHeight && View.y <= 0)) {
         return;
     }
 
