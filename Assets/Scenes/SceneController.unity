@@ -165,9 +165,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadOnStartup: []
   currentLevel: 0
-  levelScenes:
-  - {fileID: 102900000, guid: 4e9fef26e6adb88479ad1b9834a32d94, type: 3}
-  - {fileID: 102900000, guid: 55daccc09a3b69647bbab145b54a3ab3, type: 3}
+  levels:
+  - name: Testing 1
+    scenes:
+    - {fileID: 102900000, guid: 4e9fef26e6adb88479ad1b9834a32d94, type: 3}
+    - {fileID: 102900000, guid: ac7deef8ac03fcfb58e23f83d5af26d9, type: 3}
+    - {fileID: 102900000, guid: 39cae77c3f34c56ccb028603e2ac882f, type: 3}
+  - name: Testing 2
+    scenes:
+    - {fileID: 102900000, guid: 55daccc09a3b69647bbab145b54a3ab3, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
