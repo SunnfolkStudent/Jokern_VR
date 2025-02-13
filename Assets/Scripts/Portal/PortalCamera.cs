@@ -11,7 +11,13 @@ public class PortalCamera : MonoBehaviour
     private void Update()
     {
         Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
-        //transform.position = portal.position + playerOffsetFromPortal;
+        var newOffsetX = playerOffsetFromPortal.x;
+        var newOffsetY = playerOffsetFromPortal.y;
+        var newOffsetZ = playerOffsetFromPortal.z;
+        
+        //transform.position = new Vector3(newOffsetX, newOffsetY, newOffsetZ);
+        
+        transform.position = portal.position + playerOffsetFromPortal;
         
         float angularDifferenceBetweenPortalRotations = Quaternion.Angle(portal.rotation, otherPortal.rotation);
         
@@ -25,6 +31,6 @@ public class PortalCamera : MonoBehaviour
         
         Vector3 newCameraDirectionForRealThisTime = new Vector3(newCameraDirX, newCameraDirY, newCameraDirZ);
         
-        transform.rotation = Quaternion.LookRotation(newCameraDirectionForRealThisTime, Vector3.up);
+        //transform.rotation = Quaternion.LookRotation(newCameraDirectionForRealThisTime, Vector3.up);
     }
 }
