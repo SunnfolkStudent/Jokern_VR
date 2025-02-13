@@ -1,9 +1,14 @@
 using UnityEngine;
 
+public enum Axis {
+	X, Y, Z,
+}
+
 public class SlidingDoor : MonoBehaviour {
 	public bool  shouldBeOpen;
-	public float sizeToOpen = 1.0f;
-	public float moveSpeed = 10.0f;
+	public Axis slidingAxis;
+	public float sizeToOpen = 2.0f;
+	public float moveSpeed = 3.0f;
 
 	Vector3 leftOriginPosition;
 	Vector3 rightOriginPosition;
@@ -12,11 +17,13 @@ public class SlidingDoor : MonoBehaviour {
 	public Transform rightDoor;
 
 	void Start() {
-		leftOriginPosition  = leftDoor.position;
-		rightOriginPosition = rightDoor.position;
+		if (leftDoor  != null) leftOriginPosition  = leftDoor.position;
+		if (rightDoor != null) rightOriginPosition = rightDoor.position;
 	}
 
 	void MoveTowards(Transform toMove, Vector3 position) {
+		if (toMove == null) return;
+
 		var delta = position - toMove.position;
 
 		var maxDistanceToMove = moveSpeed * Time.deltaTime;
@@ -29,11 +36,11 @@ public class SlidingDoor : MonoBehaviour {
 
 	void Update() {
 		var leftTargetPosition = leftOriginPosition;
-		if (shouldBeOpen) leftTargetPosition.z  -= sizeToOpen * 0.5f;
+		if (shouldBeOpen) leftTargetPosition[(int)slidingAxis] -= sizeToOpen;
 		MoveTowards(leftDoor, leftTargetPosition);
 
 		var rightTargetPosition = rightOriginPosition;
-		if (shouldBeOpen) rightTargetPosition.z += sizeToOpen * 0.5f;
+		if (shouldBeOpen) rightTargetPosition[(int)slidingAxis] += sizeToOpen;
 		MoveTowards(rightDoor, rightTargetPosition);
 	}
 }

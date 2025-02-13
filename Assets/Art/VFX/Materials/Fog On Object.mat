@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4091668811457449054
+--- !u!114 &-1591879412700505587
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,14 +41,6 @@ Material:
         m_Texture: {fileID: 2800000, guid: c6df472464156ec4ba970094a2621292, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Noise2D:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Noise3D:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -64,53 +56,25 @@ Material:
     m_Ints: []
     m_Floats:
     - Vector1_4EEA1A9E: 0.1
-    - Vector1_522DD793: 5.41
-    - Vector1_5E73A52C: 122.9
-    - Vector1_6098A7A7: 20.2
-    - Vector1_6DD21BAC: 44
+    - Vector1_522DD793: 2.4
+    - Vector1_5E73A52C: 195.8
+    - Vector1_6098A7A7: 20
+    - Vector1_6DD21BAC: 53.8
     - Vector1_6F1EA0F8: 10
-    - Vector1_705D9E76: 44
+    - Vector1_705D9E76: 51.2
     - Vector1_82DE1604: 0.158
     - Vector1_A8E3BAE4: 1
-    - Vector1_AF6ECEBD: -0.5
-    - Vector1_B0641435: 102.9
-    - _AlphaClip: 1
-    - _AlphaToMask: 0
-    - _BUILTIN_QueueControl: -1
+    - Vector1_AF6ECEBD: -0.8
+    - Vector1_B0641435: 50
+    - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Blend: 0
-    - _BoundsFade: 1
-    - _BoundsFadeRange: 1
-    - _CastShadows: 1
-    - _Cull: 1
-    - _DstBlend: 10
-    - _FogGate: 0
-    - _LoopStop: 0
-    - _Multiplier: 0
-    - _Noise2DPower: 0
-    - _Noise2DScale: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Randomness: 5
-    - _Samples: 3
-    - _ShadowAdd: 0
-    - _ShadowMulti: 0
-    - _Size: 1
-    - _SrcBlend: 5
-    - _Surface: 1
-    - _Threshold: 0
-    - _YtoSizeRation: 1
-    - _ZTest: 8
-    - _ZWrite: 0
-    - _ZWriteControl: 0
     m_Colors:
-    - Color_69AD1AD: {r: 0.6487184, g: 0.6671567, b: 0.6981132, a: 1}
-    - ObjectPosition: {r: 0, g: 0, b: 0, a: 0}
-    - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _Shadow_Tint: {r: 0, g: 0, b: 0, a: 0}
+    - Color_69AD1AD: {r: 0.75471693, g: 0.75471693, b: 0.75471693, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &7855698779720517844
+--- !u!114 &8543249490207980871
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
