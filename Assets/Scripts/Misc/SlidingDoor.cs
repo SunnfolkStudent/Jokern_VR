@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public enum DoorSlidingAxis {
+public enum Axis {
 	X, Y, Z,
 }
 
 public class SlidingDoor : MonoBehaviour {
 	public bool  shouldBeOpen;
-	public DoorSlidingAxis slidingAxis;
+	public Axis slidingAxis;
 	public float sizeToOpen = 2.0f;
 	public float moveSpeed = 3.0f;
 
