@@ -1,82 +1,102 @@
+using System;
 using System.Collections;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.SceneManagement;
 using static AugustBase.All;
 
+[Serializable]
+public struct Level {
+	public string name;
+	public string[] scenes;
+}
+
 public class SceneController : MonoBehaviour {
-	// TODO: This may break on build since we are using something from UnityEditor.
 	[Tooltip("These scenes will get loaded additively.")]
-	public SceneAsset[] loadOnStartup;
+	public string[] loadOnStartup;
 
 	[Space(10)]
 	[Header("Levels")]
 	public int currentLevel;
-	public SceneAsset[] levelScenes;
+	public Level[] levels;
 
 	void Awake() {
 		for (int i = 0; i < loadOnStartup.Length; ++i) {
-			LoadScene(loadOnStartup[i].name);
+			LoadScene(loadOnStartup[i]);
 		}
 	}
 
 	void Start() {
-		if (SceneIsLoaded("BasicScene")) {
-			print("BasicScene is loaded!");
-		}
-
-		LoadLevel(0);
+		LoadLevel(currentLevel);
 	}
 
-	// @Temp TODO: remove this
-	public bool goToNextLevel;
+	int previousCurrentLevel;
 	void Update() {
-		if (goToNextLevel) {
-			LoadNextLevel();
-			goToNextLevel = false;
+		if (previousCurrentLevel != currentLevel) {
+			if (currentLevel < 0 || levels.Length <= currentLevel) {
+				LogNoSuchLevelExists(currentLevel);
+			} else {
+				UnloadLevelScenes(previousCurrentLevel);
+				LoadLevelScenes(currentLevel);
+
+				previousCurrentLevel = currentLevel;
+			}
 		}
 	}
 
 	void LogNoSuchLevelExists(int level) {
-		Debug.LogError($"Try to load level {level}, but no such level exists. Please assign levels to the Level Scenes field on the Scene Controller.");
+		Debug.LogError($"Try to load level {level}, but no such level exists. Please assign levels to the Levels field on the Scene Controller.");
 	}
 
-	public void LoadScene(int buildIndex) => SceneManager.LoadScene(buildIndex, LoadSceneMode.Additive);
-	public void LoadScene(string name)    => SceneManager.LoadScene(name,       LoadSceneMode.Additive);
+	public void LoadScene(int buildIndex) => SceneManager.LoadSceneAsync(buildIndex, LoadSceneMode.Additive);
+	public void LoadScene(string name)    => SceneManager.LoadSceneAsync(name,       LoadSceneMode.Additive);
+
+	void UnloadLevelScenes(int level) {
+		if (level < 0 || levels.Length <= level) {
+			LogNoSuchLevelExists(level);
+			return;
+		}
+
+		if (levels[level].scenes == null) return;
+
+		for (int i = 0; i < levels[level].scenes.Length; ++i) {
+			if (levels[level].scenes[i] != null) {
+				UnloadScene(levels[level].scenes[i]);
+			}
+		}
+	}
+
+	void LoadLevelScenes(int level) {
+		if (level < 0 || levels.Length <= level) {
+			LogNoSuchLevelExists(level);
+			return;
+		}
+
+		if (levels[level].scenes == null) return;
+
+		for (int i = 0; i < levels[level].scenes.Length; ++i) {
+			if (levels[level].scenes[i] != null) {
+				LoadScene(levels[level].scenes[i]);
+			}
+		}
+	}
 
 	public void LoadLevel(int level) {
-		if (level < levelScenes.Length) {
-			UnloadScene(levelScenes[currentLevel].name);
-			LoadSceneIfNotLoaded(levelScenes[level].name);
+		if (level < levels.Length) {
+			UnloadLevelScenes(currentLevel);
 			currentLevel = level;
+			LoadLevelScenes(currentLevel);
 		} else {
 			LogNoSuchLevelExists(level);
 		}
 	}
 
-	public void LoadNextLevel() {
-		currentLevel += 1;
-		if (currentLevel < levelScenes.Length) {
-			UnloadScene(levelScenes[currentLevel - 1].name);
-			LoadSceneIfNotLoaded(levelScenes[currentLevel].name);
-		} else {
-			LogNoSuchLevelExists(currentLevel);
-		}
-	}
-
-	public void LoadPreviousLevel() {
-		currentLevel -= 1;
-		if (currentLevel >= 0) {
-			UnloadScene(levelScenes[currentLevel + 1].name);
-			LoadSceneIfNotLoaded(levelScenes[currentLevel].name);
-		} else {
-			LogNoSuchLevelExists(currentLevel);
-		}
-	}
+	public void LoadNextLevel()     => currentLevel += 1;
+	public void LoadPreviousLevel() => currentLevel -= 1;
 
 	public bool SceneIsLoaded(int buildIndex) {
 		for (int i = 0; i < SceneManager.sceneCount; ++i) {
 			var scene = SceneManager.GetSceneAt(i);
+
 			if (scene.buildIndex < 0) {
 				Debug.LogError($"Scene '{scene.name}' is not in the build!");
 			} else if (scene.buildIndex == buildIndex) {
@@ -120,9 +140,9 @@ public class SceneController : MonoBehaviour {
 		return SceneManager.GetSceneByName(name).buildIndex;
 	}
 
-	public void ReloadAllScenes() {
+	public void RestartTheGame() {
 		// By reloading the scene controller as the only scene, we
-		// effectively reload everything since it is responsible for
+		// effectively restart everything since it is responsible for
 		// setting up all the other scenes.
 		SceneManager.LoadScene("SceneController", LoadSceneMode.Single);
 	}

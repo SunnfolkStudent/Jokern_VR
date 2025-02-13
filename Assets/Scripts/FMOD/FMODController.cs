@@ -52,6 +52,8 @@ public class FMODController : MonoBehaviour {
 					if (onVoiceLineEnd != null) {
 						onVoiceLineEnd.Invoke();
 					}
+
+					onVoiceLineEnd.RemoveAllListeners();
 				}
 			} else {
 				Debug.LogError($"FMOD is not ok! ({fmodStatus.ToString()})");
@@ -83,7 +85,7 @@ public class FMODController : MonoBehaviour {
 		RuntimeManager.PlayOneShot(footstepSoundEvent);
 	}
 
-	public static void PlayVoiceLine(string path) {
+	public static void PlayVoiceLineAudio(string path) {
 		RuntimeManager.StudioSystem.setParameterByName(parameterName_isPlayingVoiceLine, 1.0f);
 		RuntimeManager.PlayOneShot(path);
 		weThinkFMODIsPlayingAVoiceLine = true;

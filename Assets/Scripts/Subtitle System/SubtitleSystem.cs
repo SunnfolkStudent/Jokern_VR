@@ -8,8 +8,8 @@ public struct VoiceLine {
 }
 
 public class SubtitleSystem : MonoBehaviour {
-	public VoiceLine[] voiceLines;
-	public int subtitleIndex;
+	public static VoiceLine[] voiceLines;
+	public static int subtitleIndex;
 
 	SubtitleReceiver[] subtitleReceivers;
 	void FindSubtitleReceivers() {
@@ -76,7 +76,7 @@ public class SubtitleSystem : MonoBehaviour {
 		if (0 <= subtitleIndex && subtitleIndex < voiceLines.Length) {
 			text = voiceLines[subtitleIndex].text;
 
-			FMODController.PlayVoiceLine(voiceLines[subtitleIndex].soundPath);
+			FMODController.PlayVoiceLineAudio(voiceLines[subtitleIndex].soundPath);
 		} else {
 #if UNITY_EDITOR
 			text = $"(No subtitle has index {subtitleIndex})";
@@ -100,6 +100,19 @@ public class SubtitleSystem : MonoBehaviour {
 			TransmitSubtitles();
 			previousSubtitleIndex = subtitleIndex;
 		}
+	}
+
+	public static void PlayVoiceLine(string voiceLinePath) {
+		// Find the subtitle belonging to the voice line!
+		subtitleIndex = -1;
+		for (int i = 0; i < voiceLines.Length; ++i) {
+			if (voiceLines[i].soundPath == voiceLinePath) {
+				subtitleIndex = i;
+				break;
+			}
+		}
+
+		FMODController.PlayVoiceLineAudio(voiceLinePath);
 	}
 
 	public void NextDialogue() {
