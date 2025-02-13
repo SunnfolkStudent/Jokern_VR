@@ -21,12 +21,11 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fog On Object
-  m_Shader: {fileID: -6465566751694194690, guid: 93217ee711d5f2f488003c215b9f5b6d, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 8a96762f6ca4bd04ca17c9747f307fae, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -85,6 +84,7 @@ Material:
     - _CastShadows: 1
     - _Cull: 1
     - _DstBlend: 10
+    - _FogGate: 0
     - _LoopStop: 0
     - _Multiplier: 0
     - _Noise2DPower: 0
@@ -104,7 +104,8 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - Color_69AD1AD: {r: 0.6487184, g: 0.6671567, b: 0.6981132, a: 0}
+    - Color_69AD1AD: {r: 0.6487184, g: 0.6671567, b: 0.6981132, a: 1}
+    - ObjectPosition: {r: 0, g: 0, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Shadow_Tint: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
