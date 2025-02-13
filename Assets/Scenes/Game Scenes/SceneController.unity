@@ -164,15 +164,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadOnStartup:
-  - SubtitleSystem
   - PlayerXRRig
+  - SubtitleSystem
+  mainMenuScenes:
+  - MainMenu
   currentLevel: 0
   levels:
   - name: Intro
     scenes:
     - Intro_Events
-    - Intro_Lighting
     - Intro_Visuals
+    - Intro_Lighting
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
