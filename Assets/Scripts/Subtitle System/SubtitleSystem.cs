@@ -1,8 +1,14 @@
 using System;
 using UnityEngine;
 
+[Serializable]
+public struct VoiceLine {
+	public string text;
+	public string soundPath;
+}
+
 public class SubtitleSystem : MonoBehaviour {
-	public string[] subtitles;
+	public VoiceLine[] voiceLines;
 	public int subtitleIndex;
 
 	SubtitleReceiver[] subtitleReceivers;
@@ -10,35 +16,75 @@ public class SubtitleSystem : MonoBehaviour {
 		subtitleReceivers = UnityEngine.Object.FindObjectsByType<SubtitleReceiver>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 	}
 
+	bool LoadTextResourceAsLines(string name, out string[] result) {
+		TextAsset textAsset = Resources.Load<TextAsset>(name);
+		if (textAsset == null) {
+			Debug.LogError($"We expect a resource called '{name}' to exist, but there isn't one!");
+			result = default;
+			return false;
+		}
+
+		if (textAsset.text.Length == 0) {
+			Debug.LogWarning($"No text in resource '{name}'.");
+		}
+
+		result = textAsset.text.Split('\n');
+
+		return true;
+	}
+
 	public void ReloadSubtitlesFromDisk() {
-		const string allSubtitlesTextFileName = "AllSubtitles";
+		const string allSubtitlesTextFileName  = "AllSubtitles";
+		const string allVoiceLinesTextFileName = "AllVoiceLines";
 
-		TextAsset subtitlesTextAsset = Resources.Load<TextAsset>(allSubtitlesTextFileName);
-		if (subtitlesTextAsset == null) {
-			Debug.LogWarning($"We expect a resource called '{allSubtitlesTextFileName}' to exist, but there isn't one!");
+		string[] subtitlesAsLines, voiceLinesAsLines;
+		if (!LoadTextResourceAsLines(allSubtitlesTextFileName,  out subtitlesAsLines))  return;
+		if (!LoadTextResourceAsLines(allVoiceLinesTextFileName, out voiceLinesAsLines)) return;
+
+		if (subtitlesAsLines.Length != voiceLinesAsLines.Length) {
+			Debug.LogError($"The amount of lines in '{allSubtitlesTextFileName}' ({subtitlesAsLines.Length}) does not match the amount of lines in '{allVoiceLinesTextFileName}' ({voiceLinesAsLines.Length}). Remember that the lines in these file correspond to eachother.");
 			return;
 		}
 
-		if (subtitlesTextAsset.text.Length == 0) {
-			Debug.LogWarning($"No text in resource '{allSubtitlesTextFileName}'.");
-			return;
+		voiceLines = new VoiceLine[subtitlesAsLines.Length];
+
+		for (int i = 0; i < subtitlesAsLines.Length; ++i) {
+			voiceLines[i].text = subtitlesAsLines[i];
 		}
 
-		string[] splitSubtitles = subtitlesTextAsset.text.Split(new [] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries);
-		if (splitSubtitles == null || splitSubtitles.Length == 0) {
-			Debug.LogError($"Failed to split text from resource '{allSubtitlesTextFileName}'.");
-			return;
+		for (int i = 0; i < voiceLinesAsLines.Length; ++i) {
+			voiceLines[i].soundPath = voiceLinesAsLines[i];
 		}
-
-		subtitles = splitSubtitles;
 	}
 
 	void Start() {
 		FindSubtitleReceivers();
 		ReloadSubtitlesFromDisk();
+
+		// Set every receiver to empty.
+		if (subtitleReceivers != null) {
+			for (int i = 0; i < subtitleReceivers.Length; ++i) {
+				if (subtitleReceivers[i] != null) {
+					subtitleReceivers[i].ReceiveText("");
+				}
+			}
+		}
 	}
 
-	void TransmitSubtitle(string text) {
+	void TransmitSubtitles() {
+		string text;
+		if (0 <= subtitleIndex && subtitleIndex < voiceLines.Length) {
+			text = voiceLines[subtitleIndex].text;
+
+			FMODController.PlayVoiceLine(voiceLines[subtitleIndex].soundPath);
+		} else {
+#if UNITY_EDITOR
+			text = $"(No subtitle has index {subtitleIndex})";
+#else
+			text = "";
+#endif
+		}
+
 		if (subtitleReceivers != null) {
 			for (int i = 0; i < subtitleReceivers.Length; ++i) {
 				if (subtitleReceivers[i] != null) {
@@ -48,15 +94,15 @@ public class SubtitleSystem : MonoBehaviour {
 		}
 	}
 
+	int previousSubtitleIndex;
 	void Update() {
-		if (0 <= subtitleIndex && subtitleIndex < subtitles.Length) {
-			TransmitSubtitle(subtitles[subtitleIndex]);
-		} else {
-			TransmitSubtitle("");
+		if (previousSubtitleIndex != subtitleIndex) {
+			TransmitSubtitles();
+			previousSubtitleIndex = subtitleIndex;
 		}
 	}
 
 	public void NextDialogue() {
-		if (subtitleIndex + 1 < subtitles.Length) subtitleIndex += 1;
+		if (subtitleIndex + 1 < voiceLines.Length) subtitleIndex += 1;
 	}
 }
