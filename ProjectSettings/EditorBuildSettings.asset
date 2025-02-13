@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Testing/FullRigMerge.unity
-    guid: e1d1357f87fec984cb6e0bdf0bb98665
+    path: Assets/Scenes/Game Scenes/SceneController.unity
+    guid: 27efb146922c60fef91619ef81aab695
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/SubtitleSystem.unity
+    guid: 2387d2583d7752748968564064e3cda5
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/1_Intro/Intro_Events.unity
+    guid: a2617aebff3e3924da8190491aef90c4
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/1_Intro/Intro_Lighting.unity
+    guid: 173389684879eb042a61d5a5fc202d9b
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/1_Intro/Intro_Visuals.unity
+    guid: 96595b718242a1b4f984669399e749d3
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
