@@ -37,7 +37,7 @@ public class FMODController : MonoBehaviour {
 	const string parameterName_isPlayingVoiceLine = "IsPlayingVoiceLine";
 	static bool weThinkFMODIsPlayingAVoiceLine;
 
-	public static UnityEvent onVoiceLineEnd;
+	public static UnityEvent onVoiceLineEnd = new();
 
 	void FixedUpdate() {
 		if (weThinkFMODIsPlayingAVoiceLine) {
