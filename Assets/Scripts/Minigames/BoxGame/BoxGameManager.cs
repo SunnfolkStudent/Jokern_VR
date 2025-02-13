@@ -6,24 +6,12 @@ public class BoxGameManager : MonoBehaviour
     public static bool ResetMinigameBox = false;
     public BoxDetector[] boxes;
     public BallDetector[] balls;
+    public GameObject obstacle;
     public float BoxesKnocked = 0;
     public float BallsUsed = 0;
 
     private void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame) //temporary test method to see if anythings borked
-        {
-            for (int i = 0; i < boxes.Length; i++)
-            {
-                boxes[i].ResetTransform();
-            }
-
-            for (int i = 0; i < balls.Length; i++)
-            {
-                balls[i].ResetTransform();
-            }
-        }
-
         if (BoxesKnocked < 5 && BallsUsed == 3) //the reset method checks if all 5 boxes have been knocked down and if all your balls have been used
         {
             for (int i = 0; i < boxes.Length; i++) //resets the boxes transform so you can try again
@@ -38,6 +26,11 @@ public class BoxGameManager : MonoBehaviour
                 balls[i].ResetTransform(); //sends a command to the ballDetector to invoke the ResetTransform method
                 BallsUsed = 0; //sets the amount of balls used to 0
             }
+        }
+
+        if (BoxesKnocked == 5 && BallsUsed < 3)
+        {
+            obstacle.SetActive(false);
         }
         
         for (int i = 0; i < boxes.Length; i++) //again a for method that checks the array of boxes
