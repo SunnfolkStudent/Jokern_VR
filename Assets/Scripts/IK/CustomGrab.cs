@@ -42,7 +42,8 @@ public class CustomGrab : MonoBehaviour
     private void Start()
     { 
         grabZone = GetComponent<SphereCollider>();
-        gripButton = grabInputAction.action; 
+        gripButton = grabInputAction.action;
+        if (Haptic == null){ Haptic = GetComponent<HapticImpulsePlayer>(); }
     }
 
     private void Update()
@@ -87,17 +88,18 @@ public class CustomGrab : MonoBehaviour
             {
                 if (hit.GetComponent<CustomGrabbable>())
                 {
-                    Haptic.SendHapticImpulse(0.1f, 0.1f);
-                    print("Grabbed something grabbable");
+                    Haptic.SendHapticImpulse(0.2f, 0.1f);
+                    // print("Grabbed something grabbable");
                     holdingSomething = true;
                     heldTransform = hit.transform;
                     heldRigidbody = hit.GetComponent<Rigidbody>();
                     heldRenderer = hit.GetComponentInChildren<Renderer>();
                     // heldRenderer = hit.GetComponent<Renderer>();
                     heldSize = heldRenderer.bounds.size; // World space size
+                    heldRigidbody.maxAngularVelocity = float.MaxValue;
                     
                     heldLayer = heldTransform.gameObject.layer;
-                    int handLayer = this.gameObject.layer;
+                    int handLayer = LayerMask.NameToLayer("Right Hand Physics");
                     heldTransform.gameObject.layer = handLayer;
                     
                     // heldTarget = transform.forward * heldSize.x/3 + transform.right * -heldSize.z/3;
