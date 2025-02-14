@@ -113,10 +113,12 @@ public class FMODController : MonoBehaviour {
 	public static float GetVolume(VolumeSlider slider) {
 		float volume = 0.0f;
 		var parameterName = GetVolumeSliderParameterName(slider);
+		if (parameterName == "") return volume;
+
 		var fmodStatus = RuntimeManager.StudioSystem.getParameterByName(parameterName, out volume);
 
 		if (fmodStatus != FMOD.RESULT.OK) {
-			Debug.LogError($"FMOD is not ok! ({fmodStatus.ToString()})");
+			Debug.LogError($"FMOD is not ok! ({fmodStatus.ToString()}, trying to get parameter '{parameterName}')");
 		}
 
 		return volume;
@@ -124,10 +126,12 @@ public class FMODController : MonoBehaviour {
 
 	public static void SetVolume(VolumeSlider slider, float volume) {
 		var parameterName = GetVolumeSliderParameterName(slider);
+		if (parameterName == "") return;
+
 		var fmodStatus = RuntimeManager.StudioSystem.setParameterByName(parameterName, volume);
 
 		if (fmodStatus != FMOD.RESULT.OK) {
-			Debug.LogError($"FMOD is not ok! ({fmodStatus.ToString()})");
+			Debug.LogError($"FMOD is not ok! ({fmodStatus.ToString()}, trying to get parameter '{parameterName}')");
 		}
 	}
 }
