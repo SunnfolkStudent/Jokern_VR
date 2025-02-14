@@ -13218,7 +13218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2046629159}
-  - component: {fileID: 2046629161}
+  - component: {fileID: 2046629160}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -13245,7 +13245,7 @@ Transform:
   - {fileID: 521959339}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2046629161
+--- !u!114 &2046629160
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13254,9 +13254,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2046629158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcead0a35ec891b478cad53a94b03c4d, type: 3}
+  m_Script: {fileID: 11500000, guid: a5cfafc3aa1cff747bba396db7d962e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Move: {fileID: 0}
+  Teleport: {fileID: 0}
 --- !u!1 &2064529225
 GameObject:
   m_ObjectHideFlags: 0
@@ -16070,6 +16072,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3423763823916312644, guid: 6fadad99dda90124287fa9e0dfbc6485, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3423763824205091793, guid: 6fadad99dda90124287fa9e0dfbc6485, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -16082,10 +16088,22 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3423763824484015360, guid: 6fadad99dda90124287fa9e0dfbc6485, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5399588904392395467, guid: 6fadad99dda90124287fa9e0dfbc6485, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2046629161}
+      objectReference: {fileID: 2046629160}
+    - target: {fileID: 5399588904392395467, guid: 6fadad99dda90124287fa9e0dfbc6485, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MovementBool
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399588904392395467, guid: 6fadad99dda90124287fa9e0dfbc6485, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MovementBoolScript1, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5772289829794504253, guid: 6fadad99dda90124287fa9e0dfbc6485, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5547

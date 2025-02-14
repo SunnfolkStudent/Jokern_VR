@@ -39,6 +39,8 @@ public class PlayerMovement : MonoBehaviour {
 			  (playerMoveDirectionWithoutPitch.transform.right   * inputDirection.x)
 			+ (playerMoveDirectionWithoutPitch.transform.forward * inputDirection.y)
 		));
+		
+		// HERE: velocity += gravity * deltatime
 
 		playerToMove.position += deltaTime * velocity;
 	}
@@ -65,3 +67,9 @@ public class PlayerMovement : MonoBehaviour {
 		velocity *= friction;
 	}
 }
+
+/*
+ * 1. Make the player fall
+ * 2. Make the player collide with the ground. The XR rig may have a collider or something already, so just use that. If not, make one.
+ * 3. Snakk med August
+ */
