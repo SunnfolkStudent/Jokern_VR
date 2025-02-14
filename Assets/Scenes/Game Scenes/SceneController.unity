@@ -163,11 +163,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dfd095345e90e692ad93b34e2a88e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadOnStartup: []
+  loadOnStartup:
+  - PlayerXRRig
+  - SubtitleSystem
+  - FMOD
+  mainMenuScenes:
+  - MainMenu
   currentLevel: 0
-  levelScenes:
-  - {fileID: 102900000, guid: 4e9fef26e6adb88479ad1b9834a32d94, type: 3}
-  - {fileID: 102900000, guid: 55daccc09a3b69647bbab145b54a3ab3, type: 3}
+  levels:
+  - name: Intro
+    scenes:
+    - Intro_Events
+    - Intro_Visuals
+    - Intro_Lighting
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

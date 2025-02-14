@@ -402,7 +402,6 @@ MonoBehaviour:
   nonPhysicalHand: {fileID: 3897481226473416049}
   showNonPhysicalHandDistance: 0.05
   Haptic: {fileID: 1353043261887714118}
-  HapticAmplitude: 1
   HapticDuration: 1
   HapticFrequency: 30
   HapticBooster: 0
@@ -856,7 +855,6 @@ MonoBehaviour:
   nonPhysicalHand: {fileID: 8327778336430906465}
   showNonPhysicalHandDistance: 0.05
   Haptic: {fileID: 4537105818730993445}
-  HapticAmplitude: 1
   HapticDuration: 1
   HapticFrequency: 0
   HapticBooster: 0
@@ -1282,6 +1280,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8976719543596009318}
   - {fileID: 5893265002729203585}
   - {fileID: 6742043086076764004}
   m_Father: {fileID: 921871647548057718}
@@ -2007,7 +2006,7 @@ CharacterController:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
@@ -2516,7 +2515,6 @@ Transform:
   - {fileID: 1977540520836333671}
   - {fileID: 2043760825532949254}
   - {fileID: 5372735692859129057}
-  - {fileID: 8976719543596009318}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4386332048182095601
@@ -3251,7 +3249,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4226377630550828912}
+    m_TransformParent: {fileID: 9160488171747788927}
     m_Modifications:
     - target: {fileID: 6659269369550914496, guid: cabc9b5dd82067f44b766d4ab97cffde, type: 3}
       propertyPath: m_Name
@@ -3263,7 +3261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7554088257256395301, guid: cabc9b5dd82067f44b766d4ab97cffde, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.06143999
       objectReference: {fileID: 0}
     - target: {fileID: 7554088257256395301, guid: cabc9b5dd82067f44b766d4ab97cffde, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4149,6 +4147,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1977540520836333671}
     m_Modifications:
+    - target: {fileID: 662609468316520130, guid: cd19fc07e5829d54fb77f27f5d0b522e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3256633098432824046, guid: cd19fc07e5829d54fb77f27f5d0b522e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

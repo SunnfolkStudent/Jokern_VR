@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum FootstepSoundType {
+public enum FootstepSound {
 	None,
 	Asfalt,
 	Sti,
@@ -18,7 +18,7 @@ public enum FootstepSoundType {
 [Serializable]
 public class TextureToFootstepSound {
 	public Texture texture;
-	public FootstepSoundType soundType;
+	public FootstepSound soundType;
 }
 
 public class PlayerFootsteps : MonoBehaviour {
@@ -27,7 +27,7 @@ public class PlayerFootsteps : MonoBehaviour {
 
 	public TextureToFootstepSound[] textureToFootstepSounds;
 
-	public FootstepSoundType currentlyStandingOn;
+	public FootstepSound currentlyStandingOn;
 
 	void SetFootstepSoundBasedOnMaterial(Material material) {
 		if (material == null) return;
@@ -41,16 +41,26 @@ public class PlayerFootsteps : MonoBehaviour {
 			if (item.texture.name == null) continue;
 
 			if (item.texture.name == texture.name) {
-				//print($"BINGO! Playing sound for texture '{texture.name}'.");
-
 				currentlyStandingOn = item.soundType;
-				//SetFMODParameter("Eg. FootstepsSoundType", item.soundType);
 			}
 		}
 	}
 
+	public float footStepInterval = 0.65f;
+	float lastFootstepWasAt;
+	bool  footstepIsOnRightFoot;
+
+	void PlayFootsteps() {
+		if (lastFootstepWasAt + footStepInterval < Time.time) {
+			lastFootstepWasAt = Time.time;
+			footstepIsOnRightFoot = !footstepIsOnRightFoot;
+
+			FMODController.PlayFootstepSound(currentlyStandingOn, footstepIsOnRightFoot);
+		}
+	}
+
 	void Update() {
-		currentlyStandingOn = FootstepSoundType.None;
+		currentlyStandingOn = FootstepSound.None;
 
 		RaycastHit hit;
 		if (Physics.Raycast(transform.position + relativeRaycastFrom, Vector3.down, out hit, groundMask)) {
@@ -62,6 +72,10 @@ public class PlayerFootsteps : MonoBehaviour {
 					SetFootstepSoundBasedOnMaterial(renderer.sharedMaterial);
 				}
 			}
+		}
+
+		if (currentlyStandingOn != FootstepSound.None) {
+			PlayFootsteps();
 		}
 	}
 }
