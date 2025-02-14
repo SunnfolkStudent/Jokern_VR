@@ -1,29 +1,38 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
 
 [RequireComponent(typeof(XRInputActions))]
 public class PlayerMovement : MonoBehaviour {
-	public Transform playerToMove;
+	public Transform playerTransform;
 	[Tooltip("The direction that the player should move. Likely to be the transform of the camera.")]
 	public Transform playerMoveDirection;
+	public CharacterController playerCharacterController;
 
 	XRInputActions input;
 	TeleportationProvider playerTeleportController;
 	const string playerTeleportControllerTag = "Player Teleport Controller";
+	
 
     void Start() {
-		if (playerToMove == null) {
+		if (playerTransform == null) {
 			Debug.LogError("No player assigned to the 'Player To Move' field.");
 		}
 
 		input = GetComponent<XRInputActions>();
 		playerMoveDirectionWithoutPitch = new("Player Move Direction Holder");
-		playerTeleportController = GameObject.FindWithTag(playerTeleportControllerTag).GetComponent<TeleportationProvider>();
+		var playerTeleportControllerGameObject = GameObject.FindWithTag(playerTeleportControllerTag);
+		if (playerTeleportControllerGameObject == null) {
+			Debug.LogError($"Could not find an object with the '{playerTeleportControllerTag}' tag.");
+		}else {
+			playerTeleportController = playerTeleportControllerGameObject.GetComponent<TeleportationProvider>();
+		}
     }
 
 	Vector3 velocity;
 	public float moveForce = 10.0f;
 	public float friction = 0.85f;
+	public float gravity = 10.0f;
 
 	GameObject playerMoveDirectionWithoutPitch;
 
@@ -39,17 +48,24 @@ public class PlayerMovement : MonoBehaviour {
 			  (playerMoveDirectionWithoutPitch.transform.right   * inputDirection.x)
 			+ (playerMoveDirectionWithoutPitch.transform.forward * inputDirection.y)
 		));
-		
-		// HERE: velocity += gravity * deltatime
 
-		playerToMove.position += deltaTime * velocity;
+		if (playerCharacterController.isGrounded) {
+			velocity.y = 0.0f;
+		} else {
+			velocity.y -= gravity * Time.deltaTime;
+		}
+
+		playerCharacterController.Move(deltaTime * velocity);
 	}
 
 	bool previousIsUsingStickMovement;
 	void Update() {
 		if (previousIsUsingStickMovement != isUsingStickMovement) {
-			playerTeleportController.ForceTeleport(playerToMove.position);
-			playerTeleportController.enabled = !isUsingStickMovement;
+			if (playerTeleportController != null) {
+				playerTeleportController.ForceTeleport(playerTransform.position);
+				playerTeleportController.enabled = !isUsingStickMovement;
+			}
+			
 			previousIsUsingStickMovement = isUsingStickMovement;
 		}
 
@@ -59,17 +75,11 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	public static bool isUsingStickMovement = true;
-	public void SwitchToStickMovement() => isUsingStickMovement = true;
-	public void SwitchToTeleportation() => isUsingStickMovement = false;
+	public static void SwitchToStickMovement() => isUsingStickMovement = true;
+	public static void SwitchToTeleportation() => isUsingStickMovement = false;
 
 	void FixedUpdate() {
-		// This also includes the Y.
-		velocity *= friction;
+		velocity.x *= friction;
+		velocity.z *= friction;
 	}
 }
-
-/*
- * 1. Make the player fall
- * 2. Make the player collide with the ground. The XR rig may have a collider or something already, so just use that. If not, make one.
- * 3. Snakk med August
- */
