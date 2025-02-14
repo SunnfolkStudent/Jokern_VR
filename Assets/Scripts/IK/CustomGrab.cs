@@ -65,20 +65,16 @@ public class CustomGrab : MonoBehaviour
             gyroVel = gyroVelocityInput.action.ReadValue<Vector3>();
             gyroAngVel = gyroAngularVelocityInput.action.ReadValue<Vector3>();
             heldTarget = transform.position + transform.forward * heldSize.x/3 + transform.right * -heldSize.z/3;
-            
+
+
             //      position        //
             heldRigidbody.linearVelocity = (heldTarget - heldTransform.position) / Time.fixedDeltaTime;
             
             //      rotation       // 
             Quaternion rotationDifference = transform.rotation * Quaternion.Inverse(heldTransform.rotation);
             rotationDifference.ToAngleAxis(out float angleInDegree, out Vector3 rotationAxis);
-       
-            // Ensure the shortest rotation path (ChatGPT)
-            if (angleInDegree > 180f)
-            { angleInDegree -= 360f; } // Flip to the shorter negative rotation 
-
+            if (angleInDegree > 180f) { angleInDegree -= 360f; } // Ensure the shortest rotation path (ChatGPT)
             Vector3 rotationDifferenceInDegree = angleInDegree * rotationAxis;
-       
             heldRigidbody.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
         }
     }
@@ -101,8 +97,14 @@ public class CustomGrab : MonoBehaviour
                     heldSize = heldRenderer.bounds.size; // World space size
                     
                     heldLayer = heldTransform.gameObject.layer;
-                    int handLayer = LayerMask.NameToLayer("Right Hand Physics");
+                    int handLayer = this.gameObject.layer;
                     heldTransform.gameObject.layer = handLayer;
+                    
+                    // heldTarget = transform.forward * heldSize.x/3 + transform.right * -heldSize.z/3;
+                    // heldTransform.parent = transform;
+                    // heldRigidbody.useGravity = false;
+                    // heldTransform.position = heldTarget;
+                    // heldTransform.rotation = transform.rotation;
                 }
             }
         }
@@ -110,6 +112,7 @@ public class CustomGrab : MonoBehaviour
         {
             if (holdingSomething)
             {
+                heldRigidbody.useGravity = true;
                 heldRigidbody.linearVelocity = gyroVel * throwForce;
                 heldTransform.gameObject.layer = heldLayer;
             }

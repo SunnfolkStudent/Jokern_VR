@@ -676,7 +676,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  Haptic: {fileID: 0}
+  Haptic: {fileID: 4537105818730993445}
 --- !u!135 &7516169761887339902
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1129,7 +1129,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  Haptic: {fileID: 0}
+  Haptic: {fileID: 1353043261887714118}
 --- !u!135 &8356603470868053789
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2541,10 +2541,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df19c55df924a5f43b9f1705198a8f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerToMove: {fileID: 4226377630550828912}
+  playerTransform: {fileID: 0}
   playerMoveDirection: {fileID: 9160488171747788927}
+  playerCharacterController: {fileID: 0}
   moveForce: 10
   friction: 0.85
+  gravity: 10
 --- !u!114 &7339490157997995553
 MonoBehaviour:
   m_ObjectHideFlags: 0
