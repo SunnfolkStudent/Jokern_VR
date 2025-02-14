@@ -1,3 +1,4 @@
+#if false
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -81,3 +82,4 @@ public class FlashlightMaster : MonoBehaviour
 //TODO: When lifetime is at 90 (100%), re-enable light and continue battery loop
 
 #endregion
+#endif
