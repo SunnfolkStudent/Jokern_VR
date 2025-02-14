@@ -13,7 +13,7 @@ public class HandPhysics : MonoBehaviour
     public float showNonPhysicalHandDistance = 0.05f;
 
     [SerializeField] private HapticImpulsePlayer Haptic;
-    [SerializeField] private float HapticAmplitude = 1;
+    //[SerializeField] private float HapticAmplitude = 1;
     [SerializeField] private float HapticDuration = 0.1f;
     [SerializeField] private float HapticFrequency = 0;
     [SerializeField] private float HapticBooster = 0;
