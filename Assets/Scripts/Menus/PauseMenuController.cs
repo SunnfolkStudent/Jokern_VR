@@ -7,7 +7,6 @@ public class PauseMenuController : MonoBehaviour
     public GameObject pauseMenu;
     public InputActionReference openMenuAction;
     public Transform cameraTransform;
-    
     private void Awake()
     {
         openMenuAction.action.Enable();
