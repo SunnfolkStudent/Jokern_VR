@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class IFVoiceEvent1 : MonoBehaviour {
+public class VoiceEventReactOnEnd : MonoBehaviour {
 	public string voiceLinePath;
+	public bool playOnStart;
 
 	[Space(10)]
 	public UnityEvent onVoiceLineEnd;
@@ -14,7 +15,7 @@ public class IFVoiceEvent1 : MonoBehaviour {
 	}
 
 	void Start() {
-		Play();
+		if (playOnStart) Play();
 	}
 
 	public void Play() {

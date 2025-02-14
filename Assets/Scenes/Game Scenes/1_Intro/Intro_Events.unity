@@ -214,6 +214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42cdc34f6cb0d4b98ebc9047d3995ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyTriggerEnterOnce: 1
+  onlyTriggerExitOnce: 0
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
@@ -348,6 +350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42cdc34f6cb0d4b98ebc9047d3995ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyTriggerEnterOnce: 1
+  onlyTriggerExitOnce: 0
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
@@ -435,6 +439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42cdc34f6cb0d4b98ebc9047d3995ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyTriggerEnterOnce: 1
+  onlyTriggerExitOnce: 0
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
@@ -501,6 +507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42cdc34f6cb0d4b98ebc9047d3995ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyTriggerEnterOnce: 1
+  onlyTriggerExitOnce: 0
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
@@ -603,6 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   voiceLinePath: vo_intro_player_musing_01
+  playOnStart: 1
   onVoiceLineEnd:
     m_PersistentCalls:
       m_Calls:
@@ -622,10 +631,10 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 519014102}
   - {fileID: 1923277694}
   - {fileID: 1078062217}
   - {fileID: 1516321625}
   - {fileID: 1289890720}
   - {fileID: 1311043184}
   - {fileID: 1077105554}
-  - {fileID: 519014102}

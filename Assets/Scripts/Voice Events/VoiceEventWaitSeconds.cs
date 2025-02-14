@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class IFVoiceEvent2 : MonoBehaviour {
+public class VoiceEventWaitSeconds : MonoBehaviour {
 	public string voiceLinePath;
 	public float  minSecondsToWait;
 	public float  maxSecondsToWait;
