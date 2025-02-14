@@ -17,6 +17,7 @@ public class FMODController : MonoBehaviour {
 
 		alreadyExists = true;
 	}
+
 	void Start() {
 		if (playOnStartup != null) {
 			for (int i = 0; i < playOnStartup.Length; ++i) {
@@ -90,4 +91,52 @@ public class FMODController : MonoBehaviour {
 		RuntimeManager.PlayOneShot(path);
 		weThinkFMODIsPlayingAVoiceLine = true;
 	}
+
+	static string GetVolumeSliderParameterName(VolumeSlider slider) {
+		switch (slider) {
+			case VolumeSlider.Master:       return "Master Volume";
+			case VolumeSlider.Music:        return "MX Volume";
+			case VolumeSlider.SoundEffects: return "SFX Volume";
+			case VolumeSlider.Ambience:     return "AMB Volume";
+			case VolumeSlider.VoiceLines:   return "VO Volume";
+
+			case VolumeSlider.None: {
+				Debug.LogError("Trying to get the parameter name of a none-slider!");
+				return "";
+			};
+		}
+
+		Debug.LogError("Trying to get the parameter name that does not exist!");
+		return "";
+	}
+
+	public static float GetVolume(VolumeSlider slider) {
+		float volume = 0.0f;
+		var parameterName = GetVolumeSliderParameterName(slider);
+		var fmodStatus = RuntimeManager.StudioSystem.getParameterByName(parameterName, out volume);
+
+		if (fmodStatus != FMOD.RESULT.OK) {
+			Debug.LogError($"FMOD is not ok! ({fmodStatus.ToString()})");
+		}
+
+		return volume;
+	}
+
+	public static void SetVolume(VolumeSlider slider, float volume) {
+		var parameterName = GetVolumeSliderParameterName(slider);
+		var fmodStatus = RuntimeManager.StudioSystem.setParameterByName(parameterName, volume);
+
+		if (fmodStatus != FMOD.RESULT.OK) {
+			Debug.LogError($"FMOD is not ok! ({fmodStatus.ToString()})");
+		}
+	}
+}
+
+public enum VolumeSlider {
+	None,
+	Master,
+	Music,
+	SoundEffects,
+	Ambience,
+	VoiceLines
 }
