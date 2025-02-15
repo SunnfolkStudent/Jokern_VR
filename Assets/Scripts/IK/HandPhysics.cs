@@ -13,10 +13,11 @@ public class HandPhysics : MonoBehaviour
     public float showNonPhysicalHandDistance = 0.05f;
 
     [SerializeField] private HapticImpulsePlayer Haptic;
-    [SerializeField] private float HapticAmplitude = 1;
+    //[SerializeField] private float HapticAmplitude = 1;
     [SerializeField] private float HapticDuration = 0.1f;
     [SerializeField] private float HapticFrequency = 0;
     [SerializeField] private float HapticBooster = 0;
+    [SerializeField] private float HapticThreshold = 2f;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -54,6 +55,7 @@ public class HandPhysics : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Collided with: " + collision.gameObject.name);
         // foreach (ContactPoint contact in collision.contacts)
         // {
         //     Debug.DrawRay(contact.point, contact.normal, Color.white);
@@ -63,8 +65,12 @@ public class HandPhysics : MonoBehaviour
         // Haptic.SendHapticImpulse(1, 1f);
         // Haptic.SendHapticImpulse(HapticAmplitude, HapticDuration, HapticFrequency);
         float intensity = Mathf.Clamp(collision.relativeVelocity.magnitude * HapticBooster, 0, 1);
-        // Debug.Log("Intensity: " + intensity);
-        Haptic.SendHapticImpulse(intensity, HapticDuration, HapticFrequency);
+        // Debug.Log("Pure Intensity: " + collision.relativeVelocity.magnitude * HapticBooster + " / " + intensity);
+        // Debug.Log("Collision speed: " + collision.relativeVelocity.magnitude);
+        if (collision.relativeVelocity.magnitude > HapticThreshold)
+        {
+            Haptic.SendHapticImpulse(intensity, HapticDuration, HapticFrequency);
+        }
         // if (collision.relativeVelocity.magnitude > 2)
         // {
         // }

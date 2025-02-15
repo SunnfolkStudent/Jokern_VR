@@ -42,7 +42,8 @@ public class CustomGrab : MonoBehaviour
     private void Start()
     { 
         grabZone = GetComponent<SphereCollider>();
-        gripButton = grabInputAction.action; 
+        gripButton = grabInputAction.action;
+        if (Haptic == null){ Haptic = GetComponent<HapticImpulsePlayer>(); }
     }
 
     private void Update()
@@ -65,20 +66,16 @@ public class CustomGrab : MonoBehaviour
             gyroVel = gyroVelocityInput.action.ReadValue<Vector3>();
             gyroAngVel = gyroAngularVelocityInput.action.ReadValue<Vector3>();
             heldTarget = transform.position + transform.forward * heldSize.x/3 + transform.right * -heldSize.z/3;
-            
+
+
             //      position        //
             heldRigidbody.linearVelocity = (heldTarget - heldTransform.position) / Time.fixedDeltaTime;
             
             //      rotation       // 
             Quaternion rotationDifference = transform.rotation * Quaternion.Inverse(heldTransform.rotation);
             rotationDifference.ToAngleAxis(out float angleInDegree, out Vector3 rotationAxis);
-       
-            // Ensure the shortest rotation path (ChatGPT)
-            if (angleInDegree > 180f)
-            { angleInDegree -= 360f; } // Flip to the shorter negative rotation 
-
+            if (angleInDegree > 180f) { angleInDegree -= 360f; } // Ensure the shortest rotation path (ChatGPT)
             Vector3 rotationDifferenceInDegree = angleInDegree * rotationAxis;
-       
             heldRigidbody.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
         }
     }
@@ -91,18 +88,25 @@ public class CustomGrab : MonoBehaviour
             {
                 if (hit.GetComponent<CustomGrabbable>())
                 {
-                    Haptic.SendHapticImpulse(0.1f, 0.1f);
-                    print("Grabbed something grabbable");
+                    Haptic.SendHapticImpulse(0.2f, 0.1f);
+                    // print("Grabbed something grabbable");
                     holdingSomething = true;
                     heldTransform = hit.transform;
                     heldRigidbody = hit.GetComponent<Rigidbody>();
                     heldRenderer = hit.GetComponentInChildren<Renderer>();
                     // heldRenderer = hit.GetComponent<Renderer>();
                     heldSize = heldRenderer.bounds.size; // World space size
+                    heldRigidbody.maxAngularVelocity = float.MaxValue;
                     
                     heldLayer = heldTransform.gameObject.layer;
                     int handLayer = LayerMask.NameToLayer("Right Hand Physics");
                     heldTransform.gameObject.layer = handLayer;
+                    
+                    // heldTarget = transform.forward * heldSize.x/3 + transform.right * -heldSize.z/3;
+                    // heldTransform.parent = transform;
+                    // heldRigidbody.useGravity = false;
+                    // heldTransform.position = heldTarget;
+                    // heldTransform.rotation = transform.rotation;
                 }
             }
         }
@@ -110,6 +114,7 @@ public class CustomGrab : MonoBehaviour
         {
             if (holdingSomething)
             {
+                heldRigidbody.useGravity = true;
                 heldRigidbody.linearVelocity = gyroVel * throwForce;
                 heldTransform.gameObject.layer = heldLayer;
             }

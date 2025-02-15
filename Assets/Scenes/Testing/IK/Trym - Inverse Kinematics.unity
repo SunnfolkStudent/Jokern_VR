@@ -697,17 +697,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2413825680149133222, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
     - target: {fileID: 2430525979413132589, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
       propertyPath: Haptic
       value: 
-      objectReference: {fileID: 55200391}
-    - target: {fileID: 3809753999371617645, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803816559867236781, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
       propertyPath: Haptic
       value: 
       objectReference: {fileID: 765821217}
-    - target: {fileID: 4207685207035389903, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 3803816559867236781, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: HapticBooster
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803816559867236781, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: HapticDuration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803816559867236781, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: HapticFrequency
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803816559867236781, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: HapticThreshold
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809753999371617645, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: Haptic
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104703263114529237, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104703263114529237, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 4226377630550828912, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -715,7 +743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4226377630550828912, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.3
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 4226377630550828912, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -749,9 +777,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5200619456830084739, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6002164644315740577, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: Haptic
+      value: 
+      objectReference: {fileID: 55200391}
+    - target: {fileID: 6002164644315740577, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: HapticBooster
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6002164644315740577, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: HapticDuration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6002164644315740577, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: HapticThreshold
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6615115498069881317, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
       propertyPath: m_Name
       value: Player Rig
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820015970911305176, guid: a244c4a8b7838ab439dbe522b2405fe0, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 192
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
