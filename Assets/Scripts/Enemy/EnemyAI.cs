@@ -9,20 +9,17 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent agent;
     public float startWaitTime = 0;
     public float rotateTime = 2;
-    public float walkSpeed = 6;
     public float runSpeed = 9;
-    public float patrolRadius = 1f;
-    public float patrolAngle = 0f;
+    public float idleRadius = 1f;
     public float maxRayDistance = 100f;
-
-    public LayerMask layersToIgnore;
     
-    private Vector3 playerLastPosition;
     private Vector3 playerPosition;
 
+    public LayerMask PlayerMask;
+
     public bool playerSpotted;
-    public bool isPatrol;
     private bool caughtPlayer;
+    private bool playerInRange;
 
     private Vector3 destination;
 
@@ -31,39 +28,21 @@ public class EnemyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-
     private void Start()
     {
-        isPatrol = true;
         caughtPlayer = false;
-        
-        agent = GetComponent<NavMeshAgent>();
-
         agent.isStopped = false;
-        agent.speed = walkSpeed;
     }
-
-    private void FixedUpdate()
-    {
-        playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-    }
-
     private void Update()
     {
-        EnviromentView();
+        playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+        playerInRange = Physics.CheckSphere(transform.position, idleRadius, PlayerMask);
         
-        if (!isPatrol)
+        if (!caughtPlayer)
         {
-            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-
+            RotateTowardPlayer();
             Chasing();
         }
-        else
-        {
-            CircularPath();
-            RotateTowardPlayer();
-        }
-        
     }
 
     private void Chasing()
@@ -76,6 +55,7 @@ public class EnemyAI : MonoBehaviour
 
         if (caughtPlayer)
         {
+            Debug.Log("Caught Player");
             Destroy(gameObject);
         }
     }
@@ -92,42 +72,11 @@ public class EnemyAI : MonoBehaviour
         agent.speed = 0;
     }
 
-    private void CaughtPlayer()
-    {
-        caughtPlayer = true;
-    }
-
     private void RotateTowardPlayer()
     {
         transform.LookAt(playerPosition);
     }
-
-    private void EnviromentView()
-    {
-        Ray ray = new Ray(transform.position, transform.forward);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, maxRayDistance, layersToIgnore))
-        {
-            if (hit.collider.gameObject.CompareTag("Player"))
-            {
-                isPatrol = false;
-                playerSpotted = true;
-            }
-        }
-        
-    }
-
-    private void CircularPath()
-    {
-        float x = playerPosition.x + Mathf.Cos(patrolAngle) * patrolRadius;  
-        float y = playerPosition.y;
-        float z = playerPosition.z + Mathf.Sin(patrolAngle) * patrolRadius;
-        
-        transform.position = new Vector3(x, y, z);
-        
-        patrolAngle += walkSpeed * Time.deltaTime;
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -138,6 +87,7 @@ public class EnemyAI : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Debug.DrawRay(transform.position, transform.forward * maxRayDistance, Color.green);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, idleRadius);
     }
 }
