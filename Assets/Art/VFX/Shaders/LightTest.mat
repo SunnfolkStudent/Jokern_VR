@@ -33,7 +33,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: _NoiseStrength
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -51,20 +51,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CameraFadeDistance: 0
-    - _CutOffHeight: 8.2
+    - _CameraFadeDistance: 0.61
+    - _CutOffHeight: 30.2
     - _EdgeMovementX: 1
     - _EdgeMovementY: 1
     - _EdgeSpeed: 1
-    - _Intensity: 40.52
-    - _Length: 27.6
-    - _Noise: 1505.6
+    - _Intensity: 0.5
+    - _Length: 30.57
+    - _Noise: 1415
     - _NoiseStrength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SoftParticlesPower: 2.79
+    - _SoftParticlesPower: 0.1
     m_Colors:
-    - _FinalColor: {r: 1, g: 0.97370756, b: 0.8726415, a: 1}
-    - _StartColor: {r: 1, g: 1, b: 1, a: 0}
+    - _FinalColor: {r: 0.39587042, g: 0.51467216, b: 0.6037736, a: 0}
+    - _StartColor: {r: 0.44108224, g: 0.48698732, b: 0.5283019, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
