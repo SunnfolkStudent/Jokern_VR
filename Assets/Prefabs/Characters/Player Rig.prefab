@@ -2493,6 +2493,7 @@ GameObject:
   - component: {fileID: 4386332048182095601}
   - component: {fileID: 8493183863810928962}
   - component: {fileID: 7339490157997995553}
+  - component: {fileID: 3654476563446656232}
   m_Layer: 0
   m_Name: Player Rig
   m_TagString: Untagged
@@ -2563,6 +2564,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Move: {fileID: 3503480248474488226}
   Teleport: {fileID: 9208943518977248282}
+--- !u!114 &3654476563446656232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6615115498069881317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313fbf455067a7a4db140413b5aa7545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fogMaterial: {fileID: 2100000, guid: dca44c26c8c446c4a98e36f9d56bb076, type: 2}
+  lerpTime: 2
+  timeStartedLerping: 0
 --- !u!1 &6813041470149397787
 GameObject:
   m_ObjectHideFlags: 0
