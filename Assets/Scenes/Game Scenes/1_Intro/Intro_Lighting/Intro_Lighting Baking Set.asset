@@ -41,11 +41,11 @@ MonoBehaviour:
     m_Values:
     - position: {x: -1, y: 0, z: -3}
       index: 0
-      probeCount: 43648
+      probeCount: 65536
       minSubdiv: 0
       indexChunkCount: 91
-      shChunkCount: 6
-      bricksCount: 682
+      shChunkCount: 8
+      bricksCount: 1024
       indirectionEntryInfo:
       - positionInBricks: {x: -27, y: 0, z: -81}
         minSubdiv: 0
@@ -64,13 +64,13 @@ MonoBehaviour:
       m_Keys: 00000000
       m_Values:
       - offset: 0
-        elementCount: 6
+        elementCount: 8
     m_Asset: {fileID: 0}
   scenarios:
     m_Keys:
     - Default
     m_Values:
-    - sceneHash: 1841459122
+    - sceneHash: -1655539537
       cellDataAsset:
         m_AssetGUID: 49cf8937c64343e40918b1d33dfe8e1a
         m_StreamableAssetPath: APVStreamingAssets\8f9a4ad1e21c8244ba38d4135b57cdf1\49cf8937c64343e40918b1d33dfe8e1a.bytes
@@ -79,7 +79,7 @@ MonoBehaviour:
           m_Keys: 00000000
           m_Values:
           - offset: 0
-            elementCount: 6
+            elementCount: 8
         m_Asset: {fileID: 0}
       cellOptionalDataAsset:
         m_AssetGUID: 9bd75275ec5b513458c0932bdbf3165b
@@ -89,7 +89,7 @@ MonoBehaviour:
           m_Keys: 00000000
           m_Values:
           - offset: 0
-            elementCount: 6
+            elementCount: 8
         m_Asset: {fileID: 0}
       cellProbeOcclusionDataAsset:
         m_AssetGUID: 
@@ -99,7 +99,7 @@ MonoBehaviour:
           m_Keys: 00000000
           m_Values:
           - offset: 0
-            elementCount: 6
+            elementCount: 8
         m_Asset: {fileID: 0}
   cellBricksDataAsset:
     m_AssetGUID: e05a8825776ee31468855d1a4daaf9c2
@@ -109,7 +109,7 @@ MonoBehaviour:
       m_Keys: 00000000
       m_Values:
       - offset: 0
-        elementCount: 682
+        elementCount: 1024
     m_Asset: {fileID: 0}
   cellSupportDataAsset:
     m_AssetGUID: 583bec815db745247b020145faa446eb
@@ -119,7 +119,7 @@ MonoBehaviour:
       m_Keys: 00000000
       m_Values:
       - offset: 0
-        elementCount: 6
+        elementCount: 8
     m_Asset: {fileID: 0}
   chunkSizeInBricks: 128
   maxCellPosition: {x: 0, y: 1, z: -2}
@@ -139,7 +139,7 @@ MonoBehaviour:
     y: 0
     z: 0
     w: 0
-  maxSHChunkCount: 6
+  maxSHChunkCount: 8
   L0ChunkSize: 65536
   L1ChunkSize: 32768
   L2TextureChunkSize: 32768
@@ -163,7 +163,7 @@ MonoBehaviour:
   renderersLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  minRendererVolumeSize: 0.1
+  minRendererVolumeSize: 0.5
   skyOcclusion: 0
   skyOcclusionBakingSamples: 2048
   skyOcclusionBakingBounces: 2
