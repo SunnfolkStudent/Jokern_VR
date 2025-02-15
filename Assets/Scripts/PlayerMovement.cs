@@ -74,9 +74,10 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-	public static bool isUsingStickMovement = true;
-	public static void SwitchToStickMovement() => isUsingStickMovement = true;
-	public static void SwitchToTeleportation() => isUsingStickMovement = false;
+	// These three were static for unkown reason HELP US GOD - Trym 
+	public bool isUsingStickMovement = true;
+	public void SwitchToStickMovement() => isUsingStickMovement = true;
+	public void SwitchToTeleportation() => isUsingStickMovement = false;
 
 	void FixedUpdate() {
 		velocity.x *= friction;
