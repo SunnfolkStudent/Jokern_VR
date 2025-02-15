@@ -41,7 +41,17 @@ public class HandPhysics : MonoBehaviour
         rb.linearVelocity = (target.position - transform.position) / Time.fixedDeltaTime;
        
         // rotation
+        // Transform adjustedTarget;
+        // adjustedTarget.rotation = target.rotation;
+        // adjustedTarget.Rotate(targetRotationOffset);
+        // Quaternion rotationDifference = target.rotation * Quaternion.Inverse(transform.rotation);
+        
+        // Quaternion adjustedTarget = target.rotation * Quaternion.AngleAxis(targetRotationOffset.x, target.right);
+        // Quaternion rotationDifference = adjustedTarget * Quaternion.Inverse(transform.rotation);
+        
         Quaternion rotationDifference = target.rotation * Quaternion.Inverse(transform.rotation);
+        // rotationDifference *= Quaternion.AngleAxis(targetRotationOffset.x, target.right);
+        
         rotationDifference.ToAngleAxis(out float angleInDegree, out Vector3 rotationAxis);
         // Ensure the shortest rotation path (ChatGPT)
         if (angleInDegree > 180f)
