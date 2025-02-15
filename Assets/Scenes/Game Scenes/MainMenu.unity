@@ -342,6 +342,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &444767473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 444767475}
+  - component: {fileID: 444767474}
+  m_Layer: 0
+  m_Name: FogEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &444767474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444767473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa32c7cfc5036a54496663261dc8af9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fogMaterial: {fileID: 2100000, guid: dca44c26c8c446c4a98e36f9d56bb076, type: 2}
+  lerpTime: 2
+  timeStartedLerping: 0
+--- !u!4 &444767475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444767473}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &498388781
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,9 +677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6509195b270ce9e20971fe0a84821a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: 1
-  volume: 5
-  actualVolume: 0
 --- !u!4 &925574432
 Transform:
   m_ObjectHideFlags: 0
@@ -934,3 +978,4 @@ SceneRoots:
   - {fileID: 539912040}
   - {fileID: 827048343}
   - {fileID: 925574432}
+  - {fileID: 444767475}
