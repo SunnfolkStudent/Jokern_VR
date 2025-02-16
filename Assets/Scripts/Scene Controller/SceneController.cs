@@ -100,6 +100,7 @@ public class SceneController : MonoBehaviour {
 					case "Circus":        FMODController.currentLevel = FMODController.Level.Circus;       break;
 					case "Final Path":    FMODController.currentLevel = FMODController.Level.FinalPath;    break;
 					case "Lit Joker":     FMODController.currentLevel = FMODController.Level.LitJoker;     break;
+					case "Credits Forest": break; // The credits forest has its own thing!
 
 					default: {
 						Debug.LogError($"Level name '{levels[instance.currentLevel].name}' not recognized!");
