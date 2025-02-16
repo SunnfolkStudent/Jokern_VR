@@ -9,7 +9,7 @@ public class IntroFade : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        IntroFadeIn();
+        //IntroFadeIn();
     }
     public void IntroFadeIn()
     {
