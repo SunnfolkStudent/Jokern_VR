@@ -63,6 +63,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	bool previousIsUsingStickMovement;
 	void Update() {
+		if (SceneController.instance.mainMenuIsLoaded) return;
+		
 		if (previousIsUsingStickMovement != isUsingStickMovement) {
 			if (playerTeleportController != null) {
 				playerTeleportController.ForceTeleport(playerTransform.position);

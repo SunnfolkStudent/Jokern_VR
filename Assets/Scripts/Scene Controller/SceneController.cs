@@ -60,7 +60,7 @@ public class SceneController : MonoBehaviour {
 		instance.mainMenuIsLoaded = false;
 	}
 
-	bool mainMenuIsLoaded;
+	[HideInInspector] public bool mainMenuIsLoaded;
 	public static void OpenMainMenu() {
 		if (instance.mainMenuIsLoaded) return;
 
