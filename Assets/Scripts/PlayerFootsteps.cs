@@ -59,7 +59,12 @@ public class PlayerFootsteps : MonoBehaviour {
 		}
 	}
 
+	public static bool isWalking;
+
 	void Update() {
+		FMODController.playerIsCurrentlyWalking = isWalking;
+		if (!isWalking) return;
+
 		currentlyStandingOn = FootstepSound.None;
 
 		RaycastHit hit;
