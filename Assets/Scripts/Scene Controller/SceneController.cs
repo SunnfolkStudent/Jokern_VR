@@ -80,7 +80,34 @@ public class SceneController : MonoBehaviour {
 
 	int previousCurrentLevel;
 	void Update() {
-		if (!instance.mainMenuIsLoaded) {
+		if (instance.mainMenuIsLoaded) {
+			FMODController.currentAmbianceStage = FMODController.AmbianceStage.MainMenu;
+		} else {
+			// @Hardcoded
+			if (SceneIsLoaded("CreditsForest_Events")) {
+				FMODController.currentAmbianceStage = FMODController.AmbianceStage.Credits;
+			} else {
+				FMODController.currentAmbianceStage = FMODController.AmbianceStage.Levels;
+			}
+
+			// @Hardcoded
+			if (0 <= instance.currentLevel && instance.currentLevel < levels.Length) {
+				switch (levels[instance.currentLevel].name) {
+					case "Intro":         FMODController.currentLevel = FMODController.Level.Intro;        break;
+					case "Joker Forest":  FMODController.currentLevel = FMODController.Level.JokerForest;  break;
+					case "Dark Joker":    FMODController.currentLevel = FMODController.Level.DarkJoker;    break;
+					case "Circus Forest": FMODController.currentLevel = FMODController.Level.CircusForest; break;
+					case "Circus":        FMODController.currentLevel = FMODController.Level.Circus;       break;
+					case "Final Path":    FMODController.currentLevel = FMODController.Level.FinalPath;    break;
+					case "Lit Joker":     FMODController.currentLevel = FMODController.Level.LitJoker;     break;
+					case "Credits Forest": break; // The credits forest has its own thing!
+
+					default: {
+						Debug.LogError($"Level name '{levels[instance.currentLevel].name}' not recognized!");
+					} break;
+				}
+			}
+
 			if (instance.previousCurrentLevel != instance.currentLevel) {
 				if (instance.currentLevel < 0 || instance.levels.Length <= instance.currentLevel) {
 					LogNoSuchLevelExists(instance.currentLevel);

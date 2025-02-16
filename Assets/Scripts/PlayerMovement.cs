@@ -39,6 +39,9 @@ public class PlayerMovement : MonoBehaviour {
 	void UpdateMovement(Vector2 inputDirection) {
 		float deltaTime = Time.deltaTime;
 
+		// TODO: This does not cover the situation where the player is walking up against a wall.
+		PlayerFootsteps.isWalking = (inputDirection.x != 0.0f || inputDirection.y != 0.0f);
+
 		var newLocalEulerAngles = playerMoveDirection.localEulerAngles;
 		newLocalEulerAngles.x = 0.0f;
 		newLocalEulerAngles.z = 0.0f;
@@ -74,9 +77,10 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-	public static bool isUsingStickMovement = true;
-	public static void SwitchToStickMovement() => isUsingStickMovement = true;
-	public static void SwitchToTeleportation() => isUsingStickMovement = false;
+	// These three were static for unkown reason HELP US GOD - Trym 
+	public bool isUsingStickMovement = true;
+	public void SwitchToStickMovement() => isUsingStickMovement = true;
+	public void SwitchToTeleportation() => isUsingStickMovement = false;
 
 	void FixedUpdate() {
 		velocity.x *= friction;

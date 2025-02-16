@@ -102,17 +102,16 @@ public class SubtitleSystem : MonoBehaviour {
 		}
 	}
 
-	public static void PlayVoiceLine(string voiceLinePath) {
+	public static void PlayVoiceLine(string voiceLineFileName) {
 		// Find the subtitle belonging to the voice line!
 		subtitleIndex = -1;
 		for (int i = 0; i < voiceLines.Length; ++i) {
-			if (voiceLines[i].soundPath == voiceLinePath) {
+			// TODO: This does not match the actual file name, just the end of the string.
+			if (voiceLines[i].soundPath.EndsWith(voiceLineFileName)) {
 				subtitleIndex = i;
 				break;
 			}
 		}
-
-		FMODController.PlayVoiceLineAudio(voiceLinePath);
 	}
 
 	public void NextDialogue() {
