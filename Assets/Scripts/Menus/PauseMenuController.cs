@@ -25,6 +25,15 @@ public class PauseMenuController : MonoBehaviour
         pauseMenu.transform.position = cameraTransform.position;
         pauseMenu.transform.position += cameraTransform.forward * 2f;
         pauseMenu.SetActive(!pauseMenu.activeSelf);
+
+        if (pauseMenu.activeInHierarchy)
+        {
+            FMODController.currentAmbianceCalming = FMODController.AmbianceCalming.Calm;
+        }
+        else if (pauseMenu.activeInHierarchy == false)
+        {
+            FMODController.currentAmbianceCalming = FMODController.AmbianceCalming.Normal;
+        }
     }
 
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
@@ -45,15 +54,6 @@ public class PauseMenuController : MonoBehaviour
     private void Update()
     {
         Time.timeScale = pauseMenu.activeSelf ? 0 : 1;
-
-        if (pauseMenu.activeInHierarchy)
-        {
-            FMODController.currentAmbianceCalming = FMODController.AmbianceCalming.Calm;
-        }
-        else if (pauseMenu.activeInHierarchy == false)
-        {
-            FMODController.currentAmbianceCalming = FMODController.AmbianceCalming.Normal;
-        }
     }
     
 }
