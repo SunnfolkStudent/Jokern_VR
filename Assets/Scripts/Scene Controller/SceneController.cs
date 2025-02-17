@@ -185,8 +185,6 @@ public class SceneController : MonoBehaviour {
 				LoadScene(instance.levels[level].scenes[i]);
 			}
 		}
-
-		//SetActiveScene(instance.levels[level].setAsActiveScene);
 	}
 
 	public static void LoadLevel(int level) {
