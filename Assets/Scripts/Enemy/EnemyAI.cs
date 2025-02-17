@@ -3,25 +3,26 @@ using System.Data;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class EnemyAI : MonoBehaviour
 {
     private NavMeshAgent agent;
-    public float startWaitTime = 0;
-    public float rotateTime = 2;
     public float runSpeed = 9;
-    public float idleRadius = 1f;
-    public float maxRayDistance = 100f;
+    public float enemyRadius = 40f;
+    public float enemyRadius2 = 20f;
+    public float enemyRadius3 = 10f;
     
-    private Vector3 playerPosition;
-
-    public LayerMask PlayerMask;
-
-    public bool playerSpotted;
-    private bool caughtPlayer;
-    private bool playerInRange;
+    public Transform playerPosition;
 
     private Vector3 destination;
+
+    private bool caughtPlayer;
+    private bool playerInRange = false;
+    private bool playerInRange2 = false;
+    private bool playerInRange3 = false;
+    
+    public LayerMask Layers;
 
     private void Awake()
     {
@@ -35,27 +36,45 @@ public class EnemyAI : MonoBehaviour
     }
     private void Update()
     {
-        playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-        playerInRange = Physics.CheckSphere(transform.position, idleRadius, PlayerMask);
+        destination = playerPosition.position;
         
-        if (!caughtPlayer)
+        playerInRange = Physics.CheckSphere(transform.position, enemyRadius, Layers);
+        playerInRange2 = Physics.CheckSphere(transform.position, enemyRadius2, Layers);
+        playerInRange3 = Physics.CheckSphere(transform.position, enemyRadius3, Layers);
+        
+        if (playerInRange && !caughtPlayer)
         {
             RotateTowardPlayer();
             Chasing();
+            //Play chase music 1 here
+        }
+
+        if (playerInRange && playerInRange2)
+        {
+            //Play chase music 2 here
+        }
+        else
+        {
+            //Stop that
+        }
+
+        if (playerInRange && playerInRange2 && playerInRange3)
+        {
+            //Play chase music 3 here
+        }
+        else
+        {
+            //Stop doing that!!
         }
     }
 
     private void Chasing()
     {
-        if (playerSpotted)
-        {
-            Move(runSpeed);
-            agent.SetDestination(playerPosition);
-        }
+        agent.SetDestination(destination);
+        Move(runSpeed);
 
         if (caughtPlayer)
         {
-            Debug.Log("Caught Player");
             Destroy(gameObject);
         }
     }
@@ -88,6 +107,12 @@ public class EnemyAI : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, idleRadius);
+        Gizmos.DrawSphere(transform.position, enemyRadius);
+        
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(transform.position, enemyRadius2);
+        
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(transform.position, enemyRadius3);
     }
 }
