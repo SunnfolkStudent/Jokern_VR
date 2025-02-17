@@ -1307,6 +1307,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2184502611279084338, guid: 074af6cdd56b10a4aa7278d12a80866a, type: 3}
   m_PrefabInstance: {fileID: 1002390142}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1096549279
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3479636362492777878, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.7877426
+      objectReference: {fileID: 0}
+    - target: {fileID: 3479636362492777878, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3479636362492777878, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.6271775
+      objectReference: {fileID: 0}
+    - target: {fileID: 3479636362492777878, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3479636362492777878, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3479636362492777878, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3479636362492777878, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3479636362492777878, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3479636362492777878, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3479636362492777878, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4251950524634124076, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
+      propertyPath: m_Name
+      value: Jokern
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
 --- !u!1 &1310177763
 GameObject:
   m_ObjectHideFlags: 0
@@ -8010,3 +8067,4 @@ SceneRoots:
   - {fileID: 7250944978800810776}
   - {fileID: 4348824404365781634}
   - {fileID: 6732895779012045465}
+  - {fileID: 1096549279}
