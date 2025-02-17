@@ -12,5 +12,6 @@ public class ClothBallMover : MonoBehaviour {
 		var newPosition = origin;
 		newPosition.x += Mathf.Sin(Time.time * speed) * (distance / 2);
 		transform.position = newPosition;
+		PlayerFootsteps.isWalking = true;
 	}
 }
