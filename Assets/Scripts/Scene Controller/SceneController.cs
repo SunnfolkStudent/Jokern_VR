@@ -1,12 +1,18 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.SceneManagement;
 using static AugustBase.All;
 
 [Serializable]
 public struct Level {
 	public string name;
+
+	[Tooltip("The scene that becomes the active scene when this level is loaded.")]
+	public string setAsActiveScene;
+
+	[FormerlySerializedAs("additionalScenes")]
 	public string[] scenes;
 }
 
@@ -37,6 +43,8 @@ public class SceneController : MonoBehaviour {
 				LoadScene(loadOnStartup[i]);
 			}
 		}
+
+		SceneManager.sceneLoaded += OnSceneLoaded;
 	}
 
 	void Start() {
@@ -60,7 +68,7 @@ public class SceneController : MonoBehaviour {
 		instance.mainMenuIsLoaded = false;
 	}
 
-	bool mainMenuIsLoaded;
+	[HideInInspector] public bool mainMenuIsLoaded;
 	public static void OpenMainMenu() {
 		if (instance.mainMenuIsLoaded) return;
 
@@ -80,7 +88,34 @@ public class SceneController : MonoBehaviour {
 
 	int previousCurrentLevel;
 	void Update() {
-		if (!instance.mainMenuIsLoaded) {
+		if (instance.mainMenuIsLoaded) {
+			FMODController.currentAmbianceStage = FMODController.AmbianceStage.MainMenu;
+		} else {
+			// @Hardcoded
+			if (SceneIsLoaded("CreditsForest_Events")) {
+				FMODController.currentAmbianceStage = FMODController.AmbianceStage.Credits;
+			} else {
+				FMODController.currentAmbianceStage = FMODController.AmbianceStage.Levels;
+			}
+
+			// @Hardcoded
+			if (0 <= instance.currentLevel && instance.currentLevel < levels.Length) {
+				switch (levels[instance.currentLevel].name) {
+					case "Intro":         FMODController.currentLevel = FMODController.Level.Intro;        break;
+					case "Joker Forest":  FMODController.currentLevel = FMODController.Level.JokerForest;  break;
+					case "Dark Joker":    FMODController.currentLevel = FMODController.Level.DarkJoker;    break;
+					case "Circus Forest": FMODController.currentLevel = FMODController.Level.CircusForest; break;
+					case "Circus":        FMODController.currentLevel = FMODController.Level.Circus;       break;
+					case "Final Path":    FMODController.currentLevel = FMODController.Level.FinalPath;    break;
+					case "Lit Joker":     FMODController.currentLevel = FMODController.Level.LitJoker;     break;
+					case "Credits Forest": break; // The credits forest has its own thing!
+
+					default: {
+						Debug.LogError($"Level name '{levels[instance.currentLevel].name}' not recognized!");
+					} break;
+				}
+			}
+
 			if (instance.previousCurrentLevel != instance.currentLevel) {
 				if (instance.currentLevel < 0 || instance.levels.Length <= instance.currentLevel) {
 					LogNoSuchLevelExists(instance.currentLevel);
@@ -100,6 +135,27 @@ public class SceneController : MonoBehaviour {
 
 	public static void LoadScene(int buildIndex) => SceneManager.LoadSceneAsync(buildIndex, LoadSceneMode.Additive);
 	public static void LoadScene(string name)    => SceneManager.LoadSceneAsync(name,       LoadSceneMode.Additive);
+
+	public static void SetActiveScene(int buildIndex) {
+		var scene = SceneManager.GetSceneByBuildIndex(buildIndex);
+		SceneManager.SetActiveScene(scene);
+	}
+
+	public static void SetActiveScene(string name) {
+		var scene = SceneManager.GetSceneByName(name);
+		SceneManager.SetActiveScene(scene);
+	}
+
+	static void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+		if (!scene.isLoaded) {
+			// Sanity check.
+			Debug.LogError("OnSceneLoaded got a scene that isn't loaded!?");
+		}
+
+		if (scene.name == instance.levels[instance.currentLevel].setAsActiveScene) {
+			SceneManager.SetActiveScene(scene);
+		}
+	}
 
 	static void UnloadLevelScenes(int level) {
 		if (level < 0 || instance.levels.Length <= level) {

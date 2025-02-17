@@ -172,10 +172,54 @@ MonoBehaviour:
   currentLevel: 0
   levels:
   - name: Intro
+    setAsActiveScene: Intro_Lighting
     scenes:
     - Intro_Events
     - Intro_Visuals
     - Intro_Lighting
+  - name: Joker Forest
+    setAsActiveScene: JokerForest_Lighting
+    scenes:
+    - JokerForest_Events
+    - JokerForest_Visuals
+    - JokerForest_Lighting
+  - name: Dark Joker
+    setAsActiveScene: DarkJoker_Lighting
+    scenes:
+    - DarkJoker_Events
+    - DarkJoker_Visuals
+    - DarkJoker_Lighting
+  - name: Circus Forest
+    setAsActiveScene: CircusForest_Lighting
+    scenes:
+    - CircusForest_Events
+    - CircusForest_Visuals
+    - CircusForest_Lighting
+  - name: Circus
+    setAsActiveScene: Circus_Lighting
+    scenes:
+    - Circus_Events
+    - Circus_Visuals
+    - Circus_Lighting
+  - name: Final Path
+    setAsActiveScene: FinalPath_Lighting
+    scenes:
+    - FinalPath_Events
+    - FinalPath_Visuals
+    - FinalPath_Lighting
+  - name: Lit Joker
+    setAsActiveScene: LitJoker_Lighting
+    scenes:
+    - LitJoker_Events
+    - LitJoker_Visuals
+    - LitJoker_Lighting
+  - name: Credits Forest
+    setAsActiveScene: CreditsForest_Lighting
+    scenes:
+    - CreditsForest_Events
+    - CreditsForest_Visuals
+    - CreditsForest_Lighting
+  mainMenuIsLoaded: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

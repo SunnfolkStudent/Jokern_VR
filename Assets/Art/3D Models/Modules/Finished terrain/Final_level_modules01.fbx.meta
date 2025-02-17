@@ -1,9 +1,394 @@
 fileFormatVersion: 2
-guid: 0234b43225ecf134989962103cd1b91f
+guid: 7df0aad2aefbca64f94bbfa8cb0f4066
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Concrete01
+    second: {fileID: 2100000, guid: 33d018bb935e5a342801fe1fd8857f87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Forest_entrance02
+    second: {fileID: 2100000, guid: fcecce15738c25e4795c6cb1e7b0f7a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Forest_entrance03
+    second: {fileID: 2100000, guid: 6a46524a13ff64149986359b86816cf2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Forest_entrance04
+    second: {fileID: 2100000, guid: 745a0e76eaccad342885651379668411, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Forest_entrance05
+    second: {fileID: 2100000, guid: 38aeedf0d59baa24ea77f4fb3b2b50e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Forest_entrance06
+    second: {fileID: 2100000, guid: 59dd2c510f9718a4791510ba52ebd5b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Forest_entrance07
+    second: {fileID: 2100000, guid: d4a772a6996d21c4baae821530432097, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grass02
+    second: {fileID: 2100000, guid: a6783c2f5cd4a8d4c8dd4021aa9d5393, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grass04
+    second: {fileID: 2100000, guid: fbf226e7bbcef144cb4807844c31e1ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground01
+    second: {fileID: 2100000, guid: 0b96bc06660bf0043915c75cf3a61c3c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module3_dark_woods01
+    second: {fileID: 2100000, guid: 701c64effda77854c983590f0f526c73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module3_dark_woods02
+    second: {fileID: 2100000, guid: 0f45b551c1489924e9cb2ba1ae75598a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module3_dark_woods03
+    second: {fileID: 2100000, guid: f4a9e57364d62ab499145df464227505, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement01
+    second: {fileID: 2100000, guid: 6e1ad8dafc968174b9f4aedc270c3e40, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement02
+    second: {fileID: 2100000, guid: fdb6c677277c17c4e99847d7425475aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement03
+    second: {fileID: 2100000, guid: c683833f5cc31994092d2ed1e94abe21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement04
+    second: {fileID: 2100000, guid: 755a6d93388b8cf4c8082f6b10c44994, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement05
+    second: {fileID: 2100000, guid: 6065d717184552c4bb5354d2f76ac4a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement06
+    second: {fileID: 2100000, guid: d5461ed272e183349b7959678010479a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement07
+    second: {fileID: 2100000, guid: ae018e6b7060e784c809c47daeefd0ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement08
+    second: {fileID: 2100000, guid: 068b60d1d90a3b04aa883cc76f7a0805, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module5_simple_path01
+    second: {fileID: 2100000, guid: 0c35d7d50e7a3af46bf141ae1100d787, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module5_simple_path02
+    second: {fileID: 2100000, guid: a52d9e2b7315786448f44aacb22e0feb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module5_simple_path03
+    second: {fileID: 2100000, guid: aeb8de15a11702d44a1228fc0de1f29e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module5_simple_path04
+    second: {fileID: 2100000, guid: 767edaf08a2e0da49bc26db682d618bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module6_winding_path01
+    second: {fileID: 2100000, guid: 5832f265dbc249b4ead80c90f56214bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module6_winding_path02
+    second: {fileID: 2100000, guid: bd52173eef488b547810a2a688ecab35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module6_winding_path03
+    second: {fileID: 2100000, guid: b1350b25187b0b54e8f9af439f53f41c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Module8_Jokern01
+    second: {fileID: 2100000, guid: 701e8ade04d15bb438e612364a3ae113, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Muddy_path00
+    second: {fileID: 2100000, guid: 3b861108aa2e0c44680e244c32b778a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Muddy_path01
+    second: {fileID: 2100000, guid: 2533ed4e8993d7143b5e6acdb8aef930, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Muddy_path02
+    second: {fileID: 2100000, guid: 4763ee57c9fcc3e4ca24f6c567d1df42, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Muddy_path03
+    second: {fileID: 2100000, guid: 628f0946c16b8c641b644add4ab7fb15, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Muddy_path04
+    second: {fileID: 2100000, guid: e9cc3395913a0374aacadb83f9defcf0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plen
+    second: {fileID: 2100000, guid: 789607ac21ddb984e9b99f30fb987544, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tile_I
+    second: {fileID: 2100000, guid: 70539a4714969a740a1c57c4df0749a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tile_L
+    second: {fileID: 2100000, guid: b79e893821540444f86d6b2c1ca66bef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Water01
+    second: {fileID: 2100000, guid: acb108f17f0b8364795dffdcb91214e2, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Concrete03
+    second: {fileID: 2800000, guid: e883ad24e3e45984885348c6da2906e7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Forest _entrance01
+    second: {fileID: 2800000, guid: 1aa2d8921a393254386ff22115c59068, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Forest_entrance02
+    second: {fileID: 2800000, guid: 38e31d568d5eb0a4c91f2095bf01251c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Forest_entrance03
+    second: {fileID: 2800000, guid: c7051524592ef9947ba1ce74523f51f0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Forest_entrance04
+    second: {fileID: 2800000, guid: f67de24bcdb410f4a9bf6a0e9b59a5d8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Forest_entrance05
+    second: {fileID: 2800000, guid: 7f128a2086638da478b8e6c34f1d31d2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Forest_entrance06
+    second: {fileID: 2800000, guid: 651a2bf48e450f24ea97d4537c76ee22, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Forest_entrance07
+    second: {fileID: 2800000, guid: 0e3396f0c36b44b4697e42172e371cb7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Grass02
+    second: {fileID: 2800000, guid: d3248ea28bb224a4c9a636f9d06dec5b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Grass03
+    second: {fileID: 2800000, guid: 8f4a544faaef0af4780c883f8c466c5d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Grass04
+    second: {fileID: 2800000, guid: b2b1553b5d263894fb4ad2f15ddcaa9c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ground01
+    second: {fileID: 2800000, guid: 26aefdf603eb49c47ac69b015f21f2ea, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module3_dark_woods01
+    second: {fileID: 2800000, guid: 33e4089322e644642ab225d7e0ce8e5a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module3_dark_woods02
+    second: {fileID: 2800000, guid: bdaef9c4c73cf604d91e7396c34df9f0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module3_dark_woods03
+    second: {fileID: 2800000, guid: 766e91bb519d8f249a41727a51ec495c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement01
+    second: {fileID: 2800000, guid: 22d32292884b4824c9aaaa773498015c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement02
+    second: {fileID: 2800000, guid: 38dc9e7fe2fadd441902e35eecd44d40, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement03
+    second: {fileID: 2800000, guid: 2224f2240d822e84fa44f6393126cdf7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement04
+    second: {fileID: 2800000, guid: 0411edbc08c5b8042ac15c0a0748fac6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement05
+    second: {fileID: 2800000, guid: 9e04b287cb06944429a077aa3ddab0e8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement06
+    second: {fileID: 2800000, guid: d711ba1fac8724f4586b7996965e7ed4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement07
+    second: {fileID: 2800000, guid: 8b3111f3045000c44abea62d403cbece, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module4_weird_settlement08
+    second: {fileID: 2800000, guid: 6a074b600797fff44a0812c657dc74f0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module5_simple_path01
+    second: {fileID: 2800000, guid: cebc39114542fc44e8cf952b0deda5c4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module5_simple_path02
+    second: {fileID: 2800000, guid: 104f5e1f1a0c4c043824c4e1ef48713b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module5_simple_path03
+    second: {fileID: 2800000, guid: aa5cb55783c01714fa604140f5407b08, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module5_simple_path04
+    second: {fileID: 2800000, guid: bfe2c0c70335f3444a6b4c33ae64e267, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module6_winding_path01
+    second: {fileID: 2800000, guid: fb354532caff04b40b8c55dc286787a1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module6_winding_path02
+    second: {fileID: 2800000, guid: 9e15a35fc61a45549a6d214e4cc78981, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module6_winding_path03
+    second: {fileID: 2800000, guid: 955ee882d677e9946a87f5473d138de1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Module8_Jokern01
+    second: {fileID: 2800000, guid: 147f06ff5977060428b182782de19889, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Muddy_path00
+    second: {fileID: 2800000, guid: abd0d5f28de8bcb42b08803e42994b3c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Muddy_path01
+    second: {fileID: 2800000, guid: d7df3a0f9cd56f44aa17f88d1480c670, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Muddy_path02
+    second: {fileID: 2800000, guid: 984ac89042daf4947abdfa0f0d772b37, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Muddy_path03
+    second: {fileID: 2800000, guid: 113a1d129d21d824687ade49c3ec425d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Muddy_path04
+    second: {fileID: 2800000, guid: 7a3c9eacf6fdc454ca43c1124b462495, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tile_I
+    second: {fileID: 2800000, guid: 94c26c01e93644944a7b839f96d0f70c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tile_L
+    second: {fileID: 2800000, guid: 0f382c03f96fe46418c178df15b11c19, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tile_T
+    second: {fileID: 2800000, guid: 5a931e0bee07d75438eb16c163f69365, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
