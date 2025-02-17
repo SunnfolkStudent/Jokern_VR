@@ -22,7 +22,6 @@ public class PauseMenuController : MonoBehaviour
 
     private void ToggleMenu(InputAction.CallbackContext context)
     {
-        // TODO: For polish the menu can be made to open a bit lower
         pauseMenu.transform.position = cameraTransform.position;
         pauseMenu.transform.position += cameraTransform.forward * 2f;
         pauseMenu.SetActive(!pauseMenu.activeSelf);
@@ -46,6 +45,15 @@ public class PauseMenuController : MonoBehaviour
     private void Update()
     {
         Time.timeScale = pauseMenu.activeSelf ? 0 : 1;
+
+        if (pauseMenu.activeInHierarchy)
+        {
+            FMODController.currentAmbianceCalming = FMODController.AmbianceCalming.Calm;
+        }
+        else if (pauseMenu.activeInHierarchy == false)
+        {
+            FMODController.currentAmbianceCalming = FMODController.AmbianceCalming.Normal;
+        }
     }
     
 }
