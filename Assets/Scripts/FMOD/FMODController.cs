@@ -148,14 +148,14 @@ public class FMODController : MonoBehaviour {
 	public static void PlaySound(JokernVRSound sound) {
 		if (sound == JokernVRSound.None) return;
 
-		var soundEvent = JokernVRSounds.instance.GetSoundEvent(sound);
+		var soundEvent = JokernVRSounds.instance.GetSoundPath(sound);
 		PlayFMODSoundEvent(soundEvent);
 	}
 
 	public static void PlaySoundFrom(JokernVRSound sound, GameObject obj) {
 		if (sound == JokernVRSound.None) return;
 
-		var soundEvent = JokernVRSounds.instance.GetSoundEvent(sound);
+		var soundEvent = JokernVRSounds.instance.GetSoundPath(sound);
 		PlayFMODSoundEventFrom(soundEvent, obj);
 	}
 
@@ -166,7 +166,7 @@ public class FMODController : MonoBehaviour {
 		RuntimeManager.StudioSystem.setParameterByName("FootstepDirection", footstepIsOnRightFoot ? 1.0f : 0.0f);
 		RuntimeManager.StudioSystem.setParameterByName("Footsteps", (float)sound);
 
-		var footstepSoundEvent = JokernVRSounds.instance.GetSoundEvent(JokernVRSound.SFX_Walking);
+		var footstepSoundEvent = JokernVRSounds.instance.GetSoundPath(JokernVRSound.SFX_Walking);
 		PlayFMODSoundEvent(footstepSoundEvent);
 	}
 
