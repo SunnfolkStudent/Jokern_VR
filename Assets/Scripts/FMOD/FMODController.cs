@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using FMODUnity;
@@ -18,10 +19,12 @@ public class FMODController : MonoBehaviour {
 		alreadyExists = true;
 	}
 
+	public bool pauseAllAudio;
+
 	void Start() {
 		if (playOnStartup != null) {
 			for (int i = 0; i < playOnStartup.Length; ++i) {
-				RuntimeManager.PlayOneShot(playOnStartup[i]);
+				PlayFMODSoundEvent(playOnStartup[i]);
 			}
 		}
 
@@ -36,6 +39,37 @@ public class FMODController : MonoBehaviour {
 		//
 		// I don't think we need this:
 		//footstepSoundInstance.set3DAttributes(RuntimeUtils.To3DAttributes(cameraTransform.position));
+	}
+
+	static List<EventInstance> currentlyPlayingSounds = new();
+	static void PlayFMODSoundEvent(EventReference eR) {
+		EventInstance eI = RuntimeManager.CreateInstance(eR);
+		eI.start();
+
+		currentlyPlayingSounds.Add(eI);
+	}
+
+	static void PlayFMODSoundEvent(string eR) {
+		EventInstance eI = RuntimeManager.CreateInstance(eR);
+		eI.start();
+
+		currentlyPlayingSounds.Add(eI);
+	}
+
+	static void PlayFMODSoundEventFrom(string eR, GameObject obj) {
+		EventInstance eI = RuntimeManager.CreateInstance(eR);
+		RuntimeManager.AttachInstanceToGameObject(eI, obj);
+		eI.start();
+
+		currentlyPlayingSounds.Add(eI);
+	}
+
+	static void PlayFMODSoundEventFrom(EventReference eR, GameObject obj) {
+		EventInstance eI = RuntimeManager.CreateInstance(eR);
+		RuntimeManager.AttachInstanceToGameObject(eI, obj);
+		eI.start();
+
+		currentlyPlayingSounds.Add(eI);
 	}
 
 	const string parameterName_isPlayingVoiceLine = "IsPlayingVoiceLine";
@@ -63,6 +97,23 @@ public class FMODController : MonoBehaviour {
 				Debug.LogError($"FMOD is not ok! ({fmodStatus.ToString()})");
 			}
 		}
+
+		if (currentlyPlayingSounds != null) {
+			for (int i = 0; i < currentlyPlayingSounds.Count; ++i) {
+				var it = currentlyPlayingSounds[i];
+
+				if (it.getPlaybackState(out PLAYBACK_STATE state) == FMOD.RESULT.OK) {
+					if (state == PLAYBACK_STATE.STOPPED) {
+						currentlyPlayingSounds.RemoveAt(i);
+					} else {
+						currentlyPlayingSounds[i].setPaused(pauseAllAudio);
+					}
+				} else {
+					Debug.LogError($"Could not get playback state of {it.ToString()}");
+					currentlyPlayingSounds.RemoveAt(i);
+				}
+			}
+		}
 	}
 
 	void Update() {
@@ -79,14 +130,14 @@ public class FMODController : MonoBehaviour {
 		if (sound == JokernVRSound.None) return;
 
 		var soundEvent = JokernVRSounds.instance.GetSoundEvent(sound);
-		RuntimeManager.PlayOneShot(soundEvent);
+		PlayFMODSoundEvent(soundEvent);
 	}
 
 	public static void PlaySoundFrom(JokernVRSound sound, GameObject obj) {
 		if (sound == JokernVRSound.None) return;
 
 		var soundEvent = JokernVRSounds.instance.GetSoundEvent(sound);
-		RuntimeManager.PlayOneShotAttached(soundEvent, obj);
+		PlayFMODSoundEventFrom(soundEvent, obj);
 	}
 
 	public static bool playerIsCurrentlyWalking;
@@ -97,12 +148,12 @@ public class FMODController : MonoBehaviour {
 		RuntimeManager.StudioSystem.setParameterByName("Footsteps", (float)sound);
 
 		var footstepSoundEvent = JokernVRSounds.instance.GetSoundEvent(JokernVRSound.SFX_Walking);
-		RuntimeManager.PlayOneShot(footstepSoundEvent);
+		PlayFMODSoundEvent(footstepSoundEvent);
 	}
 
 	public static void PlayVoiceLineAudio(string path) {
 		RuntimeManager.StudioSystem.setParameterByName(parameterName_isPlayingVoiceLine, 1.0f);
-		RuntimeManager.PlayOneShot(path);
+		PlayFMODSoundEvent(path);
 		weThinkFMODIsPlayingAVoiceLine = true;
 	}
 
@@ -197,10 +248,3 @@ public class FMODController : MonoBehaviour {
 		High,
 	}
 }
-
-/*
- * Idea for how to make audio pausing a reality:
- * - When playing audio, make sure to create a new EventInstance every time.
- * - Store this instance in an array or something.
- * - When it's time to pause, just loop through this array and call .setPaused(pauseAllAudio);
- */
