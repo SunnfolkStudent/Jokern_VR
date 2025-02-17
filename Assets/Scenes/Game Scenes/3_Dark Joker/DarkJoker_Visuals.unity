@@ -29705,6 +29705,79 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145602145}
   m_Mesh: {fileID: 4184433921183302128, guid: 60cc1b4b94019da49819d985775de0c9, type: 3}
+--- !u!1001 &4060714769073908121
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -139.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873628350656368924, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506472491038870438, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
+      propertyPath: m_Name
+      value: Panteautomat_broken01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c8233f847d094da4fad39c2049d093a5, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -29747,3 +29820,4 @@ SceneRoots:
   - {fileID: 1224553929}
   - {fileID: 1199442417}
   - {fileID: 1303804498}
+  - {fileID: 4060714769073908121}
