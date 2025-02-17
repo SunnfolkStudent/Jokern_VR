@@ -13,26 +13,29 @@ public class EnemyAI : MonoBehaviour
     public float enemyRadius2 = 20f;
     public float enemyRadius3 = 10f;
     
+    private Animator anim;
     public Transform playerPosition;
-
     private Vector3 destination;
+    public LayerMask Layers;
 
+    private bool playerInSight = false;
     private bool caughtPlayer;
     private bool playerInRange = false;
     private bool playerInRange2 = false;
     private bool playerInRange3 = false;
-    
-    public LayerMask Layers;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
     {
+        enemyRadius = 40f;
         caughtPlayer = false;
         agent.isStopped = false;
+        agent.updateRotation = true;
     }
     private void Update()
     {
@@ -42,29 +45,33 @@ public class EnemyAI : MonoBehaviour
         playerInRange2 = Physics.CheckSphere(transform.position, enemyRadius2, Layers);
         playerInRange3 = Physics.CheckSphere(transform.position, enemyRadius3, Layers);
         
+        anim.SetBool("isChasing", playerInRange);
+        
         if (playerInRange && !caughtPlayer)
         {
-            RotateTowardPlayer();
+            enemyRadius = 80f;
+            // RotateTowardPlayer();
             Chasing();
-            //Play chase music 1 here
+            FMODController.finalPathTension = FMODController.FinalPathTension.Low;
+            
         }
 
         if (playerInRange && playerInRange2)
         {
-            //Play chase music 2 here
+            FMODController.finalPathTension = FMODController.FinalPathTension.Medium;
         }
         else
         {
-            //Stop that
+            FMODController.finalPathTension = FMODController.FinalPathTension.None;
         }
 
         if (playerInRange && playerInRange2 && playerInRange3)
         {
-            //Play chase music 3 here
+            FMODController.finalPathTension = FMODController.FinalPathTension.High;
         }
         else
         {
-            //Stop doing that!!
+            FMODController.finalPathTension = FMODController.FinalPathTension.None;
         }
     }
 
@@ -93,7 +100,7 @@ public class EnemyAI : MonoBehaviour
 
     private void RotateTowardPlayer()
     {
-        transform.LookAt(playerPosition);
+        transform.LookAt(playerPosition.position);
     }
     
     private void OnTriggerEnter(Collider other)
