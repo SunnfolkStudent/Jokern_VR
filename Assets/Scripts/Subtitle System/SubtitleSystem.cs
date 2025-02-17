@@ -91,6 +91,10 @@ public class SubtitleSystem : MonoBehaviour {
 					subtitleReceivers[i].ReceiveText(text);
 				}
 			}
+
+#if UNITY_EDITOR
+			if (subtitleReceivers.Length == 0) print($"NEW SUBTITLE: {text}");
+#endif
 		}
 	}
 
