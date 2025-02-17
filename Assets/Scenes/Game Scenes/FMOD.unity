@@ -164,12 +164,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playOnStartup:
-  - Guid:
-      Data1: 1981799172
-      Data2: 1199551498
-      Data3: 2017652145
-      Data4: 375726473
-    Path: event:/AMB/amb_ambiance
+  - eventReference:
+      Guid:
+        Data1: 1981799172
+        Data2: 1199551498
+        Data3: 2017652145
+        Data4: 375726473
+      Path: event:/AMB/amb_ambiance
+    ignorePausing: 1
+  pauseAllAudio: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
