@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 556283657}
   - component: {fileID: 556283658}
+  - component: {fileID: 556283659}
   m_Layer: 0
   m_Name: FMOD Controller
   m_TagString: Untagged
@@ -173,6 +174,19 @@ MonoBehaviour:
       Path: event:/AMB/amb_ambiance
     ignorePausing: 1
   pauseAllAudio: 0
+--- !u!114 &556283659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556283656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554123641a6076410b50f46be0506abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToSoundPath: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

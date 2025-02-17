@@ -51,6 +51,8 @@ public class FlashlightMaster2 : MonoBehaviour
 
     private void Update()
     {
+		FMODController.flashLightIsOn = isLightOn;
+
         // Variables needed for Shake Logic
         leftControllerAngularVelocity = gyroAngularVelocityInput.action.ReadValue<Vector3>();
         shakeVelocity = leftControllerAngularVelocity;

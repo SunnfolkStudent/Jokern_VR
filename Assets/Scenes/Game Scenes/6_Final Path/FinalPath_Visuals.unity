@@ -282149,6 +282149,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 731538103332762342, guid: dc996192062f6934abcda4573c13dd86, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e76e89485ac8a22408f83cc1731cdab1, type: 2}
     - target: {fileID: 2557890327539436563, guid: dc996192062f6934abcda4573c13dd86, type: 3}
       propertyPath: m_Name
       value: Final_level_modules01
@@ -282229,6 +282233,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -72.041
       objectReference: {fileID: 0}
+    - target: {fileID: 6834672881654139100, guid: dc996192062f6934abcda4573c13dd86, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.14
+      objectReference: {fileID: 0}
     - target: {fileID: 7073193905998063085, guid: dc996192062f6934abcda4573c13dd86, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.37
@@ -282253,11 +282261,20 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 62.88
       objectReference: {fileID: 0}
+    - target: {fileID: 7174397590703304239, guid: dc996192062f6934abcda4573c13dd86, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154817009656623109, guid: dc996192062f6934abcda4573c13dd86, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e76e89485ac8a22408f83cc1731cdab1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7991280022783401641, guid: dc996192062f6934abcda4573c13dd86, type: 3}
     - {fileID: 2969897641460203336, guid: dc996192062f6934abcda4573c13dd86, type: 3}
     - {fileID: 8179298527357676545, guid: dc996192062f6934abcda4573c13dd86, type: 3}
+    - {fileID: 4791282250086284801, guid: dc996192062f6934abcda4573c13dd86, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2897119817097352873, guid: dc996192062f6934abcda4573c13dd86, type: 3}
       insertIndex: 7
