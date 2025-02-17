@@ -80,6 +80,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3487464736660054791, guid: 37ee2bee3dcdcf848bc88629b252ec61, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487464736660054791, guid: 37ee2bee3dcdcf848bc88629b252ec61, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487464736660054791, guid: 37ee2bee3dcdcf848bc88629b252ec61, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487464736660054791, guid: 37ee2bee3dcdcf848bc88629b252ec61, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4433956137626499063, guid: 37ee2bee3dcdcf848bc88629b252ec61, type: 3}
       propertyPath: m_Name
       value: FogGate_PS
