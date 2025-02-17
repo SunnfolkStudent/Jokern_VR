@@ -47,8 +47,8 @@ public class PlayerFootsteps : MonoBehaviour {
 	}
 
 	public float footStepInterval = 0.65f;
-	float lastFootstepWasAt;
-	bool  footstepIsOnRightFoot;
+	public float lastFootstepWasAt;
+	public bool  footstepIsOnRightFoot;
 
 	void PlayFootsteps() {
 		if (lastFootstepWasAt + footStepInterval < Time.time) {
@@ -56,6 +56,7 @@ public class PlayerFootsteps : MonoBehaviour {
 			footstepIsOnRightFoot = !footstepIsOnRightFoot;
 
 			FMODController.PlayFootstepSound(currentlyStandingOn, footstepIsOnRightFoot);
+			print($"Footsteps {Time.time}");
 		}
 	}
 
