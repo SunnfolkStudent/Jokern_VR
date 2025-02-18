@@ -60,6 +60,7 @@ public class PlayerFootsteps : MonoBehaviour {
 			FMODController.PlayFootstepSound(currentlyStandingOn, footstepIsOnRightFoot);
 
 			// The footsteps should destroy themselves after some amount of time.
+			// TODO: Rotate with player direction
 			Instantiate(footprintDecal, transform.position, footprintDecal.transform.rotation);
 		}
 	}
