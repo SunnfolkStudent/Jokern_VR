@@ -4604,8 +4604,29 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 2179057469866936251, guid: 41d89b59fe3e9964a83686ff24b7d0c5, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7081840892515873888, guid: 41d89b59fe3e9964a83686ff24b7d0c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8237787718375946913}
   m_SourcePrefab: {fileID: 100100000, guid: 41d89b59fe3e9964a83686ff24b7d0c5, type: 3}
+--- !u!1 &138019772438564595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7081840892515873888, guid: 41d89b59fe3e9964a83686ff24b7d0c5, type: 3}
+  m_PrefabInstance: {fileID: 7182564678630914707}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8237787718375946913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138019772438564595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e83094ab7e08d743a55f57457e00a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: 1
 --- !u!224 &9047742355470023544 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2179057468902719979, guid: 41d89b59fe3e9964a83686ff24b7d0c5, type: 3}
