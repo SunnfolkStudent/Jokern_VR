@@ -25,6 +25,7 @@ public class PlayerFootsteps : MonoBehaviour {
 	public Vector3 relativeRaycastFrom;
 	public LayerMask groundMask = ~0;
 
+	public bool useTextureToFootstepSound;
 	public TextureToFootstepSound[] textureToFootstepSounds;
 
 	public FootstepSound currentlyStandingOn;
@@ -71,22 +72,49 @@ public class PlayerFootsteps : MonoBehaviour {
 		FMODController.playerIsCurrentlyWalking = isWalking;
 		if (!isWalking) return;
 
-		currentlyStandingOn = FootstepSound.None;
+		if (useTextureToFootstepSound) {
+			currentlyStandingOn = FootstepSound.None;
 
-		RaycastHit hit;
-		if (Physics.Raycast(transform.position + relativeRaycastFrom, Vector3.down, out hit, groundMask)) {
-			if (hit.transform != null) {
-				var obj = hit.transform.gameObject;
-				if (obj.TryGetComponent<Renderer>(out Renderer renderer)) {
-					// .sharedMaterial is shared; changing it will change it for the object as well.
-					// .material is not shared and makes a copy.
-					SetFootstepSoundBasedOnMaterial(renderer.sharedMaterial);
+			RaycastHit hit;
+			if (Physics.Raycast(transform.position + relativeRaycastFrom, Vector3.down, out hit, groundMask)) {
+				if (hit.transform != null) {
+					var obj = hit.transform.gameObject;
+					if (obj.TryGetComponent<Renderer>(out Renderer renderer)) {
+						// .sharedMaterial is shared; changing it will change it for the object as well.
+						// .material is not shared and makes a copy.
+						SetFootstepSoundBasedOnMaterial(renderer.sharedMaterial);
+					}
 				}
 			}
+
 		}
 
 		if (currentlyStandingOn != FootstepSound.None) {
 			PlayFootsteps();
+		}
+	}
+
+	public FootstepSound defaultFootstepSound;
+	[Tooltip("The layers that the player is on.")]
+	public LayerMask playerMask = ~0;
+	void FixedUpdate() {
+		if (!useTextureToFootstepSound) {
+			currentlyStandingOn = defaultFootstepSound;
+
+			var soundAreas = UnityEngine.Object.FindObjectsByType<PlayerFootstepSoundArea>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+
+			for (int i = 0; i < soundAreas.Length; ++i) {
+				var areaTransform = soundAreas[i].transform;
+				Collider[] objectsInArea = Physics.OverlapBox(areaTransform.position,
+				                                              areaTransform.localScale,// / 2,
+				                                              areaTransform.rotation,
+				                                              playerMask);
+				for (int j = 0; j < objectsInArea.Length; ++j) {
+					if (objectsInArea[i].CompareTag("Player")) {
+						currentlyStandingOn = soundAreas[i].areaSound;
+					}
+				}
+			}
 		}
 	}
 }
