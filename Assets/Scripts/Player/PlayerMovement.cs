@@ -78,9 +78,8 @@ public class PlayerMovement : MonoBehaviour {
 			UpdateMovement(input.moveDirection);
 		}
 	}
-
-	// These three were static for unkown reason HELP US GOD - Trym 
-	public bool isUsingStickMovement = true;
+	
+	public static bool isUsingStickMovement = true;
 	public void SwitchToStickMovement() => isUsingStickMovement = true;
 	public void SwitchToTeleportation() => isUsingStickMovement = false;
 
