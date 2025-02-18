@@ -73,16 +73,17 @@ public class SubtitleSystem : MonoBehaviour {
 					subtitleReceivers[i].ReceiveText(text);
 				}
 			}
+		}
 
 #if UNITY_EDITOR
-			if (subtitleReceivers.Length == 0) print($"NEW SUBTITLE: {text}");
+		if (subtitleReceivers.Length == 0) Debug.Log($"NEW SUBTITLE: {text}");
 #endif
-		}
 	}
 
-	int previousSubtitleIndex;
+	int previousSubtitleIndex = -1;
 	void Update() {
 		if (previousSubtitleIndex != subtitleIndex) {
+			FindSubtitleReceivers();
 			TransmitSubtitles();
 			previousSubtitleIndex = subtitleIndex;
 		}
@@ -95,6 +96,7 @@ public class SubtitleSystem : MonoBehaviour {
 			FMODController.PlayVoiceLineAudio(voiceLines[subtitleIndex].soundPath);
 		}
 	}
+	
 	static void SetVoiceLinePath(string voiceLineFileName) {
 		// Find the subtitle belonging to the voice line!
 		subtitleIndex = -1;
