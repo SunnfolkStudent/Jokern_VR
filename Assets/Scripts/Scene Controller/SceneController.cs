@@ -255,4 +255,8 @@ public class SceneController : MonoBehaviour {
 		// setting up all the other scenes.
 		SceneManager.LoadScene("SceneController", LoadSceneMode.Single);
 	}
+
+	public static void QuitEverything() {
+		StopProgram();
+	}
 }
