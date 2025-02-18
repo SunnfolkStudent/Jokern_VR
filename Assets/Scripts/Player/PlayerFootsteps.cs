@@ -50,13 +50,17 @@ public class PlayerFootsteps : MonoBehaviour {
 	public float lastFootstepWasAt;
 	public bool  footstepIsOnRightFoot;
 
+	public GameObject footprintDecal;
+
 	void PlayFootsteps() {
 		if (lastFootstepWasAt + footStepInterval < Time.time) {
 			lastFootstepWasAt = Time.time;
 			footstepIsOnRightFoot = !footstepIsOnRightFoot;
 
 			FMODController.PlayFootstepSound(currentlyStandingOn, footstepIsOnRightFoot);
-			print($"Footsteps {Time.time}");
+
+			// The footsteps should destroy themselves after some amount of time.
+			Instantiate(footprintDecal, transform.position, footprintDecal.transform.rotation);
 		}
 	}
 
