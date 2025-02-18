@@ -7,6 +7,8 @@ public class CustomGrab : MonoBehaviour
 {
     private SphereCollider grabZone;
 
+    [SerializeField] private CharacterController characterController;
+
     [SerializeField]
     private float grabDistanceExtension = 0;
     [SerializeField]
@@ -115,7 +117,7 @@ public class CustomGrab : MonoBehaviour
             if (holdingSomething)
             {
                 heldRigidbody.useGravity = true;
-                heldRigidbody.linearVelocity = gyroVel * throwForce;
+                heldRigidbody.linearVelocity = gyroVel * throwForce + characterController.velocity;
                 heldTransform.gameObject.layer = heldLayer;
             }
             holdingSomething = false;
