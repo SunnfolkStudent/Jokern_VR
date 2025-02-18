@@ -13227,8 +13227,8 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 8f047f7fc127c524ab1a0f71b53425b7, type: 3}
     soundType: 2
   currentlyStandingOn: 0
-  footStepInterval: 0.65
-  lastFootstepWasAt: 0
+  minFootStepInterval: 0.6
+  maxFootStepInterval: 0.7
   footstepIsOnRightFoot: 0
   footprintDecal: {fileID: 5663278017943522018, guid: 28dac21ab634213478247bedb6334d3d, type: 3}
   defaultFootstepSound: 0
@@ -13851,8 +13851,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 268006549}
     m_Modifications:
     - target: {fileID: 492653900605960303, guid: 28d6eb08e8c1f68019303469449d8775, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 492653900605960303, guid: 28d6eb08e8c1f68019303469449d8775, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4.23
       objectReference: {fileID: 0}
     - target: {fileID: 492653900605960303, guid: 28d6eb08e8c1f68019303469449d8775, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13860,7 +13864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 492653900605960303, guid: 28d6eb08e8c1f68019303469449d8775, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -6.21
       objectReference: {fileID: 0}
     - target: {fileID: 492653900605960303, guid: 28d6eb08e8c1f68019303469449d8775, type: 3}
       propertyPath: m_LocalRotation.w

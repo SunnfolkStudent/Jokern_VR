@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float friction = 0.85f;
 	public float gravity = 10.0f;
 
-	GameObject playerMoveDirectionWithoutPitch;
+	[HideInInspector] public static GameObject playerMoveDirectionWithoutPitch;
 
 	void UpdateMovement(Vector2 inputDirection) {
 		float deltaTime = Time.deltaTime;
