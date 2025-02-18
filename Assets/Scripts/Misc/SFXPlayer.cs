@@ -5,10 +5,6 @@ public class SFXPlayer : MonoBehaviour {
     public JokernVRSound sound;
     [SerializeField] private GameObject alternativeSource;
     [SerializeField] private string voiceLinePath;
-    public void PlayDingsFromSelf() {
-        FMODController.PlaySoundFrom(sound, gameObject);
-    }
-
     public void PlayDingsFromAlt()
     {
         FMODController.PlaySoundFrom(sound, alternativeSource);
