@@ -25,34 +25,6 @@ public class JokernVRSounds : MonoBehaviour {
 		instance = this;
 	}
 
-	// NOTE: Trims whitespace at the end of each line!!!!
-	bool LoadTextResourceAsLines(string name, out string[] result) {
-		TextAsset textAsset = Resources.Load<TextAsset>(name);
-		if (textAsset == null) {
-			Debug.LogError($"We expect a resource called '{name}' to exist, but there isn't one!");
-			result = default;
-			return false;
-		}
-
-		if (textAsset.text.Length == 0) {
-			Debug.LogWarning($"No text in resource '{name}'.");
-		}
-
-		result = textAsset.text.Split('\n');
-
-		if (result.Length > 0) {
-			for (int i = 0; i < result.Length; ++i) {
-				result[i].TrimEnd();
-			}
-
-			if (String.IsNullOrEmpty(result[result.Length - 1])) {
-				SetLength(ref result, result.Length - 1);
-			}
-		}
-
-		return true;
-	}
-
 	public void ReloadSoundPathsFromDisk() {
 		const string allSoundPathsTextFileName = "AllSoundPaths";
 
