@@ -3,6 +3,7 @@ using UnityEngine;
 public class clownLogic1 : MonoBehaviour
 {
     private Animator animator;
+    public bool talk;
 
     public string voiceLine;
     void Awake()
@@ -13,11 +14,20 @@ public class clownLogic1 : MonoBehaviour
     void Start()
     {
         animator.Play("Idle");
-        SubtitleSystem.PlayVoiceLine(voiceLine);
-        print("talking");
     }
-    
-    public void PlayVoiceLine()
+
+    public void Talk()
     {
+        SubtitleSystem.PlayVoiceLine(voiceLine);
+        Debug.Log("talking");
     }
+
+    void Update()
+    {
+        if (talk)
+        {
+            Talk();
+        }
+    }
+
 }

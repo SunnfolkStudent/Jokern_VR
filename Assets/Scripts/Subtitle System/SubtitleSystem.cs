@@ -9,7 +9,7 @@ public struct VoiceLine {
 }
 
 public class SubtitleSystem : MonoBehaviour {
-	public static VoiceLine[] voiceLines;
+	public static VoiceLine[] voiceLines = new VoiceLine[0];
 	public static int subtitleIndex;
 
 	SubtitleReceiver[] subtitleReceivers;
