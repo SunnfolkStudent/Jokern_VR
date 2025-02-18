@@ -3,7 +3,6 @@ using UnityEngine;
 public class clownLogic3 : MonoBehaviour {
     private Animator animator;
     private string currentVoiceLine;
-    private float time;
 
     void Awake()
     {
@@ -14,28 +13,33 @@ public class clownLogic3 : MonoBehaviour {
     {
         animator.Play("FingerWag");
         currentVoiceLine = "vo_circus_clown_happy_01";
-        time = Time.deltaTime + 2;
     }
 
+    public bool dings;
     void Update()
     {
-        if (time <= Time.deltaTime)
+        if (dings)
         {
-            SubtitleSystem.PlayVoiceLine(currentVoiceLine);
-            print("mjau");
-            time = Time.deltaTime + 2;
+            dings = false;
+            PlayVoiceLine();
         }
     }
-
-    void OnTriggerEnter2D(Collider2D other)
+    
+    public void PlayVoiceLine()
     {
-        if (other.CompareTag("ehm"))
-        {
-            currentVoiceLine = "vo_circus_clown_neutral_01";
-        }
-        else if (other.CompareTag("uhm"))
-        {
-            currentVoiceLine = "vo_circus_clown_angry_01";
-        }
+        SubtitleSystem.PlayVoiceLineFrom(currentVoiceLine, gameObject);
+        FMODController.onVoiceLineEnd.AddListener(Dings);
+        print("mjau");
+    }
+
+    public void ChangeVoiceLine(string newVoiceLine)
+    {
+        currentVoiceLine = newVoiceLine;
+        PlayVoiceLine();
+    }
+    
+    void Dings()
+    {
+        print("ferdig");
     }
 }
