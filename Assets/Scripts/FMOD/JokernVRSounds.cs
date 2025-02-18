@@ -25,6 +25,7 @@ public class JokernVRSounds : MonoBehaviour {
 		instance = this;
 	}
 
+	// NOTE: Trims whitespace at the end of each line!!!!
 	bool LoadTextResourceAsLines(string name, out string[] result) {
 		TextAsset textAsset = Resources.Load<TextAsset>(name);
 		if (textAsset == null) {
@@ -40,6 +41,10 @@ public class JokernVRSounds : MonoBehaviour {
 		result = textAsset.text.Split('\n');
 
 		if (result.Length > 0) {
+			for (int i = 0; i < result.Length; ++i) {
+				result[i].TrimEnd();
+			}
+
 			if (String.IsNullOrEmpty(result[result.Length - 1])) {
 				SetLength(ref result, result.Length - 1);
 			}
