@@ -59,8 +59,6 @@ public class SubtitleSystem : MonoBehaviour {
 		string text;
 		if (0 <= subtitleIndex && subtitleIndex < voiceLines.Length) {
 			text = voiceLines[subtitleIndex].text;
-
-			FMODController.PlayVoiceLineAudio(voiceLines[subtitleIndex].soundPath);
 		} else {
 #if UNITY_EDITOR
 			text = $"(No subtitle has index {subtitleIndex})";
@@ -91,6 +89,13 @@ public class SubtitleSystem : MonoBehaviour {
 	}
 
 	public static void PlayVoiceLine(string voiceLineFileName) {
+		SetVoiceLinePath(voiceLineFileName);
+
+		if (0 <= subtitleIndex && subtitleIndex < voiceLines.Length) {
+			FMODController.PlayVoiceLineAudio(voiceLines[subtitleIndex].soundPath);
+		}
+	}
+	static void SetVoiceLinePath(string voiceLineFileName) {
 		// Find the subtitle belonging to the voice line!
 		subtitleIndex = -1;
 		for (int i = 0; i < voiceLines.Length; ++i) {
@@ -99,6 +104,14 @@ public class SubtitleSystem : MonoBehaviour {
 				subtitleIndex = i;
 				break;
 			}
+		}
+	}
+
+	public static void PlayVoiceLineFrom(string voiceLineFileName, GameObject obj) {
+		SetVoiceLinePath(voiceLineFileName);
+
+		if (0 <= subtitleIndex && subtitleIndex < voiceLines.Length) {
+			FMODController.PlayVoiceLineAudioFrom(voiceLines[subtitleIndex].soundPath, obj);
 		}
 	}
 
