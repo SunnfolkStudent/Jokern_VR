@@ -36,6 +36,20 @@ public class PauseMenuController : MonoBehaviour
         }
     }
 
+    public void ContinueGame()
+    {
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
+        
+        if (pauseMenu.activeInHierarchy)
+        {
+            FMODController.currentAmbianceCalming = FMODController.AmbianceCalming.Calm;
+        }
+        else if (pauseMenu.activeInHierarchy == false)
+        {
+            FMODController.currentAmbianceCalming = FMODController.AmbianceCalming.Normal;
+        }
+    }
+
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
     {
         switch (change)
