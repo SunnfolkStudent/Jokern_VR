@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum FootstepSound {
 	None,
@@ -47,23 +48,32 @@ public class PlayerFootsteps : MonoBehaviour {
 		}
 	}
 
-	public float footStepInterval = 0.65f;
-	public float lastFootstepWasAt;
+	public float minFootStepInterval = 0.60f;
+	public float maxFootStepInterval = 0.70f;
 	public bool  footstepIsOnRightFoot;
 
 	public GameObject footprintDecal;
 
+	float footStepInterval;
+	float lastFootstepWasAt;
 	void PlayFootsteps() {
 		if (lastFootstepWasAt + footStepInterval < Time.time) {
+			footStepInterval = Random.Range(minFootStepInterval, maxFootStepInterval);
 			lastFootstepWasAt = Time.time;
+
 			footstepIsOnRightFoot = !footstepIsOnRightFoot;
 
 			FMODController.PlayFootstepSound(currentlyStandingOn, footstepIsOnRightFoot);
 
+			var rotation = footprintDecal.transform.rotation;
+			rotation *= PlayerMovement.playerMoveDirectionWithoutPitch.transform.rotation;
 			// The footsteps should destroy themselves after some amount of time.
-			// TODO: Rotate with player direction
-			Instantiate(footprintDecal, transform.position, footprintDecal.transform.rotation);
+			Instantiate(footprintDecal, transform.position, rotation);
 		}
+	}
+
+	void Start() {
+		footStepInterval = Random.Range(minFootStepInterval, maxFootStepInterval);
 	}
 
 	public static bool isWalking;
@@ -106,9 +116,10 @@ public class PlayerFootsteps : MonoBehaviour {
 			for (int i = 0; i < soundAreas.Length; ++i) {
 				var areaTransform = soundAreas[i].transform;
 				Collider[] objectsInArea = Physics.OverlapBox(areaTransform.position,
-				                                              areaTransform.localScale,// / 2,
+				                                              areaTransform.localScale,
 				                                              areaTransform.rotation,
 				                                              playerMask);
+
 				for (int j = 0; j < objectsInArea.Length; ++j) {
 					if (objectsInArea[i].CompareTag("Player")) {
 						currentlyStandingOn = soundAreas[i].areaSound;
