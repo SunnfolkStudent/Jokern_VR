@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
 
 public class PortalController : MonoBehaviour
 {
     [FormerlySerializedAs("Other")] public Transform OtherPortal;
     public Vector3 Offset;
     public Transform PlayerTransform;
+	public TeleportationProvider playerTeleportController;
     private float RotY;
 
     private void OnTriggerEnter(Collider probablyPlayer)
@@ -44,6 +46,7 @@ public class PortalController : MonoBehaviour
         otherPosOffset.y = 0;
         // probablyPlayer.transform.position = OtherPortal.position + otherPosOffset;
         probablyPlayer.GetComponent<PlayerMover>().Move(OtherPortal.position + otherPosOffset);
+        playerTeleportController.ForceTeleport(probablyPlayer.transform.position);
         print("PlayerPos After: " + probablyPlayer.transform.position);
         print("PlayerPos Target: " + (OtherPortal.position + otherPosOffset));
     }
