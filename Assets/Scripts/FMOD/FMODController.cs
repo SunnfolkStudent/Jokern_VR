@@ -100,6 +100,7 @@ public class FMODController : MonoBehaviour {
 			var fmodStatus = RuntimeManager.StudioSystem.getParameterByName(parameterName_isPlayingVoiceLine,
 			                                                                out isPlayingVoiceLineAsFloat);
 			if (fmodStatus == FMOD.RESULT.OK) {
+				print($"år {isPlayingVoiceLineAsFloat}");
 				bool isPlayingVoiceLine = isPlayingVoiceLineAsFloat != 0.0f;
 				if (!isPlayingVoiceLine) {
 					weThinkFMODIsPlayingAVoiceLine = false;
@@ -107,7 +108,6 @@ public class FMODController : MonoBehaviour {
 					if (onVoiceLineEnd != null) {
 						onVoiceLineEnd.Invoke();
 					}
-
 					onVoiceLineEnd.RemoveAllListeners();
 				}
 			} else {
