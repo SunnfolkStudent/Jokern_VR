@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: 9
+  alternativeSource: {fileID: 602156183}
+  voiceLinePath: 
 --- !u!114 &87968608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +178,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 87968607}
         m_TargetAssemblyTypeName: SFXPlayer, Assembly-CSharp
-        m_MethodName: PlayDings
+        m_MethodName: PlayDingsFromAlt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -216,7 +218,7 @@ Transform:
   m_GameObject: {fileID: 87968606}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -142.26, y: 10.53, z: 6.99}
+  m_LocalPosition: {x: 4, y: 10.53, z: 6.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -236,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3389666087649777774, guid: 724dbe7f8dfdfb9848100bd724e48a39, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -143.95
+      value: 7.87
       objectReference: {fileID: 0}
     - target: {fileID: 3389666087649777774, guid: 724dbe7f8dfdfb9848100bd724e48a39, type: 3}
       propertyPath: m_LocalPosition.y
@@ -244,7 +246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3389666087649777774, guid: 724dbe7f8dfdfb9848100bd724e48a39, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.87
+      value: -14.1
       objectReference: {fileID: 0}
     - target: {fileID: 3389666087649777774, guid: 724dbe7f8dfdfb9848100bd724e48a39, type: 3}
       propertyPath: m_LocalRotation.w
@@ -492,6 +494,37 @@ MonoBehaviour:
   voiceLinePath: vo_darkjoker_player_musing_02
   minSecondsToWait: 5
   maxSecondsToWait: 10
+--- !u!1 &602156183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 602156184}
+  m_Layer: 0
+  m_Name: PawnCrushSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &602156184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602156183}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.881, y: 10.53, z: 5.409}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &876560428
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,7 +688,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 5, y: 5, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1336396802
 Transform:
@@ -666,7 +699,7 @@ Transform:
   m_GameObject: {fileID: 1336396799}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -10.02, y: 9.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -700,7 +733,7 @@ Transform:
   m_GameObject: {fileID: 1820962368}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.57, y: 12.06, z: 7.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -760,7 +793,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 5, y: 5, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1820962372
 MonoBehaviour:
@@ -816,3 +849,4 @@ SceneRoots:
   - {fileID: 876560430}
   - {fileID: 327757831}
   - {fileID: 87968610}
+  - {fileID: 602156184}
