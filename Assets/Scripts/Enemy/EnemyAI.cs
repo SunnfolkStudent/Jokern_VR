@@ -1,15 +1,21 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
+using NUnit.Framework.Internal;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class EnemyAI : MonoBehaviour
 {
     private NavMeshAgent agent;
     public float runSpeed = 9;
-    public float enemyRadius = 40f;
+    public float radius1 = 40f;
+    private float enemyRadius;
     public float enemyRadius2 = 20f;
     public float enemyRadius3 = 10f;
     
@@ -17,12 +23,17 @@ public class EnemyAI : MonoBehaviour
     public Transform playerPosition;
     private Vector3 destination;
     public LayerMask Layers;
+    public ParticleSystem confetti;
+    private float confettiTime = .5f;
+    
+    public Transform[] spawnPoints; 
 
     private bool playerInSight = false;
     private bool caughtPlayer;
-    private bool playerInRange = false;
-    private bool playerInRange2 = false;
-    private bool playerInRange3 = false;
+    private bool playerInRange;
+    private bool playerInRange2;
+    private bool playerInRange3;
+    private bool die;
 
     private void Awake()
     {
@@ -32,10 +43,18 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        enemyRadius = 40f;
+        transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+        enemyRadius = radius1;
         caughtPlayer = false;
+        playerInRange = false;
+        playerInRange2 = false;
+        playerInRange3 = false;
         agent.isStopped = false;
         agent.updateRotation = true;
+        die = false;
+
+        //Use this to test death part 2: electric boogaloo
+        // StartCoroutine(TestDeath());
     }
     private void Update()
     {
@@ -50,10 +69,15 @@ public class EnemyAI : MonoBehaviour
         if (playerInRange && !caughtPlayer)
         {
             enemyRadius = 80f;
-            // RotateTowardPlayer();
             Chasing();
             FMODController.finalPathTension = FMODController.FinalPathTension.Low;
             
+        }
+
+        if (die && !caughtPlayer)
+        {
+            Stop();
+            Death();
         }
 
         if (playerInRange && playerInRange2)
@@ -98,9 +122,26 @@ public class EnemyAI : MonoBehaviour
         agent.speed = 0;
     }
 
-    private void RotateTowardPlayer()
+    public void Death()
     {
-        transform.LookAt(playerPosition.position);
+        ConfettiExplosion();
+        confetti.Play();
+        
+        ResetEnemy(radius1);
+    }
+
+    private void ResetEnemy(float radiusDefaultValue)
+    {
+        enemyRadius = radiusDefaultValue;
+        
+        transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+        die = false;
+    }
+
+    private void ConfettiExplosion()
+    {
+        ParticleSystem confettiInstance = Instantiate(confetti, transform.position, Quaternion.identity);
+        Destroy(confettiInstance, confettiTime);
     }
     
     private void OnTriggerEnter(Collider other)
@@ -110,6 +151,13 @@ public class EnemyAI : MonoBehaviour
             caughtPlayer = true;
         }
     }
+
+    //Use this to test death
+    // IEnumerator TestDeath()
+    // {
+    //     yield return new WaitForSeconds(5f);
+    //     die = true;
+    // }
 
     private void OnDrawGizmos()
     {
