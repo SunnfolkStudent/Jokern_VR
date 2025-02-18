@@ -177,6 +177,12 @@ public class FMODController : MonoBehaviour {
 		weThinkFMODIsPlayingAVoiceLine = true;
 	}
 
+	public static void PlayVoiceLineAudioFrom(string path, GameObject obj) {
+		RuntimeManager.StudioSystem.setParameterByName(parameterName_isPlayingVoiceLine, 1.0f);
+		PlayFMODSoundEventFrom(path, obj);
+		weThinkFMODIsPlayingAVoiceLine = true;
+	}
+
 	static string GetVolumeSliderParameterName(VolumeSlider slider) {
 		switch (slider) {
 			case VolumeSlider.Master:       return "Master Volume";

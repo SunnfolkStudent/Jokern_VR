@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float friction = 0.85f;
 	public float gravity = 10.0f;
 
-	GameObject playerMoveDirectionWithoutPitch;
+	[HideInInspector] public static GameObject playerMoveDirectionWithoutPitch;
 
 	void UpdateMovement(Vector2 inputDirection) {
 		float deltaTime = Time.deltaTime;
@@ -78,9 +78,8 @@ public class PlayerMovement : MonoBehaviour {
 			UpdateMovement(input.moveDirection);
 		}
 	}
-
-	// These three were static for unkown reason HELP US GOD - Trym 
-	public bool isUsingStickMovement = true;
+	
+	public static bool isUsingStickMovement = true;
 	public void SwitchToStickMovement() => isUsingStickMovement = true;
 	public void SwitchToTeleportation() => isUsingStickMovement = false;
 
