@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static AugustBase.All;
 
 [Serializable]
 public struct VoiceLine {
@@ -14,23 +15,6 @@ public class SubtitleSystem : MonoBehaviour {
 	SubtitleReceiver[] subtitleReceivers;
 	void FindSubtitleReceivers() {
 		subtitleReceivers = UnityEngine.Object.FindObjectsByType<SubtitleReceiver>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-	}
-
-	bool LoadTextResourceAsLines(string name, out string[] result) {
-		TextAsset textAsset = Resources.Load<TextAsset>(name);
-		if (textAsset == null) {
-			Debug.LogError($"We expect a resource called '{name}' to exist, but there isn't one!");
-			result = default;
-			return false;
-		}
-
-		if (textAsset.text.Length == 0) {
-			Debug.LogWarning($"No text in resource '{name}'.");
-		}
-
-		result = textAsset.text.Split('\n');
-
-		return true;
 	}
 
 	public void ReloadSubtitlesFromDisk() {
