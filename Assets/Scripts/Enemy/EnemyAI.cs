@@ -26,6 +26,9 @@ public class EnemyAI : MonoBehaviour
     public ParticleSystem confetti;
     private float confettiTime = .5f;
     
+    float maxDistance = 20f;
+    public Material staticMaterial;
+    
     public Transform[] spawnPoints; 
 
     private bool playerInSight = false;
@@ -43,6 +46,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        staticMaterial.SetFloat("_Strength", 0);
         transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
         enemyRadius = radius1;
         caughtPlayer = false;
@@ -59,6 +63,10 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         destination = playerPosition.position;
+        
+        float distance = Vector3.Distance(transform.position, playerPosition.position);
+        float value = Mathf.InverseLerp(maxDistance, 0, distance);
+        staticMaterial.SetFloat("_Strength", value);
         
         playerInRange = Physics.CheckSphere(transform.position, enemyRadius, Layers);
         playerInRange2 = Physics.CheckSphere(transform.position, enemyRadius2, Layers);
@@ -135,6 +143,7 @@ public class EnemyAI : MonoBehaviour
         enemyRadius = radiusDefaultValue;
         
         transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+        staticMaterial.SetFloat("_Strength", 0);
         die = false;
     }
 
@@ -151,13 +160,6 @@ public class EnemyAI : MonoBehaviour
             caughtPlayer = true;
         }
     }
-
-    //Use this to test death
-    // IEnumerator TestDeath()
-    // {
-    //     yield return new WaitForSeconds(5f);
-    //     die = true;
-    // }
 
     private void OnDrawGizmos()
     {
