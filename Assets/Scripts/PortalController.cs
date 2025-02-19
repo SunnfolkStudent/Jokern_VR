@@ -18,7 +18,11 @@ public class PortalController : MonoBehaviour
         print("HIT PLAYER");
         
         // PlayerTransform = probablyPlayer.gameObject.GetComponent<PlayerMover>().GetTargetReference();
+#if true
+        SceneController.LoadNextLevel();
+#else
         StartCoroutine(Teleport(probablyPlayer, 0.1f));
+#endif
     }
 
     private IEnumerator Teleport(Collider probablyPlayer, float delay)
