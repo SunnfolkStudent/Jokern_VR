@@ -6,6 +6,7 @@ public class c4 : MonoBehaviour
     [SerializeField] private GameObject confettiPSPrefab;
     // private ParticleSystem confettiSystem;
     private float confettiTime = 3f;
+    private BoxCollider collider;
     private MeshRenderer objectRenderer;
     private Vector3 centerPos;
 
@@ -13,11 +14,13 @@ public class c4 : MonoBehaviour
     {
         // Instantiate(confettiPSPrefab, transform.position, Quaternion.identity);
         objectRenderer = this.gameObject.GetComponent<MeshRenderer>();
+        collider = this.gameObject.GetComponent<BoxCollider>();
     }
 
     public void Explode()
     {
         objectRenderer.enabled = false;
+        collider.enabled = false;
         centerPos = objectRenderer.bounds.center;
         GameObject confettiInstance =  Instantiate(confettiPSPrefab, centerPos, Quaternion.identity);
         // ParticleSystem confettiInstance = Instantiate(confettiSystem, transform.position, Quaternion.identity);
