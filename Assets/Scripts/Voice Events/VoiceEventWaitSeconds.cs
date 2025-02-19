@@ -7,9 +7,11 @@ public class VoiceEventWaitSeconds : MonoBehaviour {
 	public float  maxSecondsToWait;
 
 	float playAt = Mathf.Infinity;
+	bool played;
 	void Update() {
-		if (playAt <= Time.time) {
+		if (!played && playAt <= Time.time) {
 			SubtitleSystem.PlayVoiceLine(voiceLinePath);
+			played = true;
 		}
 	}
 
