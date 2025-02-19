@@ -19,13 +19,13 @@ public class clownLogic1 : MonoBehaviour
     public void Talk()
     {
         SubtitleSystem.PlayVoiceLine(voiceLine);
-        Debug.Log("talking");
     }
 
     void Update()
     {
         if (talk)
         {
+            talk = false;
             Talk();
         }
     }
