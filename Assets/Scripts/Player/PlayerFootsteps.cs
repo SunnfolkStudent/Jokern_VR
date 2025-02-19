@@ -111,7 +111,7 @@ public class PlayerFootsteps : MonoBehaviour {
 		if (!useTextureToFootstepSound) {
 			currentlyStandingOn = defaultFootstepSound;
 
-			var soundAreas = UnityEngine.Object.FindObjectsByType<PlayerFootstepSoundArea>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+			var soundAreas = UnityEngine.Object.FindObjectsByType<PlayerFootstepSoundArea>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
 			for (int i = 0; i < soundAreas.Length; ++i) {
 				var areaTransform = soundAreas[i].transform;
@@ -121,7 +121,7 @@ public class PlayerFootsteps : MonoBehaviour {
 				                                              playerMask);
 
 				for (int j = 0; j < objectsInArea.Length; ++j) {
-					if (objectsInArea[i].CompareTag("Player")) {
+					if (objectsInArea[j].CompareTag("Player")) {
 						currentlyStandingOn = soundAreas[i].areaSound;
 					}
 				}

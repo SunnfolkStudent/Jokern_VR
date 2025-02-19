@@ -21,7 +21,7 @@ public class FogGateController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         print("Door Collided with: " + other.name);
-        if (other.CompareTag("Player Body"))
+        if (other.CompareTag("Player"))
         {
             OpenDoors();
             if (FogGateDoor.spawn == false)
