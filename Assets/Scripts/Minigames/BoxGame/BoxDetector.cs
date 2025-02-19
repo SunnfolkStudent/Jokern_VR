@@ -35,4 +35,21 @@ public class BoxDetector : MonoBehaviour
         _rigidbody.angularVelocity = new Vector3(0, 0, 0);
         _initialized = false;
     }
+    
+    void OnCollisionEnter(Collision collision){
+        if (collision.gameObject.CompareTag("Balls"))
+        {
+            print("Play BALL HIT SOUNDEFFECT");
+           // FMODController.PlaySound(JokernVRSound.SFX_BallCollisionCanStrong); 
+           FMODController.PlaySoundFrom(JokernVRSound.SFX_BallCollisionCanStrong, this.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Can"))
+        {
+           FMODController.PlaySoundFrom(JokernVRSound.SFX_CanCollisionCan, this.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Ground"))
+        {
+           FMODController.PlaySoundFrom(JokernVRSound.SFX_CanCollisionGround, this.gameObject);
+        }
+    }
 }
