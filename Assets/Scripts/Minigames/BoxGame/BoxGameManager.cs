@@ -8,11 +8,13 @@ public class BoxGameManager : MonoBehaviour
 
     [SerializeField] private Transform BoxCollection;
     [SerializeField] private Transform BallCollection;
+    [SerializeField] private Transform ObstacleCollection;
     [SerializeField] private int winThreshold = 5;
     public BoxDetector[] boxes;
     public BallDetector[] balls;
-    
-    public GameObject obstacle;
+    public GameObject[] obstacles;
+
+    public bool won = false;
     public float BoxesKnocked = 0;
     public float BallsUsed = 0;
 
@@ -29,41 +31,13 @@ public class BoxGameManager : MonoBehaviour
        {
            balls[i] = BallCollection.GetChild(i).GetComponent<BallDetector>();
        }
+       
+       obstacles = new GameObject[ObstacleCollection.childCount];
+       for (int i = 0; i < balls.Length; i++)
+       {
+           obstacles[i] = ObstacleCollection.GetChild(i).gameObject;
+       }
     }
-
-    // private void Update()
-    // {
-    //     if (BoxesKnocked < boxes.Length && BallsUsed == balls.Length) //the reset method checks if all 5 boxes have been knocked down and if all your balls have been used
-    //     {
-    //         for (int i = 0; i < boxes.Length; i++) //resets the boxes transform so you can try again
-    //         {
-    //             boxes[i].ResetTransform(); //sends a command to the boxDetector to invoke the ResetTransform method
-    //             BoxesKnocked = 0; //sets the amount of boxes knocked to 0
-    //             //boxes[i]._initialized = false;
-    //         }
-    //         //the for statement has been used instead of for each simply because for each was refusing to work
-    //         for (int i = 0; i < balls.Length; i++) //resets the balls transform so you can try again
-    //         {
-    //             balls[i].ResetTransform(); //sends a command to the ballDetector to invoke the ResetTransform method
-    //             BallsUsed = 0; //sets the amount of balls used to 0
-    //         }
-    //     }
-    //
-    //     if (BoxesKnocked == boxes.Length && BallsUsed <= BallsUsed)
-    //     {
-    //         obstacle.SetActive(false);
-    //     }
-    //     
-    //     for (int i = 0; i < boxes.Length; i++) //again a for method that checks the array of boxes
-    //     {
-    //         if (boxes[i].boxHasMoved == true) //checks if the boxHasMoved variable has become true
-    //         {
-    //             BoxesKnocked +=1; //increases the amount of boxesKnocked by 1 every time boxHasMoved has become true
-    //             boxes[i].boxHasMoved = false; //disables the boxHasMoved variable to avoid accidentally turning it back on we have a variable
-    //         }
-    //     }
-    // }
-
     private void Update()
     {
         // Check for points
@@ -77,8 +51,8 @@ public class BoxGameManager : MonoBehaviour
         }
         
         // Win or loose
-        if ( BoxesKnocked >= winThreshold ) { WinGame(); }
-        else if ( BallsUsed >= balls.Length ){ ResetGame(); }
+        if ( BoxesKnocked >= winThreshold && !won ) { WinGame(); }
+        else if ( BallsUsed >= balls.Length){ ResetGame(); }
     }
 
     private void ResetGame()
@@ -101,8 +75,13 @@ public class BoxGameManager : MonoBehaviour
 
     private void WinGame()
     {
+        won = true;
         // obstacle.SetActive(false);
-        obstacle.gameObject.GetComponent<c4>().Explode();
+        for (int i = 0; i < obstacles.Length; i++)
+        {
+            obstacles[i].GetComponent<c4>().Explode();
+        }
+        this.gameObject.SetActive(false);
     }
     
     void OnTriggerEnter(Collider other) 
