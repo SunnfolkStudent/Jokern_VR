@@ -28,4 +28,16 @@ public class BallDetector : MonoBehaviour
         _rigidbody.angularVelocity = new Vector3(0, 0, 0);
         isUsed = false;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wood"))
+        {
+           FMODController.PlaySoundFrom(JokernVRSound.SFX_BallCollisionWoodWeak, this.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Ground"))
+        {
+           FMODController.PlaySoundFrom(JokernVRSound.SFX_BallCollisionGroundStrong, this.gameObject);
+        }
+    }
 }
