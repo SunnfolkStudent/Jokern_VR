@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onlyTriggerEnterOnce: 1
-  onlyTriggerExitOnce: 1
+  onlyTriggerExitOnce: 0
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
@@ -122,8 +122,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 12.047409, y: 1, z: 12.648302}
-  m_Center: {x: -0.36411214, y: 0, z: 5.824151}
+  m_Size: {x: 12, y: 5, z: 12}
+  m_Center: {x: 0, y: 2, z: 5}
 --- !u!65 &7821338996605883187
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -143,8 +143,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 23.318542, y: 1, z: 10.742386}
-  m_Center: {x: 0.054628372, y: 0, z: 1.5752022}
+  m_Size: {x: 24, y: 5, z: 10}
+  m_Center: {x: 0, y: 2, z: 2}
 --- !u!1 &3663909223202850113
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,8 +232,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.769092, y: 1, z: 7.104042}
-  m_Center: {x: 0.28249788, y: 0, z: -7.5143833}
+  m_Size: {x: 10, y: 5, z: 7}
+  m_Center: {x: 0, y: 2, z: -7.5}
 --- !u!1 &6536997201746657008
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onlyTriggerEnterOnce: 1
-  onlyTriggerExitOnce: 1
+  onlyTriggerExitOnce: 0
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
@@ -321,5 +321,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 12.376068, y: 1, z: 12.573219}
-  m_Center: {x: -0.22512817, y: 0, z: -2.0511427}
+  m_Size: {x: 22, y: 5, z: 8}
+  m_Center: {x: -1, y: 2, z: 0}
