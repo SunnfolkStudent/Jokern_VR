@@ -9,6 +9,7 @@ using FMOD.Studio;
 public struct PlayingSound {
 	public EventInstance eventInstance;
 	public bool ignorePausing;
+	public bool isVoiceLine;
 }
 
 [Serializable]
@@ -43,41 +44,31 @@ public class FMODController : MonoBehaviour {
 
 	static List<PlayingSound> currentlyPlayingSounds = new();
 
-	static void PlayFMODSoundEvent(EventReference eR, bool ignorePausing = false) {
+	static void PlayFMODSoundEvent(EventReference eR, bool ignorePausing = false, bool isVoiceLine = false) {
 		EventInstance eI = RuntimeManager.CreateInstance(eR);
 		eI.start();
 
 		PlayingSound playingSound;
 		playingSound.eventInstance = eI;
 		playingSound.ignorePausing = ignorePausing || pauseAllAudio;
+		playingSound.isVoiceLine = isVoiceLine;
 
 		currentlyPlayingSounds.Add(playingSound);
 	}
 
-	static void PlayFMODSoundEvent(string eR, bool ignorePausing = false) {
+	static void PlayFMODSoundEvent(string eR, bool ignorePausing = false, bool isVoiceLine = false) {
 		EventInstance eI = RuntimeManager.CreateInstance(eR);
 		eI.start();
 
 		PlayingSound playingSound;
 		playingSound.eventInstance = eI;
 		playingSound.ignorePausing = ignorePausing || pauseAllAudio;
+		playingSound.isVoiceLine = isVoiceLine;
 
 		currentlyPlayingSounds.Add(playingSound);
 	}
 
-	static void PlayFMODSoundEventFrom(string eR, GameObject obj, bool ignorePausing = false) {
-		EventInstance eI = RuntimeManager.CreateInstance(eR);
-		RuntimeManager.AttachInstanceToGameObject(eI, obj);
-		eI.start();
-
-		PlayingSound playingSound;
-		playingSound.eventInstance = eI;
-		playingSound.ignorePausing = ignorePausing || pauseAllAudio;
-
-		currentlyPlayingSounds.Add(playingSound);
-	}
-
-	static void PlayFMODSoundEventFrom(EventReference eR, GameObject obj, bool ignorePausing = false) {
+	static void PlayFMODSoundEventFrom(string eR, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false) {
 		EventInstance eI = RuntimeManager.CreateInstance(eR);
 		RuntimeManager.AttachInstanceToGameObject(eI, obj);
 		eI.start();
@@ -85,16 +76,33 @@ public class FMODController : MonoBehaviour {
 		PlayingSound playingSound;
 		playingSound.eventInstance = eI;
 		playingSound.ignorePausing = ignorePausing || pauseAllAudio;
+		playingSound.isVoiceLine = isVoiceLine;
 
 		currentlyPlayingSounds.Add(playingSound);
 	}
 
+	static void PlayFMODSoundEventFrom(EventReference eR, GameObject obj, bool ignorePausing = false, bool isVoiceLine = false) {
+		EventInstance eI = RuntimeManager.CreateInstance(eR);
+		RuntimeManager.AttachInstanceToGameObject(eI, obj);
+		eI.start();
+
+		PlayingSound playingSound;
+		playingSound.eventInstance = eI;
+		playingSound.ignorePausing = ignorePausing || pauseAllAudio;
+		playingSound.isVoiceLine = isVoiceLine;
+
+		currentlyPlayingSounds.Add(playingSound);
+	}
+
+#if USE_ISPLAYINGVOICELINE_PARAMETER
 	const string parameterName_isPlayingVoiceLine = "IsPlayingVoiceLine";
 	static bool weThinkFMODIsPlayingAVoiceLine;
+#endif
 
 	public static UnityEvent onVoiceLineEnd = new();
 
 	void FixedUpdate() {
+#if USE_ISPLAYINGVOICELINE_PARAMETER // For some reason this version doesn't work? Seems to be an issue in FMOD.
 		if (weThinkFMODIsPlayingAVoiceLine) {
 			float isPlayingVoiceLineAsFloat;
 			var fmodStatus = RuntimeManager.StudioSystem.getParameterByName(parameterName_isPlayingVoiceLine,
@@ -107,13 +115,13 @@ public class FMODController : MonoBehaviour {
 					if (onVoiceLineEnd != null) {
 						onVoiceLineEnd.Invoke();
 					}
-
 					onVoiceLineEnd.RemoveAllListeners();
 				}
 			} else {
 				Debug.LogError($"FMOD is not ok! ({fmodStatus.ToString()})");
 			}
 		}
+#endif
 
 		if (currentlyPlayingSounds != null) {
 			for (int i = 0; i < currentlyPlayingSounds.Count; ++i) {
@@ -121,6 +129,17 @@ public class FMODController : MonoBehaviour {
 
 				if (it.eventInstance.getPlaybackState(out PLAYBACK_STATE state) == FMOD.RESULT.OK) {
 					if (state == PLAYBACK_STATE.STOPPED) {
+#if USE_ISPLAYINGVOICELINE_PARAMETER
+#else
+						if (it.isVoiceLine) {
+							if (onVoiceLineEnd != null) {
+								onVoiceLineEnd.Invoke();
+							}
+
+							onVoiceLineEnd.RemoveAllListeners();
+						}
+#endif
+
 						currentlyPlayingSounds.RemoveAt(i);
 					} else {
 						if (!currentlyPlayingSounds[i].ignorePausing) {
@@ -172,15 +191,23 @@ public class FMODController : MonoBehaviour {
 	}
 
 	public static void PlayVoiceLineAudio(string path) {
+#if USE_ISPLAYINGVOICELINE_PARAMETER
 		RuntimeManager.StudioSystem.setParameterByName(parameterName_isPlayingVoiceLine, 1.0f);
 		PlayFMODSoundEvent(path);
 		weThinkFMODIsPlayingAVoiceLine = true;
+#else
+		PlayFMODSoundEvent(path, false, true);
+#endif
 	}
 
 	public static void PlayVoiceLineAudioFrom(string path, GameObject obj) {
+#if USE_ISPLAYINGVOICELINE_PARAMETER
 		RuntimeManager.StudioSystem.setParameterByName(parameterName_isPlayingVoiceLine, 1.0f);
-		PlayFMODSoundEventFrom(path, obj);
+		PlayFMODSoundEvent(path);
 		weThinkFMODIsPlayingAVoiceLine = true;
+#else
+		PlayFMODSoundEventFrom(path, obj, false, true);
+#endif
 	}
 
 	static string GetVolumeSliderParameterName(VolumeSlider slider) {

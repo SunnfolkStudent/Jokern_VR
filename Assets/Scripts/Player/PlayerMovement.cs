@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour {
 	TeleportationProvider playerTeleportController;
 	const string playerTeleportControllerTag = "Player Teleport Controller";
 	
-
     void Start() {
 		if (playerTransform == null) {
 			Debug.LogError("No player assigned to the 'Player To Move' field.");

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 58577423644684023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.36144, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -535,8 +535,8 @@ Camera:
   m_GameObject: {fileID: 1212283674729440303}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.14901961, g: 0.14901961, b: 0.14901961, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Mediator: {fileID: 2557512334881948468}
   m_TransformationPriority: 0
-  m_MoveSpeed: 1.3
+  m_MoveSpeed: 2.2
   m_InAirControlModifier: 0.5
   m_EnableStrafe: 1
   m_EnableFly: 0
@@ -2459,7 +2459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7277735981988630926
 Transform:
   m_ObjectHideFlags: 0
@@ -2491,6 +2491,7 @@ GameObject:
   - component: {fileID: 5213231870605769040}
   - component: {fileID: 6382617012280840177}
   - component: {fileID: 3058757234841695832}
+  - component: {fileID: 8918275048754398486}
   m_Layer: 2
   m_Name: XR Origin (XR Rig)
   m_TagString: Player Body
@@ -2632,6 +2633,33 @@ MonoBehaviour:
   m_AimAssistRequiredSpeed: 0.25
   m_AimAssistPercent: 0.8
   m_AimAssistMaxSpeedPercent: 10
+--- !u!114 &8918275048754398486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4718055985212132241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ed3fda3609cdd42bea03a046dd9743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relativeRaycastFrom: {x: 0, y: 0, z: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  useTextureToFootstepSound: 0
+  textureToFootstepSounds: []
+  currentlyStandingOn: 0
+  minFootStepInterval: 0.6
+  maxFootStepInterval: 0.7
+  footstepIsOnRightFoot: 0
+  footprintDecal: {fileID: 5663278017943522018, guid: 28dac21ab634213478247bedb6334d3d, type: 3}
+  defaultFootstepSound: 2
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &5068432291373526325
 GameObject:
   m_ObjectHideFlags: 0
@@ -3594,11 +3622,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightTimer: 0
   lightIntensity: 0
-  lightLifetime: 5
+  lightLifetime: 60
   isLightOn: 1
   shakeBufferTime: 0.1
   shakeTimer: 0
-  shakeIntensity: 10
+  shakeIntensity: 20
   shakeAmount: 6
   shakeCounter: 0
   shakeTurnSensetivity: 0
@@ -3641,8 +3669,8 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 30
   m_Range: 8
-  m_SpotAngle: 43.87038
-  m_InnerSpotAngle: 11.077477
+  m_SpotAngle: 64.40212
+  m_InnerSpotAngle: 31.609215
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -4817,6 +4845,10 @@ PrefabInstance:
     - target: {fileID: 1520645690501424135, guid: 4a3e01aa10be326418ced3dc5e707ab7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168029040144174360, guid: 4a3e01aa10be326418ced3dc5e707ab7, type: 3}
+      propertyPath: isFogOn
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4168029040144174360, guid: 4a3e01aa10be326418ced3dc5e707ab7, type: 3}
       propertyPath: trackingTarget
@@ -6109,7 +6141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6659269369550914496, guid: cabc9b5dd82067f44b766d4ab97cffde, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7554088257256395301, guid: cabc9b5dd82067f44b766d4ab97cffde, type: 3}
       propertyPath: m_LocalPosition.x
