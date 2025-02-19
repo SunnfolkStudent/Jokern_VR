@@ -17,7 +17,7 @@ public class FlashlightMaster2 : MonoBehaviour
     [Header("Shake Refresh Flashlight")]
     [SerializeField] private float shakeBufferTime = 3f;
     [SerializeField] private float shakeTimer = 0;
-    [SerializeField] private float shakeIntensity = 0.3f;
+    public float shakeIntensity = 0.3f;
     [SerializeField] private int shakeAmount = 6;
     [SerializeField] private int shakeCounter = 0;
     [SerializeField] private int shakeTurnSensetivity = 0;
