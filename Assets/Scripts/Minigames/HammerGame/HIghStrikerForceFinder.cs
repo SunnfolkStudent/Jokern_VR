@@ -13,7 +13,8 @@ public class HIghStrikerForceFinder : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        Vector3 hitForce = col.impulse / Time.fixedDeltaTime; //checks the velocity of the object that it collided with and sets hit force to it
+        // Vector3 hitForce = col.impulse / Time.fixedDeltaTime; //checks the velocity of the object that it collided with and sets hit force to it
+        Vector3 hitForce = col.impulse; //checks the velocity of the object that it collided with and sets hit force to it
         forceVector = hitForce;
         print(hitForce);
     }

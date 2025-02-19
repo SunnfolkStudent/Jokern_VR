@@ -8,6 +8,7 @@ public class BoxDetector : MonoBehaviour
     private Vector3 _boxStartPosition;
     private Quaternion _boxStartRotation;
     private bool _initialized;
+    [SerializeField] private float thresholdOffset = 0.5f;
 
     private void Start()
     {
@@ -20,7 +21,8 @@ public class BoxDetector : MonoBehaviour
     
     private void Update()
     {
-        if (_rigidbody.linearVelocity.x > 0.1f && _initialized == false) //checks if the box has moved and if it has already been moved before
+        // if (_rigidbody.linearVelocity.x > 0.1f && _initialized == false) //checks if the box has moved and if it has already been moved before
+        if (Vector3.Distance(_boxStartPosition, transform.position) > thresholdOffset  && _initialized == false) //checks if the box has moved and if it has already been moved before
         {
             boxHasMoved = true; //changes the boxHasMoved variable to true
             _initialized = true; //changes the initialized variable to true thus disabling the scripts ability to change boxHasMoved to true
