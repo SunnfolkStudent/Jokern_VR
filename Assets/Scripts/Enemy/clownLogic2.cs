@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class clownLogic2 : MonoBehaviour {
     private Animator animator;
+    public bool fall;
 
     public string voiceLine;
 
@@ -11,7 +12,16 @@ public class clownLogic2 : MonoBehaviour {
     }
     void Start()
     {
-        animator.Play("Idle");
+        animator.Play("SittingOnEdge");
+    }
+
+    void Update()
+    {
+        if (fall)
+        {
+            fall = false;
+            ClownFall();
+        }
     }
 
     public void ClownFall()
