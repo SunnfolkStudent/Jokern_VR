@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4251950524634124076, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6821591349336027941, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
       propertyPath: confetti
@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: 'spawnPoints.Array.data[3]'
       value: 
       objectReference: {fileID: 1544948244}
+    - target: {fileID: 8345714670464660029, guid: 302388a74cb6a4cbcba35a6cad1981a7, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
