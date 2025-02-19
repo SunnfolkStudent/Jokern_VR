@@ -36,6 +36,7 @@ public class EnemyAI : MonoBehaviour
     private bool playerInRange;
     private bool playerInRange2;
     private bool playerInRange3;
+    private bool shouldChase;
     private bool die;
 
     private GameObject cam;
@@ -49,6 +50,8 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         cam = GameObject.Find("Main Camera");
+        
+        Debug.Log(cam.name);
         playerPosition = cam.transform;
         
         staticMaterial.SetFloat("_Strength", 0);
@@ -61,12 +64,17 @@ public class EnemyAI : MonoBehaviour
         agent.isStopped = false;
         agent.updateRotation = true;
         die = false;
+        shouldChase = true;
 
         //Use this to test death part 2: electric boogaloo
         // StartCoroutine(TestDeath());
     }
     private void Update()
     {
+        playerPosition = cam.transform;
+
+        destination = playerPosition.position;
+        
         float distance = Vector3.Distance(transform.position, playerPosition.position);
         float value = Mathf.InverseLerp(maxDistance, 0, distance);
         staticMaterial.SetFloat("_Strength", value);
@@ -77,7 +85,7 @@ public class EnemyAI : MonoBehaviour
         
         anim.SetBool("isChasing", playerInRange);
         
-        if (playerInRange && !caughtPlayer)
+        if (playerInRange && !caughtPlayer && shouldChase)
         {
             enemyRadius = 100f;
             Chasing();
@@ -87,27 +95,26 @@ public class EnemyAI : MonoBehaviour
 
         if (die && !caughtPlayer)
         {
-            Stop();
             Death();
         }
 
-        if (playerInRange && playerInRange2)
-        {
-            FMODController.finalPathTension = FMODController.FinalPathTension.Medium;
-        }
-        else
-        {
-            FMODController.finalPathTension = FMODController.FinalPathTension.None;
-        }
-
-        if (playerInRange && playerInRange2 && playerInRange3)
-        {
-            FMODController.finalPathTension = FMODController.FinalPathTension.High;
-        }
-        else
-        {
-            FMODController.finalPathTension = FMODController.FinalPathTension.None;
-        }
+        // if (playerInRange && playerInRange2)
+        // {
+        //     FMODController.finalPathTension = FMODController.FinalPathTension.Medium;
+        // }
+        // else
+        // {
+        //     FMODController.finalPathTension = FMODController.FinalPathTension.None;
+        // }
+        //
+        // if (playerInRange && playerInRange2 && playerInRange3)
+        // {
+        //     FMODController.finalPathTension = FMODController.FinalPathTension.High;
+        // }
+        // else
+        // {
+        //     FMODController.finalPathTension = FMODController.FinalPathTension.None;
+        // }
     }
 
     private void Chasing()
@@ -136,7 +143,7 @@ public class EnemyAI : MonoBehaviour
     public void Death()
     {
         ConfettiExplosion();
-        FMODController.PlaySoundFrom(JokernVRSound.SFX_ConfettiPop, gameObject);
+        // FMODController.PlaySoundFrom(JokernVRSound.SFX_ConfettiPop, gameObject);
         confetti.Play();
         
         ResetEnemy(enemyRadiusOriginal);
@@ -145,10 +152,13 @@ public class EnemyAI : MonoBehaviour
     private void ResetEnemy(float radiusDefaultValue)
     {
         enemyRadius = radiusDefaultValue;
-        
-        transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+        Stop();
         staticMaterial.SetFloat("_Strength", 0);
         die = false;
+        shouldChase = false;
+        playerInRange = false;
+        caughtPlayer = false;
+        transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
     }
 
     private void ConfettiExplosion()
@@ -162,6 +172,11 @@ public class EnemyAI : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             caughtPlayer = true;
+        }
+
+        if (other.gameObject.CompareTag("Light"))
+        {
+            Invoke("Death", 1.5f);
         }
     }
 
