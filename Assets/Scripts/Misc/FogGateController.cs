@@ -39,6 +39,7 @@ public class FogGateController : MonoBehaviour
 
     void OpenDoors()
     {
+        if (LeftDoor == null && RightDoor == null) { return; }
         LeftDoor.shouldBeOpen = true;
         RightDoor.shouldBeOpen = true;
         LeftDoor.moveSpeed = 70f;
