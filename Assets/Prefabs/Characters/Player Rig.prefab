@@ -313,7 +313,6 @@ MonoBehaviour:
   moveForce: 10
   friction: 0.85
   gravity: 10
-  isUsingStickMovement: 1
 --- !u!114 &4949870215372432209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,8 +325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cfafc3aa1cff747bba396db7d962e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Move: {fileID: 3662059244237163550}
-  Teleport: {fileID: 4406591982994618137}
 --- !u!1 &1051983243461812905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,7 +1869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8912dbee7c4d20409f639b54a61f35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 0}
+  characterController: {fileID: 4705514891994109004}
   grabDistanceExtension: 100
   throwForce: 2
   heldTransform: {fileID: 0}
@@ -2496,7 +2493,7 @@ GameObject:
   - component: {fileID: 3058757234841695832}
   m_Layer: 2
   m_Name: XR Origin (XR Rig)
-  m_TagString: Untagged
+  m_TagString: Player Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2510,7 +2507,7 @@ Transform:
   m_GameObject: {fileID: 4718055985212132241}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.3, z: 0}
+  m_LocalPosition: {x: -1.02, y: -1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2900,7 +2897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8912dbee7c4d20409f639b54a61f35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 0}
+  characterController: {fileID: 4705514891994109004}
   grabDistanceExtension: 100
   throwForce: 2
   heldTransform: {fileID: 0}
@@ -4828,6 +4825,10 @@ PrefabInstance:
     - target: {fileID: 8553906982923279859, guid: 4a3e01aa10be326418ced3dc5e707ab7, type: 3}
       propertyPath: m_Name
       value: Fogshell
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553906982923279859, guid: 4a3e01aa10be326418ced3dc5e707ab7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

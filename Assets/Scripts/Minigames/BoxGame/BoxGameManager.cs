@@ -65,8 +65,6 @@ public class BoxGameManager : MonoBehaviour
 
     private void Update()
     {
-        if ( BoxesKnocked >= boxes.Length ) { WinGame(); }
-
         // Check for points
         for (int i = 0; i < boxes.Length; i++)
         {
@@ -77,7 +75,9 @@ public class BoxGameManager : MonoBehaviour
             }
         }
         
-        if( BallsUsed >= balls.Length ){ ResetGame(); }
+        // Win or loose
+        if ( BoxesKnocked >= boxes.Length ) { WinGame(); }
+        else if ( BallsUsed >= balls.Length ){ ResetGame(); }
     }
 
     private void ResetGame()
