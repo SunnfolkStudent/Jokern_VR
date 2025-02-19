@@ -127,8 +127,6 @@ public class FogGatePSController : MonoBehaviour
     {
         ParticleSystem.Particle[] particles = new ParticleSystem.Particle[main.maxParticles];
         int count = particleSys.GetParticles(particles);
-
-        print("Changing to: a: " + alpha + "/ size: " + particleSize);
         
         for (int i = 0; i < count; i++)
         {

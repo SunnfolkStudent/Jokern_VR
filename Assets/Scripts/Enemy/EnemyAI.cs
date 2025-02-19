@@ -14,13 +14,13 @@ public class EnemyAI : MonoBehaviour
 {
     private NavMeshAgent agent;
     public float runSpeed = 9;
-    public float radius1 = 40f;
-    private float enemyRadius;
+    private float enemyRadiusOriginal;
+    public float enemyRadius = 40f;
     public float enemyRadius2 = 20f;
     public float enemyRadius3 = 10f;
     
     private Animator anim;
-    public Transform playerPosition;
+    private Transform playerPosition;
     private Vector3 destination;
     public LayerMask Layers;
     public ParticleSystem confetti;
@@ -38,6 +38,8 @@ public class EnemyAI : MonoBehaviour
     private bool playerInRange3;
     private bool die;
 
+    private GameObject cam;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -46,9 +48,12 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        cam = GameObject.Find("Main Camera");
+        playerPosition = cam.transform;
+        
         staticMaterial.SetFloat("_Strength", 0);
         transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
-        enemyRadius = radius1;
+        enemyRadiusOriginal = enemyRadius;
         caughtPlayer = false;
         playerInRange = false;
         playerInRange2 = false;
@@ -62,8 +67,6 @@ public class EnemyAI : MonoBehaviour
     }
     private void Update()
     {
-        destination = playerPosition.position;
-        
         float distance = Vector3.Distance(transform.position, playerPosition.position);
         float value = Mathf.InverseLerp(maxDistance, 0, distance);
         staticMaterial.SetFloat("_Strength", value);
@@ -76,7 +79,7 @@ public class EnemyAI : MonoBehaviour
         
         if (playerInRange && !caughtPlayer)
         {
-            enemyRadius = 80f;
+            enemyRadius = 100f;
             Chasing();
             FMODController.finalPathTension = FMODController.FinalPathTension.Low;
             
@@ -133,9 +136,10 @@ public class EnemyAI : MonoBehaviour
     public void Death()
     {
         ConfettiExplosion();
+        FMODController.PlaySoundFrom(JokernVRSound.SFX_ConfettiPop, gameObject);
         confetti.Play();
         
-        ResetEnemy(radius1);
+        ResetEnemy(enemyRadiusOriginal);
     }
 
     private void ResetEnemy(float radiusDefaultValue)

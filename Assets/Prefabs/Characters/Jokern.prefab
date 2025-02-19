@@ -1108,13 +1108,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 9
-  enemyRadius: 40
-  enemyRadius2: 25
-  enemyRadius3: 15
-  playerPosition: {fileID: 0}
+  enemyRadius: 80
+  enemyRadius2: 45
+  enemyRadius3: 20
   Layers:
     serializedVersion: 2
     m_Bits: 960
+  confetti: {fileID: 0}
+  staticMaterial: {fileID: 0}
+  spawnPoints: []
 --- !u!195 &6851968803138088377
 NavMeshAgent:
   m_ObjectHideFlags: 0
