@@ -118,7 +118,7 @@ public class CustomGrab : MonoBehaviour
             {
                 heldRigidbody.useGravity = true;
                 heldRigidbody.linearVelocity = gyroVel * throwForce + characterController.velocity;
-                heldTransform.gameObject.layer = heldLayer;
+                // heldTransform.gameObject.layer = heldLayer;
             }
             holdingSomething = false;
         }

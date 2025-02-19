@@ -8,6 +8,7 @@ public class BoxGameManager : MonoBehaviour
 
     [SerializeField] private Transform BoxCollection;
     [SerializeField] private Transform BallCollection;
+    [SerializeField] private int winThreshold = 5;
     public BoxDetector[] boxes;
     public BallDetector[] balls;
     
@@ -76,7 +77,7 @@ public class BoxGameManager : MonoBehaviour
         }
         
         // Win or loose
-        if ( BoxesKnocked >= boxes.Length ) { WinGame(); }
+        if ( BoxesKnocked >= winThreshold ) { WinGame(); }
         else if ( BallsUsed >= balls.Length ){ ResetGame(); }
     }
 
@@ -100,7 +101,8 @@ public class BoxGameManager : MonoBehaviour
 
     private void WinGame()
     {
-        obstacle.SetActive(false);
+        // obstacle.SetActive(false);
+        obstacle.gameObject.GetComponent<c4>().Explode();
     }
     
     void OnTriggerEnter(Collider other) 
