@@ -19,7 +19,18 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		input = GetComponent<XRInputActions>();
-		playerMoveDirectionWithoutPitch = new("Player Move Direction Holder");
+		
+		{
+			const string name = "Player Move Direction Holder";
+			
+			var obj = GameObject.Find(name);
+			if (obj == null) {
+				obj = new(name);
+			}
+
+			playerMoveDirectionWithoutPitch = obj;
+		}
+		
 		var playerTeleportControllerGameObject = GameObject.FindWithTag(playerTeleportControllerTag);
 		if (playerTeleportControllerGameObject == null) {
 			Debug.LogError($"Could not find an object with the '{playerTeleportControllerTag}' tag.");

@@ -24,7 +24,6 @@ public class MinigameManager : MonoBehaviour
     {
         currentMinigame++;
     }
-
     public void Suicide()
     {
         gameObject.SetActive(false);

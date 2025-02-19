@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
@@ -17,11 +18,22 @@ public class PortalController : MonoBehaviour
         print("HIT PLAYER");
         
         // PlayerTransform = probablyPlayer.gameObject.GetComponent<PlayerMover>().GetTargetReference();
-        UpdatePosition(probablyPlayer);
-        
-        UpdateRotation(probablyPlayer);
+#if true
+        SceneController.LoadNextLevel();
+#else
+        StartCoroutine(Teleport(probablyPlayer, 0.1f));
+#endif
     }
 
+    private IEnumerator Teleport(Collider probablyPlayer, float delay)
+    {
+        // print("Starting Wait");
+        yield return new WaitForSeconds(delay);
+        // print("Ending Wait");
+        UpdatePosition(probablyPlayer);
+        UpdateRotation(probablyPlayer);
+        yield return null;
+    }
     private void UpdateRotation(Collider probablyPlayer)
     {
         if (transform.localEulerAngles.y < probablyPlayer.transform.localEulerAngles.y)
