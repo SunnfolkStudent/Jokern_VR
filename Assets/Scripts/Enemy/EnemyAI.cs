@@ -133,6 +133,7 @@ public class EnemyAI : MonoBehaviour
     public void Death()
     {
         ConfettiExplosion();
+        FMODController.PlaySoundFrom(JokernVRSound.SFX_ConfettiPop, gameObject);
         confetti.Play();
         
         ResetEnemy(radius1);
